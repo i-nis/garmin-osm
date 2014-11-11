@@ -1,0 +1,20 @@
+# -------------------------------------------------------------------
+# contour_lines
+#
+# (C) 2012 - 2014 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
+# Distributed under the terms of the GNU General Public License v3
+#
+
+# Contours take their name from the elevation setting.
+contour=elevation & contour_ext=elevation_minor
+	{ name '${ele}'; }
+	[0x20 resolution 23]
+contour=elevation & contour_ext=elevation_medium
+	{ name '${ele}'; }
+	[0x21 resolution 21]
+contour=elevation & contour_ext=elevation_major
+	{ name '${ele}'; }
+	[0x22 resolution 20]
+contour=elevation | contour_ext=elevation
+	{ name '${ele}'; }
+	[0x21 resolution 20]

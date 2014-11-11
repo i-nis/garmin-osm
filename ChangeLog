@@ -1,0 +1,216 @@
+2014-11-09:
+        Creado con:
+                osmconvert 0.8A
+                osmfilter 1.2T
+                splitter r412
+                mkgmap r3344
+        Mejoras en búsqueda de calles por nombre. Por ejemplo ahora es posible 
+	buscar una calle llamada "Manuel Belgrano" como "Belgrano".
+
+2014-11-02:
+        Creado con:
+                osmconvert 0.7W
+                osmfilter 1.2T
+                splitter r412
+                mkgmap r3344
+        Se removió la función options() del script bin/05_mkgarminmap.sh en favor
+        de las reglas de estilo.
+	Mejoras en los scripts para optimizar la actualización de datos de América
+	del sur.
+
+2014-10-27:
+        Creado con:
+                osmconvert 0.7W
+                osmfilter 1.2T
+                splitter r412
+                mkgmap r3341
+
+2014-10-19:
+        Creado con:
+                osmconvert 0.7W
+                osmfilter 1.2T
+                splitter r412
+                mkgmap r3336
+
+2014-10-12:
+        Creado con:
+                osmconvert 0.7W
+                osmfilter 1.2T
+                splitter r412
+                mkgmap r3336
+
+2014-10-01:
+        Creado con:
+                osmconvert 0.7W
+                osmfilter 1.2T
+                splitter r412
+                mkgmap r3336
+
+2014-09-07:
+        Creado con:
+                osmconvert 0.7W
+                osmfilter 1.2T
+                splitter r412
+                mkgmap r3334
+
+2014-08-24:
+        Creado con:
+                osmconvert 0.7W
+		osmfilter 1.2T
+                splitter r412
+                mkgmap r3333
+	Mejoras de estilo para indicar paradas del transporte público.
+
+2014-08-17:
+        Creado con:
+                osmconvert 0.7W
+		osmfilter 1.2T
+                splitter r412
+                mkgmap r3333
+	Scripts: se reemplaza osmosis por osmconvert/osmfilter.
+	Mayor velocidad en creación de los mapas gracias a osmconvert/osmfilter.
+
+2014-08-05:
+        Creado con:
+                osmosis 0.43.1
+                osmconvert 0.7W
+                splitter r412
+                mkgmap r3320
+
+2014-07-20:
+        Creado con:
+                osmosis 0.43.1
+                osmconvert 0.7W
+                splitter r412
+                mkgmap r3315
+	Corrección en estilo para poligonos que no son construcciones.
+
+2014-07-13:
+        Creado con:
+                osmosis 0.43.1
+                osmconvert 0.7W
+                splitter r412
+                mkgmap r3314
+        Corrección de errores relacionados con el cambio de estilo.
+
+2014-07-07:
+        Creado con:
+                osmosis 0.43.1
+                osmconvert 0.7W
+                splitter r412
+                mkgmap r3313
+	Cambios en TYP, se eliminaron elementos obsoletos.
+	Cambios en estilo para mayor compatibilidad.
+
+2014-06-29:
+        Creado con:
+                osmosis 0.43.1
+                osmconvert 0.7W
+                splitter r412
+                mkgmap r3310
+
+2014-06-22:
+        Creado con:
+                osmosis 0.43.1
+                osmconvert 0.7T
+                splitter r412
+                mkgmap r3309
+
+2014-06-15:
+        Creado con:
+                osmosis 0.43.1
+                osmconvert 0.7T
+                splitter r411
+                mkgmap r3293
+	Nuevas reglas relacionadas con el metrobús.
+	Manejo de calles empedradas como no pavimentadas.
+	Ocultamiento de entubamientos y rios subterraneos.
+
+2014-06-01:
+        Creado con:
+                osmosis 0.43.1
+                osmconvert 0.7T
+                splitter r409
+                mkgmap r3288
+
+2014-05-25:
+        Creado con:
+                osmosis 0.43.1
+                osmconvert 0.7T
+                splitter r392
+                mkgmap r3282
+
+2014-05-18:
+        Creado con:
+                osmosis 0.43.1
+                osmconvert 0.7T
+                splitter r383
+                mkgmap r3277
+
+2014-05-11:
+        Creado con:
+                osmosis 0.43.1
+                osmconvert 0.7T
+                splitter r331
+                mkgmap r3265
+
+2014-04-27:
+        Creado con:
+                osmosis 0.43.1
+                osmconvert 0.7T
+                splitter r321
+                mkgmap r3230
+        Corrección de nombres duplicados en POIs.
+	Correcciones en reglas de acceso.
+	Correcciones de estilo para mejorar ruteo.
+
+2014-04-20:
+        Creado con:
+                osmosis 0.43.1
+                osmconvert 0.7T
+                splitter r321
+                mkgmap r3203
+	Mejoras en el manejo de restricciones.
+        Generado con las nuevas optimizaciones de mkgmap.
+
+2014-04-14:
+        Creado con:
+                osmosis 0.43.1
+                osmconvert 0.7T
+                splitter r321
+                mkgmap r3189
+
+2014-03-30:
+        Creado con:
+                osmosis 0.43.1
+                osmconvert 0.7T
+                splitter r320
+                mkgmap r3138
+        Mejoras en el estilo para la visualización de rotondas.
+	Filtrado de POIs duplicados.
+
+2014-03-19:
+        Creado con:
+                osmosis 0.43.1
+                osmconvert 0.7T
+                splitter r320
+                mkgmap r3116
+        Mejoras en el estilo para la generación de rotondas.
+	Ocultamiento de cables subterráneos.
+	Mejoras en las búsquedas altura de calles.
+	Corrección en la generación de índices de calles.
+	Correcciones varias en reglas de estilo.
+
+2014-03-06:
+        Creado con:
+                osmosis 0.43.1
+                osmconvert 0.7T
+                splitter r318
+                mkgmap r3086                
+	Mejoras en la generación de oceanos y mares.
+	Mejoras de enrutamiento.
+	Líneas menos distorsionadas por ajustes de redondeo.
+	Optimización del 10% en el tamaño del mapa.
+	Mejoras en las búsquedas de direcciones.
+	
+

@@ -1,0 +1,15 @@
+##
+# (C) 2012 - 2014 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
+# Distributed under the terms of the GNU General Public License v3
+#
+
+
+
+summary: OpenStreetMap Argentina style
+
+version=1.0
+
+description {
+Estilo OpenStreetMap para Argentina y países limítrofes.
+}
+

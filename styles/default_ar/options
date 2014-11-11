@@ -1,0 +1,10 @@
+##
+# (C) 2012 - 2014 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
+# Distributed under the terms of the GNU General Public License v3
+#
+#
+# Style options.
+#
+
+levels = 0:24, 1:22, 2:20, 3:18
+overview-levels = 4:17, 5:16, 6:15, 7:14, 8:12

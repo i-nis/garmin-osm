@@ -1,0 +1,12 @@
+## -------------------------------------------------------------------
+# access_country
+#
+# (C) 2012 - 2014 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
+# Distributed under the terms of the GNU General Public License v3
+
+# Argentina (ARG)
+
+highway=trunk & mkgmap:country=ARG	{ add bicycle=no; add foot=no }
+highway=cycleway & mkgmap:country=ARG	{ add foot=no }
+highway=bridleway & mkgmap:country=ARG	{ add foot=yes }
+
