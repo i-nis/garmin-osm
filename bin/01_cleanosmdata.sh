@@ -15,7 +15,6 @@ PAISES="south-america argentina bolivia brazil chile paraguay uruguay"
 ALL="$1"
 FECHA=$(date +%G%m%d)
 WORKDIR=`pwd`
-DIR="garmin-osm"
 
 
 
