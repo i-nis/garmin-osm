@@ -61,8 +61,20 @@ geoname () {
       GEONAME="CL.zip"
       ;;
 
+    colombia )
+      GEONAME="CO.zip"
+      ;;
+
+    ecuador )
+      GEONAME="EC.zip"
+      ;;
+
     paraguay )
       GEONAME="PY.zip"
+      ;;
+
+    peru )
+      GEONAME="PE.zip"
       ;;
 
     uruguay )
@@ -81,39 +93,37 @@ geoname () {
 # PAIS = [all | argentina | bolivia | brazil | chile | paraguay | uruguay]
 if [[ "${1}" == "" || "${1}" == "all" ]]; then
     PAIS="south-america"
-    URL_PAIS="${URL}/${PAIS}"
     BOX="-b=${COORD}"
     OSMCONVERT_OPTS="--complete-ways --complex-ways --drop-broken-refs"
   else
     PAIS="${1}"
-    URL_PAIS="${URL}/south-america/${PAIS}"
     OSMCONVERT_OPTS="-B=${PAIS}/${PAIS}"
 fi
 
-# Descarga south-america.o5m
-if [ ! -e ${PAIS}-latest.o5m ]; then
+# Descarga south-america-latest.o5m
+if [ ! -e south-america-latest.o5m ]; then
 
     echo "------------------------------------------------------------------------"
-    echo "Descargando ${URL_PAIS}-latest.osm.bz2"
+    echo "Descargando ${URL}/south-america-latest.osm.bz2"
     echo "------------------------------------------------------------------------"
     echo
 
-    ${GET} ${URL_PAIS}-latest.osm.bz2
+    ${GET} ${URL}/south-america-latest.osm.bz2
 
     echo "------------------------------------------------------------------------"
     echo "Generando ${PAIS} con osmconvert desde: "
-    echo "${URL_PAIS}-latest.osm.bz2"
+    echo "${URL_PAIS}/south-america-latest.osm.bz2"
     echo "Area definida por: ${BOX}"
     echo "------------------------------------------------------------------------"
     echo
 
-    bzcat ${PAIS}-latest.osm.bz2 | ${OSMCONVERT} - ${HASH_MEM} \
-    --verbose --out-o5m > ${PAIS}-latest.o5m
+    bzcat south-america-latest.osm.bz2 | ${OSMCONVERT} - ${HASH_MEM} \
+    --verbose --out-o5m > south-america-latest.o5m
 
     ${OSMCONVERT} ${HASH_MEM} ${BOX} ${OSMCONVERT_OPTS} -B=${PAIS}/${PAIS}.poly \
-    --verbose ${PAIS}-latest.o5m --out-o5m > ${PAIS}.o5m
+    --verbose south-america-latest.o5m --out-o5m > ${PAIS}.o5m
 
-    rm -f ${PAIS}-latest.osm.bz2
+    rm -f south-america-latest.osm.bz2
 
   else
 
@@ -145,10 +155,10 @@ if [ ! -e ${PAIS}-latest.o5m ]; then
           gunzip --decompress --force ${i}.osc.gz
 
           ${OSMCONVERT} ${HASH_MEM} ${OSMCONVERT_OPTS} -B=${PAIS}/${PAIS}.poly \
-          --verbose --merge-versions ${PAIS}-latest.o5m ${i}.osc --out-o5m \
-          > ${PAIS}-latest_new.o5m
+          --verbose --merge-versions south-america-latest.o5m ${i}.osc --out-o5m \
+          > south-america-latest_new.o5m
 
-          mv --force ${PAIS}-latest_new.o5m ${PAIS}-latest.o5m
+          mv --force south-america-latest_new.o5m south-america-latest.o5m
           rm --force ${i}.osc
 
           NOW=$((OLD + I - 1))
@@ -161,7 +171,7 @@ if [ ! -e ${PAIS}-latest.o5m ]; then
       done
 
     ${OSMCONVERT} ${HASH_MEM} ${BOX} ${OSMCONVERT_OPTS} --drop-version --verbose \
-    ${PAIS}-latest.o5m --out-o5m > ${PAIS}.o5m
+    south-america-latest.o5m --out-o5m > ${PAIS}.o5m
 
     fi
 
@@ -195,3 +205,4 @@ if [ ! -d ${WORKDIR}/sea ]; then
   SEADIR=$(ls */index.txt.gz | awk -F \/ //'{print $1}')
   mv ${SEADIR} sea
 fi
+
