@@ -94,10 +94,9 @@ geoname () {
 if [[ "${1}" == "" || "${1}" == "all" ]]; then
     PAIS="south-america"
     BOX="-b=${COORD}"
-    OSMCONVERT_OPTS="--complete-ways --complex-ways --drop-broken-refs"
   else
     PAIS="${1}"
-    OSMCONVERT_OPTS="-B=${PAIS}/${PAIS}"
+    BOX="-B=${PAIS}/${PAIS}.poly"
 fi
 
 # Descarga south-america-latest.o5m
@@ -120,9 +119,6 @@ if [ ! -e south-america-latest.o5m ]; then
     bzcat south-america-latest.osm.bz2 | ${OSMCONVERT} - ${HASH_MEM} \
     --verbose --out-o5m > south-america-latest.o5m
 
-    ${OSMCONVERT} ${HASH_MEM} ${BOX} ${OSMCONVERT_OPTS} -B=${PAIS}/${PAIS}.poly \
-    --verbose south-america-latest.o5m --out-o5m > ${PAIS}.o5m
-
     rm -f south-america-latest.osm.bz2
 
   else
@@ -143,6 +139,8 @@ if [ ! -e south-america-latest.o5m ]; then
 
     if [ ${LATEST} != ${OLD} ]; then
       OLD=$((OLD + 1))
+      SBOX="-B=south-america/south-america.poly"
+      OSMCONVERT_OPTS="--complete-ways --complex-ways --drop-broken-refs"
       rm -f ${PAIS}.o5m
 
       for i in `seq ${OLD} ${LATEST}`; do
@@ -154,7 +152,7 @@ if [ ! -e south-america-latest.o5m ]; then
         if [ -e ${i}.osc.gz ]; then
           gunzip --decompress --force ${i}.osc.gz
 
-          ${OSMCONVERT} ${HASH_MEM} ${OSMCONVERT_OPTS} -B=${PAIS}/${PAIS}.poly \
+          ${OSMCONVERT} ${HASH_MEM} ${OSMCONVERT_OPTS} ${SBOX} \
           --verbose --merge-versions south-america-latest.o5m ${i}.osc --out-o5m \
           > south-america-latest_new.o5m
 
@@ -170,12 +168,12 @@ if [ ! -e south-america-latest.o5m ]; then
 
       done
 
-    ${OSMCONVERT} ${HASH_MEM} ${BOX} ${OSMCONVERT_OPTS} --drop-version --verbose \
-    south-america-latest.o5m --out-o5m > ${PAIS}.o5m
-
     fi
 
 fi
+
+${OSMCONVERT} ${HASH_MEM} ${BOX} --drop-version --verbose \
+south-america-latest.o5m --out-o5m > ${PAIS}.o5m
 
 
 

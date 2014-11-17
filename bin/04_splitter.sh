@@ -37,27 +37,39 @@ options () {
       ;;
 
     argentina )
-      OPTIONS="--description=Argentina --geonames-file=AR.zip ${COMMON}"
+      OPTIONS="--geonames-file=AR.zip ${COMMON}"
       ;;
 
     bolivia )
-      OPTIONS="--description=Bolivia --geonames-file=BO.zip ${COMMON}"
+      OPTIONS="--geonames-file=BO.zip ${COMMON}"
       ;;
 
     brazil )
-      OPTIONS="--description=Brasil --geonames-file=BR.zip ${COMMON}"
+      OPTIONS="--geonames-file=BR.zip ${COMMON}"
+      ;;
+
+    colombia )
+      OPTIONS="--geonames-file=CO.zip ${COMMON}"
       ;;
 
     chile )
-      OPTIONS="--description=Chile --geonames-file=CL.zip ${COMMON}"
+      OPTIONS="--geonames-file=CL.zip ${COMMON}"
+      ;;
+
+    ecuador )
+      OPTIONS="--geonames-file=EC.zip ${COMMON}"
+      ;;
+
+    peru )
+      OPTIONS="--geonames-file=PE.zip ${COMMON}"
       ;;
 
     paraguay )
-      OPTIONS="--description=Paraguay --geonames-file=PY.zip ${COMMON}"
+      OPTIONS="--geonames-file=PY.zip ${COMMON}"
       ;;
 
     uruguay )
-      OPTIONS="--description=Uruguay --geonames-file=UY.zip ${COMMON}"
+      OPTIONS="--geonames-file=UY.zip ${COMMON}"
       ;;
 
   esac
@@ -80,7 +92,7 @@ if [ -e ${WORKDIR}/sea/index.txt.gz ]; then
 fi
 
 echo "------------------------------------------------------------------------"
-echo "Generando mosaicos de ${pais}."
+echo "Generando mosaicos de ${PAIS}."
 echo "------------------------------------------------------------------------"
 echo
 
@@ -104,3 +116,4 @@ fi
 if [ -e template.args ]; then
   mv --force template.args ${PAIS}.args
 fi
+

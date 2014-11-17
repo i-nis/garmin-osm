@@ -26,9 +26,10 @@ if [ ! -d ${WORKDIR}/bounds ]; then
 fi
 
 # Selecciona el país, si no se pasan argumentos se procesan todos los países.
-# PAIS = [all | argentina | bolivia | brazil | chile | paraguay | uruguay]
+# PAIS = [all | argentina | bolivia | brazil | colombia | chile | ecuador | 
+# paraguay | peru | uruguay]
 if [[ "${1}" == "" || "${1}" == "all" ]]; then
-    PAIS="south-america"
+    PAIS="south-america-latest"
   else
     PAIS="${1}"
 fi
@@ -44,6 +45,7 @@ echo "------------------------------------------------------------------------"
 echo
 
 # Extrayendo información de límites.
-${OSMFILTER} ${HASH_MEM} ${PAIS}-latest.o5m --drop-version --keep-nodes= \
+${OSMFILTER} ${HASH_MEM} ${PAIS}.o5m --drop-version --keep-nodes= \
 --keep-ways-relations="boundary=administrative =postal_code postal_code=" \
 --out-o5m > ${PAIS}-boundaries.o5m
+
