@@ -63,6 +63,13 @@ mkgmap:phone!=* & contact:phone=* { add mkgmap:phone='${contact:phone}' }
 
 mkgmap:is_in!=* & is_in=* { set mkgmap:is_in='${is_in}' }
 
+
+# Improved search for street names.
+
+# Move "Avenida" to the end.
+highway=* & name ~ '([aA]venida|[aA]v.).*' { set new:name='${name|part: >1}'}
+new:name=* { set mkgmap:label:3='${new:name}, Avenida' }
+
 # Get the last full word if a \s (whitespace) exist in name.
 highway=* & name ~ '.*\s.*' { set  last:word='${name|part: :-1}' }
 
@@ -72,5 +79,6 @@ last:word ~ '(I|II|III|IV|V|VI.*|IX|X|XI.*|XV.*|XX.*)'  {set last:word='${name|p
 
 # Set 3rd and 4th labels (used for address search only) with the last:word
 # as 1st word.
-last:word=*  { set mkgmap:label:3='${last:word}, ${name|part: <-1}'; set mkgmap:label:4='${last:word}, ${name|part: <-1}' }
+#last:word=* { set mkgmap:label:3='${last:word}, ${name|part: <-1}'; set mkgmap:label:4='${last:word}, ${name|part: <-1}' }
+last:word=* { set mkgmap:label:4='${last:word}, ${name|part: <-1}' }
 
