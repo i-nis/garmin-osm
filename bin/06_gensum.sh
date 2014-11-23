@@ -25,5 +25,3 @@ gensum() {
 }
 
 gensum "gmapsupp.img"
-gensum $(ls garmin-mosaicos*.tar.bz2)
-gensum $(ls garmin-osm_scripts*.tar.bz2)
