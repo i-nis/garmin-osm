@@ -45,7 +45,7 @@ if [ $(ls -1 ${WORKDIR}/bounds/ |  wc -l) == 0 ]; then
 
   java -Xmx1536m -cp ${MKGMAP} \
   uk.me.parabola.mkgmap.reader.osm.boundary.BoundaryPreprocessor\
-  ${PAIS}-boundaries.o5m bounds/
+  ${PAIS}-latest-boundaries.o5m bounds/
 
   FILES=$(ls -1 ${WORKDIR}/bounds/ |  wc -l)
 
