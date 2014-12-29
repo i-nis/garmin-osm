@@ -88,13 +88,13 @@ place=village & cityxx!=yes {set cityxx=yes} 	[0x0900 resolution 22 continue wit
 place=suburb & cityxx!=yes  {set cityxx=yes}	[0x0a00 resolution 22 continue with_actions]
 place=hamlet & cityxx!=yes  {set cityxx=yes}	[0x0b00 resolution 24 continue with_actions]
 
-aeroway=airport [0x5900 resolution 22]
-aeroway=aerodrome [0x5905 resolution 22]
+#aeroway=airport [0x5900 resolution 22]
+aeroway=airport [0x2f04 resolution 22]
+aeroway=aerodrome [0x2f04 resolution 22]
 aeroway=helipad [0x5904 resolution 23]
-aeroway=terminal [0x5900 resolution 24]
+aeroway=terminal [0x2f04 resolution 24]
 
-amenity=atm & network=*  { set name='Cajero ${network}' } [0x2f06 resolution 24]
-amenity=atm & network!=* [0x2f06 resolution 24 default_name 'Cajero']
+amenity=atm [0x2f06 resolution 24]
 amenity=arts_centre [0x2c04 resolution 24]
 amenity=bank [0x2f06 resolution 24]
 amenity=bar [0x2d02 resolution 24]
