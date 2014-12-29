@@ -69,6 +69,9 @@ mkgmap:is_in!=* & is_in=* { set mkgmap:is_in='${is_in}' }
 # Move "Avenida", "Boulevard" y "Calle" to the end.
 highway=* & name ~ '([aA]venida|[aA]v.).*' { set new:name='${name|part: >1}'}
 highway=* & name ~ '([bB]oulevard|[bB]ulevar).*' { set new:name='${name|part: >1}'}
+highway=* & name ~ '([dD]octor|[dD]r.).*' { set new:name='${name|part: >1}'}
+highway=* & name ~ '([dD]octora|[dD]ra.).*' { set new:name='${name|part: >1}'}
+highway=* & name ~ '([bB]oulevard|[bB]ulevar).*' { set new:name='${name|part: >1}'}
 highway=* & name ~ '([cC]alle).*' { set new:name='${name|part: >1}'}
 new:name=* { set mkgmap:label:3='${new:name}, Avenida' }
 
