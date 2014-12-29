@@ -81,7 +81,7 @@ java -Xmx1536m -enableassertions -Dlog.config=${WORKDIR}/logging.properties \
 --index \
 --housenumbers \
 --latin1 \
---drive-on-right \
+--drive-on=detect,right \
 --generate-sea \
 --report-similar-arcs \
 --add-pois-to-areas \
