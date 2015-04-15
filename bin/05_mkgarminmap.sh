@@ -80,6 +80,7 @@ java -Xmx1536m -enableassertions -Dlog.config=${WORKDIR}/logging.properties \
 --bounds=${WORKDIR}/bounds/ \
 --index \
 --housenumbers \
+--x-split-name-index \
 --latin1 \
 --drive-on=detect,right \
 --generate-sea \
@@ -120,6 +121,7 @@ java -Xmx1536m -enableassertions -Dlog.config=logging.properties \
 --family-id=980 \
 --family-name="OpenStreetMap" \
 --housenumbers \
+--x-split-name-index \
 --index \
 --latin1 \
 --make-poi-index \
