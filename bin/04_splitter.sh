@@ -17,7 +17,8 @@ G='\E[1;32;40m'
 Y='\E[1;33;40m'
 W='\E[0;38;40m'
 
-COMMON_OPTIONS="--keep-complete=true --max-areas=512 --max-nodes=600000 --no-trim"
+COMMON_OPTIONS="--keep-complete=true --wanted-admin-level=4 --max-areas=512"
+COMMON_OPTIONS="${COMMON_OPTIONS} --max-nodes=600000 --no-trim"
 COMMON_OPTIONS="${COMMON_OPTIONS} --overlap=0 --output=xml --resolution=12"
 
 rm -f template.args
