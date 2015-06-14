@@ -1,11 +1,11 @@
 ## -------------------------------------------------------------------
 # Points style file for converting OSM nodes into Garmin POIs.
 #
-# (C) 2012 - 2014 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
+# (C) 2012 - 2015 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
-
+addr:housenumber=* {set mkgmap:execute_finalize_rules=true}
 barrier=* & bicycle=*    { set mkgmap:bicycle='${bicycle|subst:private=>no}' }
 barrier=* & foot=*       { set mkgmap:foot='${foot|subst:private=>no}' }                  
 barrier=* & hgv=*        { set mkgmap:truck='${hgv|subst:private=>no}' }                  
@@ -271,8 +271,8 @@ tourism=attraction & historic=* [0x2c02 resolution 24]
 tourism=attraction [0x2c04 resolution 24]
 tourism=artwork [0x2c04 resolution 24]
 tourism=aquarium [0x2c07 resolution 24]
-tourism=camp_site [0x2b03 resolution 24]
-tourism=caravan_site [0x2b03 resolution 24]
+tourism=camp_site [0x2b05 resolution 24]
+tourism=caravan_site [0x2b05 resolution 24]
 tourism=chalet [0x2b02 resolution 24]
 tourism=guest_house [0x2b02 resolution 24]
 tourism=hostel [0x2b02 resolution 24]
