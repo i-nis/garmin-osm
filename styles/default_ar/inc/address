@@ -1,7 +1,7 @@
 ## -------------------------------------------------------------------
 # Address
 #
-# (C) 2012, 2013 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
+# (C) 2012 - 2015 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -62,3 +62,4 @@ mkgmap:phone!=* & phone=* { set mkgmap:phone='${phone}' }
 mkgmap:phone!=* & contact:phone=* { add mkgmap:phone='${contact:phone}' }
 
 mkgmap:is_in!=* & is_in=* { set mkgmap:is_in='${is_in}' }
+
