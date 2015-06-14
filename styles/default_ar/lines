@@ -1,10 +1,11 @@
 ## -------------------------------------------------------------------
 # Lines style file for converting OSM ways into Garmin lines.
 #
-# (C) 2012 - 2014 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
+# (C) 2012 - 2015 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
+addr:housenumber=* {set mkgmap:execute_finalize_rules=true}
 aeroway=runway & highway=* [0x27 resolution 20 continue]
 aeroway=runway & highway!=* [0x27 resolution 20]
 aeroway=taxiway [0x27 resolution 24]
@@ -25,12 +26,12 @@ highway=* & oneway=yes & (access=private|access=no)
 {add mkgmap:dead-end-check=false}
 # Validation-like checks (uncomment to enable)
 highway=motorway_link & oneway!=yes & oneway!=no { echo "motorway_link carece de sentido único" }
-highway=motorway|highway=motorway_link { add oneway=yes }
+highway=motorway|highway=motorway_link { add oneway=yes; add mkgmap:numbers=false }
 
 # Set highway names to include the reference if there is one
 highway=motorway { name '${ref|highway-symbol:hbox} ${name}' | '${ref|highway-symbol:hbox}' | '${name}' }
 
-(highway=motorway_link | highway=trunk_link) & mkgmap:exit_hint=true & mkgmap:dest_hint=true
+(highway=motorway_link | highway=trunk_link | highway=primary_link) & mkgmap:exit_hint=true & mkgmap:dest_hint=true
   { name '${destination:ref|subst: =>} ${destination|subst:;=> |subst:/=> }' | 
          '${ref|subst: =>} ${destination|subst:;=> |subst:/=> }' | 
          '${destination|subst:;=> |subst:/=> }' |
@@ -41,13 +42,13 @@ highway=motorway { name '${ref|highway-symbol:hbox} ${name}' | '${ref|highway-sy
          'Exit ${mkgmap:exit_hint_ref}'
        }
 
-(highway=motorway_link | highway=trunk_link) & mkgmap:exit_hint!=* & mkgmap:dest_hint=true
+(highway=motorway_link | highway=trunk_link | highway=primary_link) & mkgmap:exit_hint!=* & mkgmap:dest_hint=true
   { name '${destination:ref|subst: =>} ${destination|subst:;=> |subst:/=> }' |
          '${ref|subst: =>} ${destination|subst:;=> |subst:/=> }' | 
          '${destination|subst:;=> |subst:/=> }'
        }
 
-(highway=motorway_link | highway=trunk_link) & mkgmap:exit_hint=true & mkgmap:dest_hint!=*
+(highway=motorway_link | highway=trunk_link | highway=primary_link) & mkgmap:exit_hint=true & mkgmap:dest_hint!=*
   { name 'Exit ${mkgmap:exit_hint_ref} ${mkgmap:exit_hint_name}' | 
          'Exit ${mkgmap:exit_hint_ref} ${mkgmap:exit_hint_exit_to}' | 
          'Exit ${mkgmap:exit_hint_exit_to}' |
@@ -125,13 +126,14 @@ highway=trunk [0x02 road_class=4 road_speed=5 resolution 18]
 highway=trunk_link & (mkgmap:exit_hint=true | mkgmap:dest_hint=true) [0x06 road_class=3 road_speed=2 resolution 20]
 highway=trunk_link [0x09 road_class=3 road_speed=2 resolution 20]
 
-highway=* & highway!=proposed & motorroad=yes [0x03 road_class=4 road_speed=4 resolution 18]
+highway=* & highway!=proposed & motorroad=yes [0x02 road_class=4 road_speed=4 resolution 18]
 
 # Primarys
 highway=primary & ( network=e-road | int_ref=* ) [0x03 resolution 17-18 continue]
 highway=primary & (mkgmap:unpaved=1) [0x0a road_class=0 road_speed=5 resolution 19]
 highway=primary [0x03 road_class=3 road_speed=4 resolution 19]
-highway=primary_link [0x08 road_class=2 road_speed=1 resolution 21]
+highway=primary_link & (mkgmap:exit_hint=true | mkgmap:dest_hint=true)[0x06 road_class=3 road_speed=1 resolution 21]
+highway=primary_link [0x08 road_class=3 road_speed=1 resolution 21]
 
 # Secondarys
 highway=secondary & ( network=e-road | int_ref=* ) [0x04 resolution 18-19 continue]
@@ -141,7 +143,7 @@ highway=secondary_link [0x08 road_class=1 road_speed=1 resolution 22]
 
 # Tertiarys
 highway=tertiary [0x05 road_class=1 road_speed=3 resolution 20]
-highway=tertiary_link [0x08 road_class=0 road_speed=1 resolution 22]
+highway=tertiary_link [0x08 road_class=1 road_speed=1 resolution 22]
 
 
 highway=minor & (mkgmap:unpaved=1) [0x0a road_class=0 road_speed=1 resolution 24]
@@ -172,7 +174,7 @@ highway=cycleway [0x10 road_class=0 road_speed=1 resolution 23]
 highway=footway|highway=path|highway=steps [0x0e road_class=0 road_speed=0 resolution 23]
 highway=track [0x0a road_class=0 road_speed=1 resolution 22]
 highway=unsurfaced [0x0a road_class=0 road_speed=1 resolution 22]
-highway=road { add mkgmap:dead-end-check = false} [0x00 resolution 22]
+highway=road { add mkgmap:dead-end-check = false} [0x00 road_class=0 road_speed=1 resolution 22]
 
 # Mop up any unrecognised highway types
 highway=* & highway!=proposed & area!=yes [0x07 road_class=0 road_speed=0 resolution 23] 
@@ -218,6 +220,9 @@ include 'inc/arrival_time_estimation';
 
 #limit artificial cycleways to to resolution 24
 mkgmap:synthesised=yes & mkgmap:bicycle=yes { set mkgmap:highest-resolution-only = true }
+
+# don't add house numbers to unnamed or artifical bicycle ways
+mkgmap:bicycle=yes & (mkgmap:foot=no & mkgmap:car=no & mkgmap:street!=* | mkgmap:synthesised=yes) {set mkgmap:numbers=false}
 
 name=* { name '${name}' }
 
