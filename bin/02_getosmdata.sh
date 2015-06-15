@@ -124,7 +124,7 @@ if [ ! -e south-america-latest.o5m ]; then
   else
 
     echo "------------------------------------------------------------------------"
-    echo "Actualizando ${PAIS} con osmconvert desde: "
+    echo "Actualizando ${PAIS} con osmconvert desde: "i
     echo "${PLANETOSM}."
     echo "Area definida por: ${BOX}"
     echo "------------------------------------------------------------------------"
@@ -145,19 +145,40 @@ if [ ! -e south-america-latest.o5m ]; then
 
       for i in `seq ${OLD} ${LATEST}`; do
 
+        # La URL para la organización de archivos diferenciales es del tipo: 
+        # http://planet.openstreetmap.org/replication/day/AAA/BBB/CCC.osc.gz
+        # Donde el número de secuencia es N = AAA*1000000 + BBB*1000 + CCC.
+        # Por ejemplo para un archivo cuyo número de secuencia es 60277 le
+        # corresponde una locación en /000/060/277.
+        #
+        # Para formar la URL es necesario saber con cuantos ceros deben anteponerse
+        # al número de secuencia obtenido para la variable ${i}.
+        NUMBER_CEROS=$((9 - ${#i}))
+        CEROS=""
+
+        for n in $(seq ${NUMBER_CEROS}); do 
+          CEROS="0${CEROS}"
+        done
+
+        # Se genera la locación del archivo a descargar ${LOCATION} y el nombre
+        # del archivo ${FILE} sin la extensión.
+        LOCATION=$(echo "${CEROS}${i}" | sed -e 's/.\{3\}/\/&/g')
+        FILE=$(echo "${LOCATION}" | awk -F \/ //'{print $(NF)}')
+
         STEPS="${Y}${I}${W} de ${Y}${N}${W}"
         echo -e ">>> Actualizando cambios (${STEPS}) a ${G}versión ${i}${W}"
-        ${GET} ${RDAY}/000/000/${i}.osc.gz
 
-        if [ -e ${i}.osc.gz ]; then
-          gunzip --decompress --force ${i}.osc.gz
+        ${GET} ${RDAY}${LOCATION}.osc.gz
+
+        if [ -e ${FILE}.osc.gz ]; then
+          gunzip --decompress --force ${FILE}.osc.gz
 
           ${OSMCONVERT} ${HASH_MEM} ${OSMCONVERT_OPTS} ${SBOX} \
-          --verbose --merge-versions south-america-latest.o5m ${i}.osc --out-o5m \
+          --verbose --merge-versions south-america-latest.o5m ${FILE}.osc --out-o5m \
           > south-america-latest_new.o5m
 
           mv --force south-america-latest_new.o5m south-america-latest.o5m
-          rm --force ${i}.osc
+          rm --force ${FILE}.osc
 
           NOW=$((OLD + I - 1))
           sed 's/'${LATEST}'/'${NOW}'/g' state.txt > state.txt.old
