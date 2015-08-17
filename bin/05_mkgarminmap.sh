@@ -88,7 +88,6 @@ java -Xmx1536m -enableassertions -Dlog.config=${WORKDIR}/logging.properties \
 --add-pois-to-areas \
 --pois-to-areas-placement="entrance=*;entrance=yes;building=entrance;barrier=entrance" \
 --add-pois-to-lines \
---adjust-turn-headings=3 \
 --check-roundabouts \
 --check-roundabout-flares \
 --link-pois-to-ways \
