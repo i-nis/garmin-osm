@@ -63,7 +63,7 @@ highway=* {name '${name}' | '${ref}' }
 
 # Flag unpaved roads.
 highway=*
-& (surface=cobblestone | surface=compacted | surface=dirt |
+& (surface=compacted | surface=dirt |
    surface=earth | surface=grass | surface=grass_paver |
    surface=gravel | surface=grit | surface=ground | surface=mud |
    surface=pebblestone | surface=sand | surface=unpaved |
