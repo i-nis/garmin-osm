@@ -120,6 +120,8 @@ if [ ! -e south-america-latest.o5m ]; then
     --verbose --out-o5m > south-america-latest.o5m
 
     rm -f south-america-latest.osm.bz2
+    ${GET} ${OSMDAYSTATE}
+    mv state.txt state.txt.old
 
   else
 
