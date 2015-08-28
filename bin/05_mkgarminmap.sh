@@ -3,7 +3,7 @@
 # 05_mkgarminmap.sh: script para crear el mapa gmapsupp.img para los dispositivos
 # GPS Garmin.
 #
-# (C) 2011 - 2014 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
+# (C) 2011 - 2015 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -65,7 +65,7 @@ echo "Generando mapa de ${PAIS} con mkgmap.jar."
 echo "------------------------------------------------------------------------"
 echo
 
-java -Xmx1536m -enableassertions -Dlog.config=${WORKDIR}/logging.properties \
+java -Xmx2048m -enableassertions -Dlog.config=${WORKDIR}/logging.properties \
 -jar ${MKGMAP} ${OPTIONS} \
 --copyright-message="${COPY}" \
 --product-id=${PRODUCTID} \
@@ -112,7 +112,7 @@ echo "${DESCRIPTION}" > licencia.txt
 echo "${COPYRIGHT}" >> licencia.txt
 echo -e ">>> Creando imagen ${G}gmapsupp.img${W}."
 
-java -Xmx1536m -enableassertions -Dlog.config=logging.properties \
+java -Xmx2048m -enableassertions -Dlog.config=logging.properties \
 -jar ${MKGMAP} \
 --description="${DESCRIPTION}" \
 --license-file=licencia.txt \

@@ -2,7 +2,7 @@
 #
 # build_mkgmap.sh: script descargar y compilar mkgmap.jar
 #
-# (C) 2012 - 2014 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
+# (C) 2012 - 2015 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 

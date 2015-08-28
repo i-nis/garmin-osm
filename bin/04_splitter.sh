@@ -2,7 +2,7 @@
 #
 # 04_splitter.sh: script para dividir el mapa fuente en mapas mas pequeños.
 #
-# (C) 2012 - 2014 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
+# (C) 2012 - 2015 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -108,7 +108,7 @@ echo
 echo -e ">>> Creando mosaicos para ${G}${PAIS}${W} con spliter.jar..."
 echo
 java -Xmx1536m -enableassertions -jar ${SPLITTER} ${OPTIONS} --mapid=${MAPID} \
-${WORKDIR}/${PAIS}.o5m 
+${WORKDIR}/${PAIS}.o5m
 
 if [ -e areas.list ]; then
   mv --force areas.list ${PAIS}.list
@@ -117,4 +117,3 @@ fi
 if [ -e template.args ]; then
   mv --force template.args ${PAIS}.args
 fi
-

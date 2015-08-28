@@ -2,7 +2,7 @@
 #
 # 06_gensum.sh: script para generar sumas para verificar el archivo "gmapsupp.img".
 #
-# (C) 2006 - 2014 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
+# (C) 2006 - 2015 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
