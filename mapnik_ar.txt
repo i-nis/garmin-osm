@@ -2170,24 +2170,6 @@ Xpm="32 2 2 1"
 [end]
 
 [_line]
-Type=0x0F
-;2249
-;typ=0
-String1=0x0,Road (construction) 
-String2=0x4,Road (construction) 
-String3=0x8,Camino en construcción 
-String4=0x10,Road (construção)
-UseOrientation=N
-Xpm="32 4 2 1"
-"0 c #809BC0"
-"1 c #FFFFFF"
-"00001111000011110000111100001111"
-"00001111000011110000111100001111"
-"00001111000011110000111100001111"
-"00001111000011110000111100001111"
-[end]
-
-[_line]
 Type=0x10
 ;22B7
 ;typ=0
@@ -2241,6 +2223,24 @@ CustomColor=No
 Xpm="0 0 2 0"
 "0 c #293838"
 "1 c #9BD1D1"
+[end]
+
+[_line]
+Type=0x16
+;2249
+;typ=0
+String1=0x0,Road (construction)
+String2=0x4,Road (construction)
+String3=0x8,Camino en construcción
+String4=0x10,Road (construção)
+UseOrientation=N
+Xpm="32 4 2 1"
+"0 c #809BC0"
+"1 c #FFFFFF"
+"00001111000011110000111100001111"
+"00001111000011110000111100001111"
+"00001111000011110000111100001111"
+"00001111000011110000111100001111"
 [end]
 
 [_line] 
