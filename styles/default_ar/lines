@@ -16,10 +16,13 @@ highway=* & name=* { set mkgmap:street='${name}' }
 # Mark highways with the toll flag
 highway=* & (toll=yes|toll=true) { set mkgmap:toll=yes }
 
-# Hide proposed ways
-highway=proposed {delete highway;delete junction}
+# Hide proposed ways 
+(highway=proposed | highway=proposal | highway=planned | highway ~ '.*proposed.*') {delete highway;delete junction}
 # Hide removed ways
-highway=razed {deletealltags}
+(highway=razed | highway=dismantled) {deletealltags}
+# Hide other non-existent ways
+(highway=unbuilt | highway=neverbuilt | highway=rejected | highway ~ 'x-.*') {delete highway;delete junction}
+
 # Hide unaccessible tunnels
 highway=* & tunnel=yes & (access=private|access=no)
 & foot!=* & bicycle!=* {delete highway;delete junction}
@@ -104,7 +107,7 @@ junction=roundabout [0x0c road_class=0 road_speed=1 resolution 22]
 
 # Ways that may or may not be useable
 
-# Treat ways under construction almost as highway=path
+# Treat ways under construction almost as highway=path, see also extra rule in inc/access
 highway=construction { add mkgmap:dead-end-check = false; }
 [0x16 road_class=0 road_speed=0 resolution 23]
 
@@ -176,7 +179,7 @@ highway=cycleway [0x10 road_class=0 road_speed=1 resolution 23]
 highway=footway|highway=path|highway=steps [0x0e road_class=0 road_speed=0 resolution 23]
 highway=track [0x0a road_class=0 road_speed=1 resolution 22]
 highway=unsurfaced [0x0a road_class=0 road_speed=1 resolution 22]
-highway=road { add mkgmap:dead-end-check = false} [0x00 road_class=0 road_speed=1 resolution 22]
+highway=road { add mkgmap:dead-end-check = false} [0x06 road_class=0 road_speed=1 resolution 22]
 
 # Mop up any unrecognised highway types
 highway=* & area!=yes [0x07 road_class=0 road_speed=0 resolution 23] 
