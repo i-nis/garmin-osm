@@ -1,7 +1,7 @@
 ## -------------------------------------------------------------------
 # Address
 #
-# (C) 2012 - 2015 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
+# (C) 2012 - 2016 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -14,7 +14,7 @@ mkgmap:country!=* & is_in:country=* { set mkgmap:country='${is_in:country|countr
 
 # Argentina 
 mkgmap:country=ARG & mkgmap:region!=* & mkgmap:admin_level4=* { set mkgmap:region='${mkgmap:admin_level4}' }
-mkgmap:country=ARG & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=ARG & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8|subst:Ciudad Autónoma de |subst:Ciudad de }' }
 
 # Bolivia
 mkgmap:country=BOL & mkgmap:region!=* & mkgmap:admin_level4=* { set mkgmap:region='${mkgmap:admin_level4}' }
