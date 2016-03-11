@@ -19,7 +19,7 @@
 highway=* & motorroad=yes                  { add bicycle=no; add foot=no; }
 highway=motorway | highway=motorway_link   { add bicycle=no; add foot=no; }
 
-access=agricultural  { set access=no; add foot=yes }
+(access=agricultural | access=forestry) { set access=no; add foot=yes }
 
 # Now fill the access tree (http://wiki.openstreetmap.org/wiki/Key:access) 
 # This is required so that subsequent rules do not add a tag (bicycle) which is already defined by a higher tag (vehicle) 
