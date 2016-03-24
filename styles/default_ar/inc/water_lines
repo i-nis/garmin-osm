@@ -13,7 +13,7 @@ route=ferry {add mkgmap:ferry=1} [0x1b road_class=3 road_speed=0 resolution 19]
 
 waterway=* & tunnel=yes { deletealltags }
 
-waterway=river | waterway=canal) & intermittent=yes [0x26 resolution 20]
+(waterway=river | waterway=canal) & intermittent=yes [0x26 resolution 20]
 (waterway=stream | waterway=drain) & intermittent=yes [0x10A02 resolution 22]
 
 waterway=canal [0x1f resolution 21]
