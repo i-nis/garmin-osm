@@ -17,7 +17,7 @@
 #
 # bin/02_getosmdata.sh
 #	Descarga y actualiza datos desde OpenStreetMap para el cono sur.
-
+#
 # bin/02_getosmdata.sh país
 # 	Descarga y actualiza datos desde OpenStreetMap para el país seleccionado. El
 #	valor de país puede ser uno de los siguientes:
