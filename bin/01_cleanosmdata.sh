@@ -1,15 +1,27 @@
 #!/bin/bash
 #
 # 01_cleanosmdata.sh: script para eliminar mapas y archivos fuentes previamente
-# generados.
+# generados. 
 #
-# (C) 2012 - 2015 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
+# (C) 2012 - 2016 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
+#
+# Uso:
+# El script debe invocarse directamente sobre el directorio raíz de las siguientes
+# maneras:
+#
+# bin/01_cleanosmdata.sh
+#	Realiza un borrado parcial. Se utiliza especialmente para volver a generar
+#	un mapa sin necesidad de actualizar los datos desde OpenStreetMap.
+#
+# bin/01_cleanosmdata.sh all
+#	Elimina todos los datos generados por el usuario. Se utiliza para generar un
+#	mapa nuevo actualizado.
 
 
 
-PAISES="south-america argentina bolivia brazil chile paraguay uruguay"
+PAISES="south-america argentina bolivia brazil colombia chile ecuador paraguay peru uruguay"
 
 
 ALL="$1"
@@ -18,7 +30,7 @@ WORKDIR=`pwd`
 
 
 
-# Borra la informacíón
+# Realiza un borrado parcial.
 for pais in ${PAISES}; do
 
   if [ -e ${pais} ]; then
@@ -45,9 +57,12 @@ for pais in ${PAISES}; do
     rm -f gpx/*/*.gpx
     rm -f gpx/*/*/*.gpx
 
+    # Elimina todos los datos generados por el usuario.
     if [ "${ALL}" == "all" ]; then
       rm -f ${pais}/*.o5m
       rm -f ${pais}/*.pbf
+      rm -f ${pais}/areas.poly
+      rm -f ${pais}/${pais}.list
       rm -f *.osm.bz2
       rm -f *.pbf
       rm -f ${pais}/*.zip
@@ -65,3 +80,4 @@ rm -f *.img*
 rm -f *.mdx*
 rm -f *.tdb*
 rm -f *-boundaries.*
+
