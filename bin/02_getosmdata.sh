@@ -2,7 +2,7 @@
 #
 # 02_getosmdata.sh: script para descargar datos desde OpenStreetMap.
 #
-# (C) 2012 - 2015 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
+# (C) 2012 - 2016 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -10,6 +10,28 @@
 # bzip2: http://www.bzip.org/
 # wget: http://www.gnu.org/software/wget/
 # osmconvert: http://wiki.openstreetmap.org/wiki/osmconvert
+
+# Uso:
+# El script debe invocarse directamente sobre el directorio raíz de las siguientes
+# maneras:
+#
+# bin/02_getosmdata.sh
+#	Descarga y actualiza datos desde OpenStreetMap para el cono sur.
+
+# bin/02_getosmdata.sh país
+# 	Descarga y actualiza datos desde OpenStreetMap para el país seleccionado. El
+#	valor de país puede ser uno de los siguientes:
+#		argentina
+#		bolivia
+#		brazil
+#		chile
+#		colombia
+#		ecuador
+#		paraguay
+#		peru
+#		uruguay
+#
+
 
 WORKDIR=`pwd`
 BUNZIP2="/bin/bunzip2 --force"
