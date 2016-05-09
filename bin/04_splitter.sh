@@ -6,6 +6,27 @@
 # Distributed under the terms of the GNU General Public License v3
 #
 
+# Uso:
+# El script debe invocarse directamente sobre el directorio raíz de las siguientes
+# maneras:
+#
+# bin/04_splitter.sh
+#	Divide el mapa fuente del cono sur en mapas mas pequeños.
+#
+# bin/04_splitter.sh país
+# 	Divide el mapa fuente del país selecionado en mapas mas pequeños. El valor
+#	de país puede ser uno de los siguientes:
+#		argentina
+#		bolivia
+#		brazil
+#		chile
+#		colombia
+#		ecuador
+#		paraguay
+#		peru
+#		uruguay
+#
+
 
 
 MAPID=98000001
@@ -18,7 +39,7 @@ Y='\E[1;33;40m'
 W='\E[0;38;40m'
 
 COMMON_OPTIONS="--keep-complete=true --wanted-admin-level=8 --max-areas=512"
-COMMON_OPTIONS="${COMMON_OPTIONS} --max-nodes=160000 --no-trim"
+COMMON_OPTIONS="${COMMON_OPTIONS} --max-nodes=1600000 --no-trim"
 COMMON_OPTIONS="${COMMON_OPTIONS} --overlap=0 --output=xml --resolution=12"
 COMMON_OPTIONS="${COMMON_OPTIONS} --search-limit=400000"
 
@@ -84,8 +105,10 @@ options () {
 # PAIS = [all | argentina | bolivia | brazil | chile | paraguay | uruguay]
 if [[ "${1}" == "" || "${1}" == "all" ]]; then
     PAIS="south-america"
+    JAVA_MEM="-Xmx4096m"
   else
     PAIS="${1}"
+    JAVA_MEM="-Xmx1024m"
 fi
 
 # Verifica si existen mosaicos precompilados para el mar.
@@ -108,7 +131,7 @@ fi
 echo
 echo -e ">>> Creando mosaicos para ${G}${PAIS}${W} con spliter.jar..."
 echo
-java -Xmx1536m -enableassertions -jar ${SPLITTER} ${OPTIONS} --mapid=${MAPID} \
+java ${JAVA_MEM} -enableassertions -jar ${SPLITTER} ${OPTIONS} --mapid=${MAPID} \
 ${WORKDIR}/${PAIS}.o5m
 
 if [ -e areas.list ]; then
@@ -118,3 +141,4 @@ fi
 if [ -e template.args ]; then
   mv --force template.args ${PAIS}.args
 fi
+
