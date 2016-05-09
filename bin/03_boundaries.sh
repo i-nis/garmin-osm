@@ -35,8 +35,8 @@ WORKDIR=`pwd`
 OSMCONVERT="${WORKDIR}/bin/osmconvert"
 OSMFILTER="${WORKDIR}/bin/osmfilter"
 
-# Uso de memoria: 128 MiB
-HASH_MEM="--hash-memory=128"
+# Uso de memoria: 256 MiB
+HASH_MEM="--hash-memory=256"
 
 
 
