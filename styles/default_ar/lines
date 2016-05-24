@@ -153,6 +153,7 @@ highway=secondary [0x04 road_class=2 road_speed=3 resolution 20]
 highway=secondary_link [0x08 road_class=2 road_speed=1 resolution 22]
 
 # Tertiarys
+highway=tertiary & (mkgmap:unpaved=1) [0x0a road_class=0 road_speed=2 resolution 22]
 highway=tertiary [0x05 road_class=1 road_speed=3 resolution 20]
 highway=tertiary_link [0x08 road_class=1 road_speed=1 resolution 22]
 
