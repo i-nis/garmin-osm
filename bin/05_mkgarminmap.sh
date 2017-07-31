@@ -82,13 +82,14 @@ java ${JAVA_MEM} -enableassertions -Dlog.config=${WORKDIR}/logging.properties \
 --bounds=${WORKDIR}/bounds/ \
 --index \
 --housenumbers \
---x-split-name-index \
+--split-name-index \
 --latin1 \
 --drive-on=detect,right \
 --generate-sea \
 --report-similar-arcs \
 --add-pois-to-areas \
 --pois-to-areas-placement="entrance=*;entrance=yes;building=entrance;barrier=entrance" \
+--order-by-decreasing-area \
 --add-pois-to-lines \
 --check-roundabouts \
 --check-roundabout-flares \
