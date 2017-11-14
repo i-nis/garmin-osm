@@ -97,6 +97,7 @@ java ${JAVA_MEM} -enableassertions -Dlog.config=${WORKDIR}/logging.properties \
 --polygon-size-limits="24:12, 18:10, 16:8, 14:4, 12:0" \
 --process-destination \
 --process-exits \
+--ignore-fixme-values \
 --name-tag-list=name,place_name,alt_name \
 --merge-lines \
 --preserve-element-order \
