@@ -2,7 +2,7 @@
 #
 # 04_splitter.sh: script para dividir el mapa fuente en mapas mas pequeños.
 #
-# (C) 2012 - 2015 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
+# (C) 2012 - 2017 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -40,7 +40,7 @@ W='\E[0;38;40m'
 
 COMMON_OPTIONS="--keep-complete=true --wanted-admin-level=8 --max-areas=512"
 COMMON_OPTIONS="${COMMON_OPTIONS} --max-nodes=1600000 --no-trim"
-COMMON_OPTIONS="${COMMON_OPTIONS} --overlap=0 --output=xml --resolution=12"
+COMMON_OPTIONS="${COMMON_OPTIONS} --output=xml --resolution=14"
 COMMON_OPTIONS="${COMMON_OPTIONS} --search-limit=400000"
 
 rm -f template.args
