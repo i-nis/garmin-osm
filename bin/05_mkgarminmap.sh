@@ -3,7 +3,7 @@
 # 05_mkgarminmap.sh: script para crear el mapa gmapsupp.img para los dispositivos
 # GPS Garmin.
 #
-# (C) 2011 - 2015 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
+# (C) 2011 - 2017 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
