@@ -37,6 +37,7 @@ WORKDIR=`pwd`
 BUNZIP2="/bin/bunzip2 --force"
 GET="/usr/bin/wget --continue"
 OSMCONVERT="${WORKDIR}/bin/osmconvert"
+OSMCONVERT_OPTS="--complete-ways --complete-multipolygons --complete-boundaries --drop-broken-refs"
 
 # Datos desde OSM
 URL="http://download.geofabrik.de"
@@ -138,7 +139,7 @@ if [ ! -e south-america-latest.o5m ]; then
     echo "------------------------------------------------------------------------"
     echo
 
-    ${OSMCONVERT} - ${HASH_MEM} south-america-latest.osm.pbf \
+    ${OSMCONVERT} ${HASH_MEM} south-america-latest.osm.pbf \
     --verbose --out-o5m > south-america-latest.o5m
 
     rm -f south-america-latest.osm.pbf
@@ -164,7 +165,6 @@ if [ ! -e south-america-latest.o5m ]; then
     if [ ${LATEST} != ${OLD} ]; then
       OLD=$((OLD + 1))
       SBOX="-B=south-america/south-america.poly"
-      OSMCONVERT_OPTS="--complete-ways --complex-ways --drop-broken-refs"
       rm -f ${PAIS}.o5m
 
       for i in `seq ${OLD} ${LATEST}`; do
@@ -217,7 +217,7 @@ if [ ! -e south-america-latest.o5m ]; then
 
 fi
 
-${OSMCONVERT} ${HASH_MEM} ${BOX} --drop-version --verbose \
+${OSMCONVERT} ${HASH_MEM} ${OSMCONVERT_OPTS} ${BOX} --drop-version --verbose \
 south-america-latest.o5m --out-o5m > ${PAIS}.o5m
 
 
