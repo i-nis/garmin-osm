@@ -3,7 +3,7 @@
 # 05_mkgarminmap.sh: script para crear el mapa gmapsupp.img para los dispositivos
 # GPS Garmin.
 #
-# (C) 2011 - 2017 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
+# (C) 2011 - 2018 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -83,6 +83,7 @@ java ${JAVA_MEM} -enableassertions -Dlog.config=${WORKDIR}/logging.properties \
 --index \
 --housenumbers \
 --split-name-index \
+--road-name-config=${WORKDIR}/roadNameConfig.txt \
 --latin1 \
 --drive-on=detect,right \
 --generate-sea \
@@ -124,10 +125,9 @@ java ${JAVA_MEM} -enableassertions -Dlog.config=logging.properties \
 --family-id=980 \
 --family-name="OpenStreetMap" \
 --housenumbers \
---x-split-name-index \
+--split-name-index \
 --index \
 --latin1 \
---make-poi-index \
 --route \
 --gmapsupp \
 980*.img ovm_*.img mapnik_ar.txt

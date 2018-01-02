@@ -1,0 +1,37 @@
+## -------------------------------------------------------------------
+# Configuration file for road name prefixes and suffixes for use 
+# with the --road-name-config option.
+#
+# (C) 2012 - 2018 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
+# Distributed under the terms of the GNU General Public License v3
+#
+
+
+##########################################################################
+# Section 1
+# prefix1:<lang> list of 1st words
+# prefix2:<lang> further words to combine with each prefix1 word, separated with a blank
+# suffix:<lang> gives list of suffix words
+
+# portugese
+prefix1:pt = "Rua", "Avenida", "Travessa"
+prefix2:pt = "da ", "do ", "de ", "das ", "dos "
+
+# spanish
+prefix1:es = "Avenida", "Calle", "Paseo"
+prefix2:es = "de las ", "de los ", "de la ", "del ", "de ", "d'", "las ", "los "
+
+##########################################################################
+# Section 2
+# Map three letter ISO country codes to list of used languages for road names.
+# It is assumed that the style sets mkgmap:country to one of these ISO codes.    
+
+lang:ARG = es
+lang:BRA = pt
+lang:BOL = es
+lang:CHL = es
+lang:COL = es
+lang:ECU = es
+lang:PER = es
+lang:PRY = es
+lang:URY = es
