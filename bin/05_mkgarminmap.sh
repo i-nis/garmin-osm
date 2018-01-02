@@ -80,6 +80,7 @@ java ${JAVA_MEM} -enableassertions -Dlog.config=${WORKDIR}/logging.properties \
 --reduce-point-density-polygon=8 \
 --min-size-polygon=12 \
 --bounds=${WORKDIR}/bounds/ \
+--location-autofill=is_in,nearest \
 --index \
 --housenumbers \
 --split-name-index \
