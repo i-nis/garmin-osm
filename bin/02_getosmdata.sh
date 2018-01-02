@@ -2,7 +2,7 @@
 #
 # 02_getosmdata.sh: script para descargar datos desde OpenStreetMap.
 #
-# (C) 2012 - 2016 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
+# (C) 2012 - 2018 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -46,8 +46,8 @@ PLANETOSM="http://planet.openstreetmap.org"
 RDAY="${PLANETOSM}/replication/day"
 OSMDAYSTATE="${RDAY}/state.txt"
 
-# Uso de memoria: 128 MiB
-HASH_MEM="--hash-memory=128"
+# Uso de memoria: 1024 MiB
+HASH_MEM="--hash-memory=1024"
 
 # Colores
 G='\E[1;32;40m'
@@ -125,23 +125,23 @@ fi
 if [ ! -e south-america-latest.o5m ]; then
 
     echo "------------------------------------------------------------------------"
-    echo "Descargando ${URL}/south-america-latest.osm.bz2"
+    echo "Descargando ${URL}/south-america-latest.osm.pbf"
     echo "------------------------------------------------------------------------"
     echo
 
-    ${GET} ${URL}/south-america-latest.osm.bz2
+    ${GET} ${URL}/south-america-latest.osm.pbf
 
     echo "------------------------------------------------------------------------"
     echo "Generando ${PAIS} con osmconvert desde: "
-    echo "${URL_PAIS}/south-america-latest.osm.bz2"
+    echo "${URL_PAIS}/south-america-latest.osm.pbf"
     echo "Area definida por: ${BOX}"
     echo "------------------------------------------------------------------------"
     echo
 
-    bzcat south-america-latest.osm.bz2 | ${OSMCONVERT} - ${HASH_MEM} \
+    ${OSMCONVERT} - ${HASH_MEM} south-america-latest.osm.pbf \
     --verbose --out-o5m > south-america-latest.o5m
 
-    rm -f south-america-latest.osm.bz2
+    rm -f south-america-latest.osm.pbf
     ${GET} ${OSMDAYSTATE}
     mv state.txt state.txt.old
 
