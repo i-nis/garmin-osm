@@ -2,7 +2,7 @@
 #
 # gengpi.sh: script para generar POIs para Garmin.
 #
-# (C) 2012 - 2016 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
+# (C) 2012 - 2018 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -13,6 +13,12 @@ WORKDIR=`pwd`
 OSMCONVERT="${WORKDIR}/bin/osmconvert"
 OSMFILTER="${WORKDIR}/bin/osmfilter"
 BITMAP_PATH="${WORKDIR}/bitmaps"
+
+# Uso de memoria: 1024 MiB
+HASH_MEM="--hash-memory=1024"
+
+# Opciones para cortar el cono sur de América.
+COORD="-77,-56,-49,-16"
 
 
 
@@ -50,8 +56,8 @@ create_directory "$POIS_DIR"
 
 # Se cambia el formato de .osm a .o5m mediante la herramienta osmconvert.
 if [ ! -e south-america.o5m ]; then
-  $OSMCONVERT ${HASH_MEM} --drop-version south-america.osm \
-  --out-o5m >south-america.o5m
+  $OSMCONVERT ${HASH_MEM} ${BOX} --drop-version  --verbose \
+  south-america-latest.o5m --out-o5m > south-america.o5m
 fi
 
 # Semáforos
