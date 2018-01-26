@@ -223,21 +223,19 @@ south-america-latest.o5m --out-o5m > ${PAIS}.o5m
 
 
 # Descarga datos para el país seleccionado (por defecto para todos).
-for pais in ${PAIS}; do
-  geoname "${pais}"
+geoname "${PAIS}"
 
-  if [ ! -d ${WORKDIR}/${pais} ]; then
-    mkdir --parents ${WORKDIR}/${pais}
-    echo -e ">>> Creando directorio ${G}$pais${W}."
-  fi
+if [ ! -d ${WORKDIR}/${PAIS} ]; then
+  mkdir --parents ${WORKDIR}/${PAIS}
+  echo -e ">>> Creando directorio ${G}$PAIS${W}."
+fi
 
-  cd ${WORKDIR}/${pais}
+cd ${WORKDIR}/${PAIS}
 
-  if [ ! -e ${GEONAME} ]; then
-    echo -e ">>> Descargando ${G}${GEONAME}${W}."
-    ${GET} ${URLGEONAMES}/${GEONAME}
-  fi
-done
+if [ ! -e ${GEONAME} ]; then
+  echo -e ">>> Descargando ${G}${GEONAME}${W}."
+  ${GET} ${URLGEONAMES}/${GEONAME}
+fi
 
 
 # Descarga de oceanos precompilados
