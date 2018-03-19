@@ -74,7 +74,7 @@ mkgmap:exit_hint=true
 highway=* & (surface=asphalt | surface=paved | surface=sett | 
     surface=concrete | surface=concrete:lanes | surface=concrete:plates | 
     surface=paving_stones  | surface=cobblestone  | 
-	surface=cobblestone:flattened  | surface=metal  | surface=wood) 
+   	surface=cobblestone:flattened  | surface=metal  | surface=wood) 
 { set mkgmap:unpaved=0 }
 highway=* & tracktype=grade1 & surface!=* { set mkgmap:unpaved=0 }
 
