@@ -40,10 +40,10 @@ OSMCONVERT="${WORKDIR}/bin/osmconvert"
 OSMCONVERT_OPTS="--complete-ways --complete-multipolygons --complete-boundaries --drop-broken-refs"
 
 # Datos desde OSM
-URL="http://download.geofabrik.de"
-URLGEONAMES="http://download.geonames.org/export/dump"
+URL="https://download.geofabrik.de"
+URLGEONAMES="https://download.geonames.org/export/dump"
 URLSEA="http://osm2.pleiades.uni-wuppertal.de/sea/latest/sea.tar.bz2"
-PLANETOSM="http://planet.openstreetmap.org"
+PLANETOSM="https://planet.openstreetmap.org"
 RDAY="${PLANETOSM}/replication/day"
 OSMDAYSTATE="${RDAY}/state.txt"
 
