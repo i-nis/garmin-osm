@@ -70,10 +70,6 @@ echo
 java ${JAVA_MEM} -enableassertions -Dlog.config=${WORKDIR}/logging.properties \
 -jar ${MKGMAP} ${OPTIONS} \
 --copyright-message="${COPY}" \
---dem=${WORKDIR}/${PAIS}/strm/hgt/VIEW3/ \
---dem-dists=3312,13248,26512,53024 \
---dem-interpolation=auto \
---overview-dem-dist=55000 \
 --product-id=${PRODUCTID} \
 --product-version=${FECHA} \
 --family-id=980 \
