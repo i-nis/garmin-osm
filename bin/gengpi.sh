@@ -91,6 +91,16 @@ rm -f parking.osm
 
 # Estaciones de servicio
 # --------------------------------------------------------------------------------
+# Axion
+${OSMFILTER} south-america.o5m --keep=  \
+--keep-nodes="amenity=fuel and brand=Axion" > combustible_axion.osm
+
+if generated_pois "combustible_axion.osm"; then
+  gpsbabel -i osm -f combustible_axion.osm \
+    -o garmin_gpi,sleep=5,unique=0,category="Estaciones Axion",bitmap="$BITMAP_PATH/esso.bmp" \
+    -F ${POIS_DIR}/combustible_axion.gpi
+fi
+
 # EG3
 ${OSMFILTER} south-america.o5m --keep=  \
 --keep-nodes="amenity=fuel and brand=EG3" > combustible_eg3.osm
