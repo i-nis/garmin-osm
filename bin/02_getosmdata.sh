@@ -37,7 +37,8 @@ WORKDIR=`pwd`
 BUNZIP2="/bin/bunzip2 --force"
 GET="/usr/bin/wget --continue"
 OSMCONVERT="${WORKDIR}/bin/osmconvert"
-OSMCONVERT_OPTS="--complete-ways --complete-multipolygons --complete-boundaries --drop-broken-refs"
+OSMCONVERT_OPTS="--complete-ways --complete-multipolygons --complete-boundaries --drop-author --drop-broken-refs"
+OSMFILTER="${WORKDIR}/bin/osmfilter"
 
 # Datos desde OSM
 URL="https://download.geofabrik.de"
@@ -57,6 +58,8 @@ W='\E[0;38;40m'
 
 # Opciones para cortar el cono sur de América.
 COORD="-77,-56,-49,-16"
+
+
 
 # Función para seleccionar geoname a descargar por país.
 geoname () {
@@ -169,7 +172,7 @@ if [ ! -e south-america-latest.o5m ]; then
 
       for i in `seq ${OLD} ${LATEST}`; do
 
-        # La URL para la organización de archivos diferenciales es del tipo: 
+        # La URL para la organización de archivos diferenciales es del tipo:
         # http://planet.openstreetmap.org/replication/day/AAA/BBB/CCC.osc.gz
         # Donde el número de secuencia es N = AAA*1000000 + BBB*1000 + CCC.
         # Por ejemplo para un archivo cuyo número de secuencia es 60277 le
@@ -180,7 +183,7 @@ if [ ! -e south-america-latest.o5m ]; then
         NUMBER_CEROS=$((9 - ${#i}))
         CEROS=""
 
-        for n in $(seq ${NUMBER_CEROS}); do 
+        for n in $(seq ${NUMBER_CEROS}); do
           CEROS="0${CEROS}"
         done
 
@@ -217,8 +220,21 @@ if [ ! -e south-america-latest.o5m ]; then
 
 fi
 
-${OSMCONVERT} ${HASH_MEM} ${OSMCONVERT_OPTS} ${BOX} --drop-version --verbose \
-south-america-latest.o5m --out-o5m > ${PAIS}.o5m
+
+
+# Arma el mapa del país o la región indicada, quitando información que no
+# será utilizada.
+${OSMCONVERT} ${HASH_MEM} ${OSMCONVERT_OPTS} ${BOX} \
+--drop-version \
+--verbose \
+south-america-latest.o5m --out-o5m > ${PAIS}.o5m.tmp
+
+${OSMFILTER} ${HASH_MEM} \
+--drop-relations="route=bus =power =railway =train =shipping route_master=bus" \
+--drop-tags="flag= link= source= url= wikidata= wikipedia=" \
+--out-o5m ${PAIS}.o5m.tmp > ${PAIS}.o5m
+
+rm -f ${PAIS}.o5m.tmp
 
 
 
@@ -238,7 +254,8 @@ if [ ! -e ${GEONAME} ]; then
 fi
 
 
-# Descarga de oceanos precompilados
+
+# Descarga de oceanos precompilados.
 if [ ! -d ${WORKDIR}/sea ]; then
   cd ${WORKDIR}
   ${GET} ${URLSEA}
