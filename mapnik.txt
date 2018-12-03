@@ -2039,23 +2039,23 @@ Xpm="0 0 2 0"
 "1 c #999999"
 [end]
 
-[_line] 
+[_line]
 Type=0x07
-;2073
+;22B7
 ;typ=0
-LineWidth=2
-BorderWidth=1
+String1=0x0,Cycleway
+String2=0x4,Cycleway
+String3=0x8,Ciclovía
+String4=0x10,Ciclovia
 UseOrientation=N
-String1=0x0,Service 
-String2=0x4,Service 
-String3=0x10,Serviço de estrada 
-String4=0x8,Vía de servicio
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
-Xpm="0 0 2 0"
-"0 c #FFFFFF"
-"1 c #999999"
+Xpm="32 2 2 1"
+"0 c #0000B4"
+"1 c #FFFFFF"
+"00010001000100010001000100010001"
+"00010001000100010001000100010001"
 [end]
 
 [_line] 
@@ -2096,8 +2096,25 @@ Xpm="0 0 2 0"
 "1 c #506077"
 [end]
 
-[_line] 
+[_line]
 Type=0x0a
+;2670
+;typ=6
+String1=0x0,Abandoned railway
+String2=0x4,Abandoned railway
+String3=0x8,Ferrocarril abandonado
+String4=0x10,Ferroviária abandonada
+UseOrientation=N
+Xpm="32 3 2 1"
+"0 c #BBBBBB"
+"1 c none"
+"00001111000011110000111100001111"
+"00001111000011110000111100001111"
+"00001111000011110000111100001111"
+[end]
+
+[_line] 
+Type=0x0b
 ;2166
 ;typ=0
 LineWidth=2
@@ -2134,58 +2151,23 @@ Xpm="0 0 2 0"
 "1 c #777777"
 [end]
 
-[_line] 
-Type=0x0d
-;21DB
+[_line]
+Type=0x10
+;2073
 ;typ=0
 LineWidth=2
 BorderWidth=1
-UseOrientation=Y
-String1=0x0,Pedestrian 
-String2=0x4,Pedestrian 
-String3=0x8,Peatonal 
-String4=0x10,Pedrestre
+UseOrientation=N
+String1=0x0,Service
+String2=0x4,Service
+String3=0x10,Serviço de estrada
+String4=0x8,Vía de servicio
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
 Xpm="0 0 2 0"
-"0 c #EDEDED"
-"1 c #BBBBBB"
-[end]
-
-[_line]
-Type=0x0e
-;2214
-;typ=0
-String1=0x0,Footway 
-String2=0x4,Footway 
-String3=0x8,Sendero 
-String4=0x10,Passeio
-UseOrientation=Y
-Xpm="32 2 2 1"
-"0 c #FF4900"
-"1 c #FFFFFF"
-"00010001000100010001000100010001"
-"00010001000100010001000100010001"
-[end]
-
-[_line]
-Type=0x10
-;22B7
-;typ=0
-String1=0x0,Cycleway 
-String2=0x4,Cycleway 
-String3=0x8,Ciclovía 
-String4=0x10,Ciclovia
-UseOrientation=N
-ExtendedLabels=Y
-FontStyle=SmallFont
-CustomColor=No
-Xpm="32 2 2 1"
-"0 c #0000B4"
-"1 c #FFFFFF"
-"00010001000100010001000100010001"
-"00010001000100010001000100010001"
+"0 c #FFFFFF"
+"1 c #999999"
 [end]
 
 [_line]
@@ -2227,20 +2209,19 @@ Xpm="0 0 2 0"
 
 [_line]
 Type=0x16
-;2249
+;2214
 ;typ=0
-String1=0x0,Road (construction)
-String2=0x4,Road (construction)
-String3=0x8,Camino en construcción
-String4=0x10,Road (construção)
-UseOrientation=N
-Xpm="32 4 2 1"
-"0 c #809BC0"
+String1=0x0,Footway
+String2=0x4,Footway
+String3=0x8,Sendero
+String4=0x10,Passeio
+ExtendedLabels=Y
+FontStyle=SmallFont
+Xpm="32 2 2 1"
+"0 c #FF4900"
 "1 c #FFFFFF"
-"00001111000011110000111100001111"
-"00001111000011110000111100001111"
-"00001111000011110000111100001111"
-"00001111000011110000111100001111"
+"00010001000100010001000100010001"
+"00010001000100010001000100010001"
 [end]
 
 [_line] 
@@ -2551,23 +2532,6 @@ Xpm="32 2 2 1"
 "00000111000001110000011100000111"
 [end]
 
-[_line]
-Type=0x31
-;2670
-;typ=6
-String1=0x0,Abandoned railway 
-String2=0x4,Abandoned railway 
-String3=0x8,Ferrocarril abandonado 
-String4=0x10,Ferroviária abandonada
-UseOrientation=N
-Xpm="32 3 2 1"
-"0 c #BBBBBB"
-"1 c none"
-"00001111000011110000111100001111"
-"00001111000011110000111100001111"
-"00001111000011110000111100001111"
-[end]
-
 [_line] 
 Type=0x32
 ;26D5
@@ -2585,27 +2549,6 @@ CustomColor=No
 Xpm="0 0 2 0"
 "0 c #444444"
 "1 c #FFFFFF"
-
-[end]
-
-[_line]
-Type=0x33
-;2706
-;typ=0
-String1=0x0,Disused railway 
-String2=0x4,Disused railway 
-String3=0x8,Ferrocarril en desuso 
-String4=0x10,Ferroviária não utilizada
-UseOrientation=N
-ExtendedLabels=Y
-FontStyle=Nolabel
-CustomColor=No
-Xpm="32 3 2 1"
-"0 c #999999"
-"1 c #FFFFFF"
-"10000000000000011100000000000001"
-"11110000000011111111100000000111"
-"10000000000000011100000000000001"
 [end]
 
 [_line] 
