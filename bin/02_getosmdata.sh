@@ -57,7 +57,7 @@ Y='\E[1;33;40m'
 W='\E[0;38;40m'
 
 # Opciones para cortar el cono sur de América.
-COORD="-77,-56,-49,-16"
+COORD="-76,-56,-48,-17"
 
 
 
@@ -230,8 +230,11 @@ ${OSMCONVERT} ${HASH_MEM} ${OSMCONVERT_OPTS} ${BOX} \
 south-america-latest.o5m --out-o5m > ${PAIS}.o5m.tmp
 
 ${OSMFILTER} ${HASH_MEM} \
+--drop-nodes="natural=tree" \
 --drop-relations="route=bus =power =railway =train =shipping route_master=bus" \
 --drop-tags="flag= link= source= url= wikidata= wikipedia=" \
+--drop-ways="(landuse=allotments =brownfield =farmland =farmyard =grass =greenfield =landfill =meadow =orchard) and highway!=*" \
+--drop-tags="landuse=allotments =brownfield =farmland =farmyard =grass =greenfield =landfill =meadow =orchard" \
 --out-o5m ${PAIS}.o5m.tmp > ${PAIS}.o5m
 
 rm -f ${PAIS}.o5m.tmp
@@ -263,4 +266,3 @@ if [ ! -d ${WORKDIR}/sea ]; then
   SEADIR=$(ls */index.txt.gz | awk -F \/ //'{print $1}')
   mv ${SEADIR} sea
 fi
-
