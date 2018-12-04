@@ -153,7 +153,7 @@ highway=* & motorroad=yes [0x02 road_class=4 road_speed=4 resolution 18]
 
 # Primary
 highway=primary & mkgmap:fast_road=yes [0x03 road_class=4 road_speed=4 resolution 17]
-highway=primary & (mkgmap:unpaved=1) [0x0b road_class=0 road_speed=5 resolution 19]
+highway=primary & (mkgmap:unpaved=1) [0x0b road_class=0 road_speed=3 resolution 19]
 highway=primary [0x03 road_class=3 road_speed=4 resolution 19]
 highway=primary_link & (mkgmap:exit_hint=true | mkgmap:dest_hint=*) & mkgmap:fast_road=yes [0x06 road_class=4 road_speed=1 resolution 21]
 highway=primary_link & (mkgmap:exit_hint=true | mkgmap:dest_hint=*) [0x06 road_class=3 road_speed=1 resolution 21]
