@@ -259,7 +259,7 @@ fi
 
 
 # Descarga de oceanos precompilados.
-if [ "${URLSEA}" =! "" ]; then
+if [ "${URLSEA}" != "" ]; then
 
   if [ ! -d ${WORKDIR}/sea ]; then
     cd ${WORKDIR}
