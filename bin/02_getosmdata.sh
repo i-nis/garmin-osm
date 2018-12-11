@@ -43,7 +43,7 @@ OSMFILTER="${WORKDIR}/bin/osmfilter"
 # Datos desde OSM
 URL="https://download.geofabrik.de"
 URLGEONAMES="https://download.geonames.org/export/dump"
-URLSEA="http://osm2.pleiades.uni-wuppertal.de/sea/latest/sea.tar.bz2"
+URLSEA=""
 PLANETOSM="https://planet.openstreetmap.org"
 RDAY="${PLANETOSM}/replication/day"
 OSMDAYSTATE="${RDAY}/state.txt"
@@ -259,10 +259,14 @@ fi
 
 
 # Descarga de oceanos precompilados.
-if [ ! -d ${WORKDIR}/sea ]; then
-  cd ${WORKDIR}
-  ${GET} ${URLSEA}
-  tar -jxvpf sea.tar.bz2
-  SEADIR=$(ls */index.txt.gz | awk -F \/ //'{print $1}')
-  mv ${SEADIR} sea
+if [ "${URLSEA}" =! "" ]; then
+
+  if [ ! -d ${WORKDIR}/sea ]; then
+    cd ${WORKDIR}
+    ${GET} ${URLSEA}
+    tar -jxvpf sea.tar.bz2
+    SEADIR=$(ls */index.txt.gz | awk -F \/ //'{print $1}')
+    mv ${SEADIR} sea
+  fi
+
 fi
