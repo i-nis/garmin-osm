@@ -43,7 +43,7 @@ OSMFILTER="${WORKDIR}/bin/osmfilter"
 # Datos desde OSM
 URL="https://download.geofabrik.de"
 URLGEONAMES="https://download.geonames.org/export/dump"
-URLSEA=""
+URLSEA="http://osm.thkukuk.de/data/sea-latest.zip"
 PLANETOSM="https://planet.openstreetmap.org"
 RDAY="${PLANETOSM}/replication/day"
 OSMDAYSTATE="${RDAY}/state.txt"
@@ -264,9 +264,8 @@ if [ "${URLSEA}" != "" ]; then
   if [ ! -d ${WORKDIR}/sea ]; then
     cd ${WORKDIR}
     ${GET} ${URLSEA}
-    tar -jxvpf sea.tar.bz2
-    SEADIR=$(ls */index.txt.gz | awk -F \/ //'{print $1}')
-    mv ${SEADIR} sea
+    unzip sea-latest.zip
+    rm -f sea-latest.zip
   fi
 
 fi
