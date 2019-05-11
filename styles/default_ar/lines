@@ -114,8 +114,10 @@ highway=path & snowplowing!=no & (bicycle=designated | bicycle=permissive | bicy
 highway=path & foot=designated
     {set highway=footway}
 
-leisure=track & area!=yes {add highway=footway; name '${name} (${sport})' | '${name}'}
+leisure=track & area!=yes {name '${name} (${sport})' | '${sport}'} [0x30 resolution 22]
 man_made=pier | man_made=piste:halfpipe {add highway=footway; name '${ref} ${name}' | '${ref}' | '${name}'}
+
+man_made=breakwater & is_closed()=false & mkgmap:mp_created!=true [0x17 resolution 22 default_name 'Breakwater']
 
 # Roundabouts
 junction=roundabout & (highway=trunk | highway=trunk_link) [0x0c road_class=4 road_speed=2 resolution 24 continue]

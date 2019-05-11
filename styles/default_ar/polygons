@@ -37,8 +37,8 @@ amenity=university [0x0a resolution 21]
 healthcare=hospital | amenity=hospital | amenity=clinic [0x0b resolution 22]
 healthcare=* | amenity=dentist | amenity=doctors | amenity=nursing_home [0x0b resolution 23]
 
-leisure=common [0x17 resolution 21]
-leisure=garden [0x17 resolution 21]
+leisure=common [0x1d resolution 21]
+leisure=garden [0x20 resolution 21]
 leisure=golf_course [0x18 resolution 21]
 leisure=ice_rink [0x19 resolution 22]
 leisure=nature_reserve [0x16 resolution 19]
@@ -57,18 +57,18 @@ place=suburb [0x02 resolution 19]
 shop=* {add name='${shop|subst:"_=> "}'} [0x08 resolution 22]
 
 # squares and plazas
-place=square [0x17 resolution 22]
-highway=pedestrian & (area=yes | mkgmap:mp_created=true) [0x17 resolution 22]
+place=square [0x25 resolution 22]
+highway=pedestrian & (area=yes | mkgmap:mp_created=true) [0x25 resolution 22]
 # following rule also renders a closed way without area attribute as a plaza
-highway=pedestrian & area!=no [0x17 resolution 22]
+highway=pedestrian & area!=no [0x25 resolution 22]
 
 # footways areas are similar, but should be explicity marked as such
-highway=footway & area=yes [0x17 resolution 24]
+highway=footway & area=yes [0x25 resolution 24]
 
-# other highways that have area=yes are probably parking lots, eg services/rest_area
-(highway=services | highway=rest_area) & area!=no [0x05 resolution 22]
+highway=services [0x12 resolution 22]  # service station complex; show as retail
+highway=rest_area & area!=no [0x05 resolution 22]  # show as parking lot
 
-historic=* & historic!=no & historic!=yes & boundary!=* {add name='${historic|subst:"_=> "}'} [0x1e resolution 21]
+historic=* & historic!=no & historic!=yes & boundary!=* {add name='${historic|subst:"_=> "}'} [0x22 resolution 21]
 
 landuse=basin [0x3f resolution 20]
 landuse=reservoir | (natural=water & water=reservoir) [0x3f resolution 20]
@@ -78,7 +78,9 @@ dock=drydock [0x4c resolution 22]  # might also have natural=water
 natural=bay [0x3d resolution 18]
 natural=glacier [0x4d resolution 18]
 natural=marsh [0x51 resolution 20]
+natural=tundra [0x52 resolution 18]
 natural=mud [0x51 resolution 20]
+natural=beach | natural=sand [0x53 resolution 20]
 natural=wetland [0x51 resolution 20]
 natural=water & water=canal [0x48 resolution 22]
 natural=water & water=lock [0x4c resolution 22 default_name 'Lock']
@@ -94,39 +96,40 @@ waterway=* & waterway!=no & area!=no {add name='${waterway|subst:"_=> "}'} [0x3b
 
 landuse=allotments [0x4e resolution 21]
 landuse=cemetery | landuse=cemetary | amenity=grave_yard [0x1a resolution 21]
-landuse=commercial [0x0c resolution 19]
+landuse=commercial [0x0f resolution 19]
 landuse=construction [0x0c resolution 21]
-landuse=farm | landuse=farmland [0x4e resolution 20]
-landuse=farmyard [0x10 resolution 22]
+landuse=farm [0x26 resolution 22]
+landuse=farmland [0x1c resolution 20]
+landuse=farmyard [0x26 resolution 22]
 landuse=forest | landuse=wood [0x50 resolution 20]
-landuse=greenfield [0x17 resolution 20]
-landuse=meadow | landuse=grass [0x17 resolution 19]
+landuse=greenfield [0x1c resolution 20]
+landuse=meadow | landuse=grass [0x1c resolution 19]
 landuse=military [0x04 resolution 19]
 landuse=quarry [0x0c resolution 19]
 landuse=recreation_ground [0x19 resolution 19]
 # dedicate resolution 24 for building=* instead of related landuse=*
 landuse=industrial [0x0c resolution 19-23]
 landuse=residential [0x10 resolution 19-23]
-landuse=retail [0x08 resolution 20-23]
-landuse=village_green [0x17 resolution 20]
+landuse=retail [0x12 resolution 20-23]
+landuse=village_green [0x15 resolution 20]
 landuse=vineyard [0x4e resolution 20]
 landuse=orchard [0x4e resolution 20]
 
 military=airfield [0x04 resolution 20]
 military=barracks [0x04 resolution 23]
-military=danger_area [0x04 resolution 20]
+military=danger_area [0x11 resolution 20]
 military=range [0x04 resolution 20]
 
 natural=scrub [0x4f resolution 20]
 natural=wood [0x50 resolution 20]
 
 # building tag should be last
-amenity=* & area!=no & amenity!=grave_yard {add name='${amenity|subst:"_=> "}'} [0x13 resolution 24]
+amenity=* & area!=no & amenity!=grave_yard {add name='${amenity|subst:"_=> "}'} [0x23 resolution 24]
 building=* & building!=no [0x13 resolution 24]
-tourism=* & area!=no & waterway!=* {add name='${tourism|subst:"_=> "}'} [0x1f resolution 24]
+tourism=* & area!=no & waterway!=* {add name='${tourism|subst:"_=> "}'} [0x21 resolution 24]
 
 # man_made can be used on areas or lines
-man_made=* & area!=no {add name='${man_made|subst:"_=> "}'} [0x13 resolution 24]
+man_made=* & area!=no {add name='${man_made|subst:"_=> "}'} [0x24 resolution 24]
 
 # render small named islands
 place=island & name=* & area_size() < 1000000 [0x53 resolution 19]

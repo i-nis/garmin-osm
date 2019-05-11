@@ -153,8 +153,7 @@ amenity=supermarket [0x2e02 resolution 24]
 amenity=taxi [0x2f17 resolution 24]
 amenity=telephone [0x2f12 resolution 24 default_name 'Telephone']
 amenity=theatre [0x2d01 resolution 24]
-amenity=toilets & highway=rest_area [0x2f0c resolution 24]
-amenity=toilets [0x4e00 resolution 24 default_name 'Toilets']
+amenity=toilets [0x2f0c resolution 24 default_name 'Toilets']
 amenity=townhall [0x3003 resolution 24]
 amenity=university [0x2c05 resolution 24]
 # amenity=zoo is superceded by tourism=zoo
@@ -263,6 +262,7 @@ tourism=lean_to [0x2b05 resolution 24 default_name 'lean-to']
 tourism=wilderness_hut [0x2b07 resolution 24 default_name 'wilderness hut']
 tourism=museum [0x2c02 resolution 24]
 tourism=picnic_site [0x4a00 resolution 24]
+tourism=resort [0x2b04 resolution 24]
 tourism=theme_park [0x2c01 resolution 24]
 tourism=viewpoint {name '${name} - ${description}' | '${name}'} [0x2c04 resolution 24]
 tourism=wine_cellar [0x2c0a resolution 24]
@@ -326,8 +326,9 @@ amenity=restaurant {add name='${cuisine|subst:"_=> "}'}
 #amenity=fast_food & cuisine=* {add name='${cuisine|subst:"_=> "}'} [0x2a07 resolution 24]
 #amenity=fast_food [0x2a07 resolution 24]
 
-barrier=bollard | barrier=bus_trap | barrier=gate [0x660f resolution 24]
-barrier=block | barrier=cycle_barrier | barrier=stile | barrier=kissing_gate [0x660f resolution 24]
+barrier=bollard | barrier=bus_trap | barrier=gate | barrier=block | barrier=cycle_barrier |
+    barrier=stile | barrier=kissing_gate | barrier=lift_gate | barrier=swing_gate
+    {add name='${barrier|subst:"_=> "}'} [0x3200 resolution 24]
 
 landuse=basin | landuse=reservoir [0x650f resolution 24]
 
