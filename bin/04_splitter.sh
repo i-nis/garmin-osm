@@ -2,7 +2,7 @@
 #
 # 04_splitter.sh: script para dividir el mapa fuente en mapas mas pequeños.
 #
-# (C) 2012 - 2017 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
+# (C) 2012 - 2019 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -31,7 +31,7 @@
 
 MAPID=98000001
 WORKDIR=`pwd`
-SPLITTER="${WORKDIR}/splitter/dist/splitter.jar"
+SPLITTER="${WORKDIR}/splitter/splitter.jar"
 
 # Colores
 G='\E[1;32;40m'

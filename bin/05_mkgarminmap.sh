@@ -3,7 +3,7 @@
 # 05_mkgarminmap.sh: script para crear el mapa gmapsupp.img para los dispositivos
 # GPS Garmin.
 #
-# (C) 2011 - 2018 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
+# (C) 2011 - 2019 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -13,7 +13,7 @@ MAPNAME=9800001
 PRODUCTID=1
 FECHA=$(date +%G%m%d)
 WORKDIR=`pwd`
-MKGMAP="${WORKDIR}/mkgmap/dist/mkgmap.jar"
+MKGMAP="${WORKDIR}/mkgmap/mkgmap.jar"
 
 # Colores
 G='\E[1;32;40m'
@@ -63,12 +63,11 @@ fi
 cd ${WORKDIR}/${PAIS}
 
 echo "------------------------------------------------------------------------"
-echo "Generando mapa de ${PAIS} con mkgmap.jar."
+echo "Generando mapa de ${PAIS} con mkgmap."
 echo "------------------------------------------------------------------------"
 echo
 
-java ${JAVA_MEM} -enableassertions -Dlog.config=${WORKDIR}/logging.properties \
--jar ${MKGMAP} ${OPTIONS} \
+java ${JAVA_MEM} -enableassertions -jar ${MKGMAP} ${OPTIONS} \
 --copyright-message="${COPY}" \
 --product-id=${PRODUCTID} \
 --product-version=${FECHA} \
@@ -118,7 +117,7 @@ echo "${DESCRIPTION}" > licencia.txt
 echo "${COPYRIGHT}" >> licencia.txt
 echo -e ">>> Creando imagen ${G}gmapsupp.img${W}."
 
-java ${JAVA_MEM} -enableassertions -Dlog.config=logging.properties \
+java ${JAVA_MEM} -enableassertions \
 -jar ${MKGMAP} \
 --description="${DESCRIPTION}" \
 --license-file=licencia.txt \
