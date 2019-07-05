@@ -152,7 +152,7 @@ if [ ! -e south-america-latest.o5m ]; then
   else
 
     echo "------------------------------------------------------------------------"
-    echo "Actualizando ${PAIS} con osmconvert desde: "i
+    echo "Actualizando ${PAIS} con osmconvert desde: "
     echo "${PLANETOSM}."
     echo "Area definida por: ${BOX}"
     echo "------------------------------------------------------------------------"
@@ -216,6 +216,7 @@ if [ ! -e south-america-latest.o5m ]; then
 
       done
 
+      rm state.txt
     fi
 
 fi
