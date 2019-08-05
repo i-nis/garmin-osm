@@ -2,7 +2,7 @@
 #
 # 02_getosmdata.sh: script para descargar datos desde OpenStreetMap.
 #
-# (C) 2012 - 2018 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
+# (C) 2012 - 2019 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -158,6 +158,7 @@ if [ ! -e south-america-latest.o5m ]; then
     echo "------------------------------------------------------------------------"
     echo
 
+    rm -f ${WORKDIR}/state.txt
     ${GET} ${OSMDAYSTATE}
 
     LATEST=`awk -F \= /sequenceNumber/'{print $2}' state.txt`
@@ -232,10 +233,16 @@ south-america-latest.o5m --out-o5m > ${PAIS}.o5m.tmp
 
 ${OSMFILTER} ${HASH_MEM} \
 --drop-nodes="natural=tree" \
---drop-relations="route=bus =power =railway =train =shipping route_master=bus" \
+--drop-relations="network= superroute= route=bus route=detour route=hiking" \
+--drop-relations="route=horse route=inline_skates route=mtb route=piste route=ski" \
+--drop-relations="route=snowmobile route=train route=tram =power =railway =train" \
+--drop-relations="=shipping route_master=aerialway route_master=bus" \
+--drop-relations="route_master=monorail route_master=monorail route_master=train" \
+--drop-relations="route_master=tram route_master=trolleybus waterway=" \
 --drop-tags="flag= link= source= url= wikidata= wikipedia=" \
+--drop-tags="landuse=allotments =brownfield =farmland =farmyard =grass =greenfield" \
+--drop-tags="=landfill =meadow =orchard" \
 --drop-ways="(landuse=allotments =brownfield =farmland =farmyard =grass =greenfield =landfill =meadow =orchard) and highway!=*" \
---drop-tags="landuse=allotments =brownfield =farmland =farmyard =grass =greenfield =landfill =meadow =orchard" \
 --out-o5m ${PAIS}.o5m.tmp > ${PAIS}.o5m
 
 rm -f ${PAIS}.o5m.tmp
@@ -270,3 +277,4 @@ if [ "${URLSEA}" != "" ]; then
   fi
 
 fi
+
