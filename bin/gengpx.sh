@@ -2,7 +2,7 @@
 #
 # gengpx.sh: script para generar archivos GPX.
 #
-# (C) 2012 - 2018 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
+# (C) 2012 - 2019 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -107,15 +107,15 @@ gpsbabel -i osm -f south-america-cruces_ferroviarios_lowspeed.osm \
 # Se reemplaza el nombre por uno legible y se setea próximidad.
 sed 's/<name>osm-id [0-9]*/<name> A 300m. cruce de ferrocarril/g' \
 $FFCC/south-america-cruces_ffcch.gpx  | \
-proximity 300  > $FFCC/cruces_ferroviariosh.gpx
+proximity 250  > $FFCC/cruces_ferroviariosh.gpx
 
 sed 's/<name>osm-id [0-9]*/<name> A 100m. cruce de ferrocarril/g' \
 $FFCC/south-america-cruces_ffccm.gpx  | \
-proximity 100  > $FFCC/cruces_ferroviariosm.gpx
+proximity 75  > $FFCC/cruces_ferroviariosm.gpx
 
 sed 's/<name>osm-id [0-9]*/<name> Cruce de ferrocarril/g' \
 $FFCC/south-america-cruces_ffccl.gpx  | \
-proximity 25  > $FFCC/cruces_ferroviariosl.gpx
+proximity 10  > $FFCC/cruces_ferroviariosl.gpx
 
 gpsbabel -i gpx \
 -f $FFCC/cruces_ferroviariosh.gpx \
@@ -164,17 +164,17 @@ gpsbabel -i osm -f south-america-peajes_lowspeed.osm \
 # Se reemplaza el nombre por uno legible.
 sed 's/<name>osm-id [0-9]*/<name> A 300m. peaje/g' \
 $PEAJES/south-america-peajesh.gpx | \
-proximity 300 > $PEAJES/peajesh.gpx
+proximity 250 > $PEAJES/peajesh.gpx
 
 # Se reemplaza el nombre por uno legible.
 sed 's/<name>osm-id [0-9]*/<name> A 100m. peaje/g' \
 $PEAJES/south-america-peajesm.gpx | \
-proximity 100 > $PEAJES/peajesm.gpx
+proximity 75 > $PEAJES/peajesm.gpx
 
 # Se reemplaza el nombre por uno legible.
 sed 's/<name>osm-id [0-9]*/<name> Peaje/g' \
 $PEAJES/south-america-peajesl.gpx | \
-proximity 30 > $PEAJES/peajesl.gpx
+proximity 10 > $PEAJES/peajesl.gpx
 
 gpsbabel -i gpx \
 -f $PEAJES/peajesh.gpx \
@@ -486,15 +486,15 @@ gpsbabel -i osm -f south-america-pare_lowspeed.osm -o gpx,garminextensions=1 \
 # Se reemplaza el nombre por uno legible.
 sed 's/<name>osm-id [0-9]*/<name> A 300m. pare/g' \
 $STOP/south-america-stoph.gpx | \
-proximity 300  > $STOP/pareh.gpx
+proximity 250  > $STOP/pareh.gpx
 
 sed 's/<name>osm-id [0-9]*/<name> A 100m. pare/g' \
 $STOP/south-america-stopm.gpx | \
-proximity 100  > $STOP/parem.gpx
+proximity 75  > $STOP/parem.gpx
 
 sed 's/<name>osm-id [0-9]*/<name> Pare/g' \
 $STOP/south-america-stopl.gpx | \
-proximity 25  > $STOP/parel.gpx
+proximity 10  > $STOP/parel.gpx
 
 gpsbabel -i gpx \
 -f $STOP/pareh.gpx \
