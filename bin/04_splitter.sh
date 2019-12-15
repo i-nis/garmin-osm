@@ -39,7 +39,7 @@ Y='\E[1;33;40m'
 W='\E[0;38;40m'
 
 COMMON_OPTIONS="--keep-complete=true --wanted-admin-level=8 --max-areas=512"
-COMMON_OPTIONS="${COMMON_OPTIONS} --max-nodes=1600000 --no-trim"
+COMMON_OPTIONS="${COMMON_OPTIONS} --max-nodes=900000 --no-trim"
 COMMON_OPTIONS="${COMMON_OPTIONS} --output=xml --resolution=14"
 COMMON_OPTIONS="${COMMON_OPTIONS} --search-limit=400000"
 
@@ -105,10 +105,10 @@ options () {
 # PAIS = [all | argentina | bolivia | brazil | chile | paraguay | uruguay]
 if [[ "${1}" == "" || "${1}" == "all" ]]; then
     PAIS="south-america"
-    JAVA_MEM="-Xmx4096m"
+    JAVA_MEM="-Xmx8192m"
   else
     PAIS="${1}"
-    JAVA_MEM="-Xmx1024m"
+    JAVA_MEM="-Xmx2048m"
 fi
 
 # Verifica si existen mosaicos precompilados para el mar.
