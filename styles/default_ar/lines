@@ -1,7 +1,7 @@
 ## -------------------------------------------------------------------
 # Lines style file for converting OSM ways into Garmin lines.
 #
-# (C) 2012 - 2016 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
+# (C) 2012 - 2019 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -152,41 +152,41 @@ highway=* & disused=yes & maxspeed!=* {add mkgmap:road-speed='-2'}
 # Ways sorted roughly by descending order of class
 highway=motorway & mkgmap:fast_road=yes [0x01 road_class=4 road_speed=7 resolution 14]
 highway=motorway [0x01 road_class=4 road_speed=7 resolution 15]
-highway=motorway_link & (mkgmap:exit_hint=true | mkgmap:dest_hint=*) [0x06 road_class=4 road_speed=2 resolution 20]
+highway=motorway_link & (mkgmap:exit_hint=true | mkgmap:dest_hint=*) [0x0b road_class=4 road_speed=2 resolution 20]
 highway=motorway_link [0x09 road_class=4 road_speed=2 resolution 20]
 
 highway=trunk & mkgmap:fast_road=yes [0x02 road_class=4 road_speed=5 resolution 15]
-highway=trunk & (mkgmap:unpaved=1) [0x0b road_class=0 road_speed=3 resolution 18]
+highway=trunk & (mkgmap:unpaved=1) [0x0a road_class=0 road_speed=3 resolution 18]
 highway=trunk [0x02 road_class=4 road_speed=5 resolution 18]
-highway=trunk_link & (mkgmap:exit_hint=true | mkgmap:dest_hint=*) [0x06 road_class=4 road_speed=2 resolution 20]
+highway=trunk_link & (mkgmap:exit_hint=true | mkgmap:dest_hint=*) [0x0b road_class=4 road_speed=2 resolution 20]
 highway=trunk_link [0x09 road_class=4 road_speed=2 resolution 20]
 highway=* & motorroad=yes [0x02 road_class=4 road_speed=4 resolution 18]
 
 # Primary
 highway=primary & mkgmap:fast_road=yes [0x03 road_class=4 road_speed=4 resolution 17]
-highway=primary & (mkgmap:unpaved=1) [0x0b road_class=0 road_speed=3 resolution 19]
+highway=primary & (mkgmap:unpaved=1) [0x0a road_class=0 road_speed=3 resolution 19]
 highway=primary [0x03 road_class=3 road_speed=4 resolution 19]
-highway=primary_link & (mkgmap:exit_hint=true | mkgmap:dest_hint=*) & mkgmap:fast_road=yes [0x06 road_class=4 road_speed=1 resolution 21]
-highway=primary_link & (mkgmap:exit_hint=true | mkgmap:dest_hint=*) [0x06 road_class=3 road_speed=1 resolution 21]
+highway=primary_link & (mkgmap:exit_hint=true | mkgmap:dest_hint=*) & mkgmap:fast_road=yes [0x0b road_class=4 road_speed=1 resolution 21]
+highway=primary_link & (mkgmap:exit_hint=true | mkgmap:dest_hint=*) [0x0b road_class=3 road_speed=1 resolution 21]
 highway=primary_link & mkgmap:fast_road=yes [0x08 road_class=4 road_speed=1 resolution 21]
 highway=primary_link [0x08 road_class=3 road_speed=1 resolution 21]
 
 # Secondarys
 highway=secondary & mkgmap:fast_road=yes [0x04 road_class=3 road_speed=3 resolution 18]
-highway=secondary & (mkgmap:unpaved=1) [0x0b road_class=0 road_speed=2 resolution 20]
+highway=secondary & (mkgmap:unpaved=1) [0x0a road_class=0 road_speed=2 resolution 20]
 highway=secondary [0x04 road_class=2 road_speed=3 resolution 20]
 highway=secondary_link & mkgmap:fast_road=yes [0x08 road_class=3 road_speed=1 resolution 22]
 highway=secondary_link [0x08 road_class=2 road_speed=1 resolution 22]
 
 # Tertiarys
-highway=tertiary & (mkgmap:unpaved=1) [0x0b road_class=0 road_speed=2 resolution 22]
+highway=tertiary & (mkgmap:unpaved=1) [0x0a road_class=0 road_speed=2 resolution 22]
 highway=tertiary [0x05 road_class=1 road_speed=3 resolution 20]
 highway=tertiary_link [0x08 road_class=1 road_speed=1 resolution 22]
 
 
-highway=minor & (mkgmap:unpaved=1) [0x0b road_class=0 road_speed=1 resolution 24]
+highway=minor & (mkgmap:unpaved=1) [0x0a road_class=0 road_speed=1 resolution 24]
 highway=minor [0x06 road_class=1 road_speed=3 resolution 21]
-highway=unclassified & (mkgmap:unpaved=1) [0x0b road_class=0 road_speed=2 resolution 20]
+highway=unclassified & (mkgmap:unpaved=1) [0x0a road_class=0 road_speed=2 resolution 20]
 highway=unclassified [0x06 road_class=0 road_speed=3 resolution 21]
 
 highway=yes {set highway=footway}  # fix common bad tagging - little bits of path to join other routable ways
@@ -197,7 +197,7 @@ highway=yes {set highway=footway}  # fix common bad tagging - little bits of pat
 highway=pedestrian {set tmp:stopMopUp=yes} [0x16 road_class=0 road_speed=0 resolution 22 continue with_actions]
 
 highway=living_street [0x06 road_class=0 road_speed=1 resolution 22]
-highway=residential & (mkgmap:unpaved=1) [0x0b road_class=0 road_speed=1 resolution 22]
+highway=residential & (mkgmap:unpaved=1) [0x0a road_class=0 road_speed=1 resolution 22]
 highway=residential [0x06 road_class=0 road_speed=2 resolution 22]
 highway=bridleway [0x07 road_class=0 road_speed=0 resolution 23]
 highway=byway [0x16 road_class=0 road_speed=0 resolution 23]
@@ -210,7 +210,7 @@ highway=service & service=parking_aisle [0x07 road_class=0 road_speed=1 resoluti
 highway=service & (service=alley | service=driveway) [0x07 road_class=0 road_speed=0 resolution 23]
 highway=service [0x07 road_class=0 road_speed=2 resolution 22]
 
-highway=cycleway [0x07 road_class=0 road_speed=1 resolution 23]
+highway=cycleway [0x11 road_class=0 road_speed=1 resolution 23]
 
 # highway=footway is often an area as well, continue for polygon processing
 highway=footway {set tmp:stopMopUp=yes} [0x16 road_class=0 road_speed=0 resolution 23 continue with_actions]
@@ -243,7 +243,6 @@ natural=coastline [0x15 resolution 12]
 power=line [0x29 resolution 21]
 
 # following really should be removed, but see: http://www.mkgmap.org.uk/pipermail/mkgmap-dev/2016q3/025104.html
-railway=abandoned [0x0a road_class=0 road_speed=1 resolution 22]
 railway=platform [0x16 road_class=0 road_speed=0 resolution 23]
 # Railway lines, note that many devices display type 0x14 only at resolution 24
 (railway=rail | railway=tram | railway=disused | railway=subway | railway=narrow_gauge | railway=light_rail | railway=preserved) & !(tunnel=yes)
@@ -263,13 +262,15 @@ boundary=administrative [0x1c resolution 22]
 boundary=national [0x1e resolution 17]
 boundary=political [0x1c resolution 19]
 
+barrier=wall | barrier=fence | barrier=hedge | barrier=ditch {add name='${barrier|subst:"_=> "}'} [0x17 resolution 24]
+
 route=ferry & (toll=no | toll=false) {set mkgmap:toll=no}
 route=ferry {set mkgmap:numbers=false; set mkgmap:ferry=1; add mkgmap:toll=yes}
 route=ferry & (motorcar=no | motor_vehicle=no) [0x1b road_class=0 road_speed=0 resolution 23]
-route=ferry [0x1b road_class=3 road_speed=0 resolution 19]
+route=ferry [0x1a road_class=3 road_speed=0 resolution 19]
 
 (waterway=river | waterway=canal) & intermittent=yes [0x26 resolution 20]
-(waterway=stream | waterway=drain) & intermittent=yes [0x10A02 resolution 22]
+(waterway=stream | waterway=drain) & intermittent=yes [0x26 resolution 22]
 
 waterway=canal [0x1f resolution 21]
 waterway=river [0x1f resolution 18]
