@@ -38,10 +38,10 @@ G='\E[1;32;40m'
 Y='\E[1;33;40m'
 W='\E[0;38;40m'
 
-COMMON_OPTIONS="--keep-complete=true --wanted-admin-level=8 --max-areas=512"
-COMMON_OPTIONS="${COMMON_OPTIONS} --max-nodes=900000 --no-trim"
-COMMON_OPTIONS="${COMMON_OPTIONS} --output=xml --resolution=14"
-COMMON_OPTIONS="${COMMON_OPTIONS} --search-limit=400000"
+COMMON_OPTIONS="--keep-complete=true --wanted-admin-level=8 --max-areas=2048"
+COMMON_OPTIONS="${COMMON_OPTIONS} --max-nodes=1200000 --no-trim"
+COMMON_OPTIONS="${COMMON_OPTIONS} --output=xml --overlap=0 --resolution=12"
+COMMON_OPTIONS="${COMMON_OPTIONS} --search-limit=200000"
 
 rm -f template.args
 
@@ -54,10 +54,6 @@ options () {
   local COMMON="$2"
 
   case ${PAIS} in
-
-    all )
-      OPTIONS="--description=Argentina --geonames-file=cities15000.zip ${COMMON}"
-      ;;
 
     argentina )
       OPTIONS="--geonames-file=AR.zip ${COMMON}"
@@ -89,6 +85,10 @@ options () {
 
     paraguay )
       OPTIONS="--geonames-file=PY.zip ${COMMON}"
+      ;;
+
+    south-america )
+      OPTIONS="--description=Argentina --geonames-file=cities15000.zip ${COMMON}"
       ;;
 
     uruguay )
