@@ -78,6 +78,7 @@ java ${JAVA_MEM} -enableassertions -jar ${MKGMAP} ${OPTIONS} \
 --reduce-point-density=4 \
 --reduce-point-density-polygon=8 \
 --min-size-polygon=12 \
+--polygon-size-limits=24:0,23:8,22:8,21:10,16:12 \
 --bounds=${WORKDIR}/bounds/ \
 --location-autofill=is_in,nearest \
 --index \
@@ -130,9 +131,10 @@ java ${JAVA_MEM} -enableassertions \
 --latin1 \
 --route \
 --gmapsupp \
-980*.img ovm_*.img mapnik_ar.txt
+980*.img ovm_*.img mapnik.txt
 
 
-if [ -e ${WORKDIR}/mapnik_ar.typ ]; then
-  mv mapnik_ar.typ mapnik_ar.TYP
+if [ -e ${WORKDIR}/mapnik.typ ]; then
+  mv mapnik.typ mapnik.TYP
 fi
+
