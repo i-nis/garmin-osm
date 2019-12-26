@@ -107,6 +107,10 @@ geoname () {
       GEONAME="UY.zip"
       ;;
 
+    south-america )
+      GEONAME="cities15000.zip"
+      ;;
+
   esac
 
 }
