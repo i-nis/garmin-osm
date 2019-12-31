@@ -1300,7 +1300,7 @@ Xpm="0 0 1 0"
 Type=0x01
 ;GRMN_TYPE: Roads/INTERSTATE, MAJOR_HWY/Primary, divided, limited-access highway, akin to an interstate in the US/Non NT, NT
 UseOrientation=N
-LineWidth=8
+LineWidth=5
 BorderWidth=1
 String1=0x00,Motorway 
 String2=0x04,Motorway 
@@ -1318,7 +1318,7 @@ Xpm="0 0 2 0"
 Type=0x02
 ;GRMN_TYPE: Roads/PRINCIPAL_HWY/Principal highway, usually divided and limited access, akin to US highways/Non NT, NT
 UseOrientation=N
-LineWidth=7
+LineWidth=4
 BorderWidth=1
 String1=0x00,Trunk 
 String2=0x04,Trunk 
@@ -1336,7 +1336,7 @@ Xpm="0 0 2 0"
 Type=0x03
 ;GRMN_TYPE: Roads/OTHER_HWY/Other highway road, akin to a state highway in the US/Non NT, NT
 UseOrientation=N
-LineWidth=6
+LineWidth=4
 BorderWidth=1
 String1=0x00,Primary highway 
 String2=0x04,Primary highway 
@@ -1354,7 +1354,7 @@ Xpm="0 0 2 0"
 Type=0x04
 ;GRMN_TYPE: Roads/ARTERIAL/Main city thoroughfare/Non NT, NT
 UseOrientation=N
-LineWidth=6
+LineWidth=3
 BorderWidth=1
 String1=0x00,Secondary highway 
 String2=0x04,Secondary highway 
@@ -1372,7 +1372,7 @@ Xpm="0 0 2 0"
 Type=0x05
 ;GRMN_TYPE: Roads/COLLECTOR/Secondary city thoroughfare/Non NT, NT
 UseOrientation=N
-LineWidth=5
+LineWidth=3
 BorderWidth=1
 String1=0x00,Route tertiaire 
 String2=0x04,Tertiary road 
@@ -1390,7 +1390,7 @@ Xpm="0 0 2 0"
 Type=0x06
 ;GRMN_TYPE: Roads/RESIDENTIAL/Residential street, these are typically the most numerous roads in a detailed city map and do not show up until the user is zoomed in quite far/Non NT, NT
 UseOrientation=N
-LineWidth=4
+LineWidth=3
 BorderWidth=1
 Xpm="0 0 2 0"
 "1 c #FFFFFF"
