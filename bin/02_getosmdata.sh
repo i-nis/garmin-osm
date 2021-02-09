@@ -2,7 +2,7 @@
 #
 # 02_getosmdata.sh: script para descargar datos desde OpenStreetMap.
 #
-# (C) 2012 - 2019 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
+# (C) 2012 - 2021 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -236,16 +236,60 @@ ${OSMCONVERT} ${HASH_MEM} ${OSMCONVERT_OPTS} ${BOX} \
 south-america-latest.o5m --out-o5m > ${PAIS}.o5m.tmp
 
 ${OSMFILTER} ${HASH_MEM} \
---drop-nodes="natural=tree" \
---drop-relations="network= superroute= route=bus route=detour route=hiking" \
---drop-relations="route=horse route=inline_skates route=mtb route=piste route=ski" \
---drop-relations="route=snowmobile route=train route=tram =power =railway =train" \
---drop-relations="=shipping route_master=aerialway route_master=bus" \
---drop-relations="route_master=monorail route_master=monorail route_master=train" \
---drop-relations="route_master=tram route_master=trolleybus waterway=" \
+--drop="=landfill =meadow =orchard" \
+--drop="power=" \
+--drop-nodes="amenity=bench" \
+--drop-nodes="highway=bus_stop" \
+--drop-nodes="leisure=picnic_table" \
+--drop-nodes="natural=" \
+--drop-nodes="playground=" \
+--drop-nodes="public_transport=platform" \
+--drop-nodes="public_transport=stop_position and bus=yes" \
+--drop-nodes="tourism=artwork" \
+--drop-relations="network=" \
+--drop-relations="=power" \
+--drop-relations="=railway" \
+--drop-relations="route=bus" \
+--drop-relations="route=detour" \
+--drop-relations="route=hiking" \
+--drop-relations="route=horse" \
+--drop-relations="route=inline_skates" \
+--drop-relations="route=mtb" \
+--drop-relations="route=piste" \
+--drop-relations="route=ski" \
+--drop-relations="route=snowmobile" \
+--drop-relations="route=train" \
+--drop-relations="route=tram" \
+--drop-relations="route_master=aerialway" \
+--drop-relations="route_master=bus" \
+--drop-relations="route_master=monorail" \
+--drop-relations="route_master=tram" \
+--drop-relations="route_master=train" \
+--drop-relations="route_master=trolleybus" \
+--drop-relations="superroute=" \
+--drop-relations="=shipping" \
+--drop-relations="=train" \
+--drop-relations="waterway=" \
 --drop-tags="flag= link= source= url= wikidata= wikipedia=" \
---drop-tags="landuse=allotments =brownfield =farmland =farmyard =grass =greenfield" \
---drop-tags="=landfill =meadow =orchard" \
+--drop-ways="attractions=" \
+--drop-ways="barrier=" \
+--drop-ways="building=apartments" \
+--drop-ways="building=bungalow" \
+--drop-ways="building=cabin" \
+--drop-ways="building=detached" \
+--drop-ways="building=dormitory" \
+--drop-ways="building=farm" \
+--drop-ways="building=ger" \
+--drop-ways="building=house" \
+--drop-ways="building=residential" \
+--drop-ways="building=semidetached_house" \
+--drop-ways="building=static_caravan" \
+--drop-ways="building=terrace" \
+--drop-ways="building=yes" \
+--drop-ways="highway=footway and bicycle!=yes" \
+--drop-ways="highway=steps" \
+--drop-ways="public_transport=platform" \
+--drop-ways="railway=platform" \
 --drop-ways="(landuse=allotments =brownfield =farmland =farmyard =grass =greenfield =landfill =meadow =orchard) and highway!=*" \
 --out-o5m ${PAIS}.o5m.tmp > ${PAIS}.o5m
 
