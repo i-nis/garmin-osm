@@ -236,30 +236,35 @@ ${OSMCONVERT} ${HASH_MEM} ${OSMCONVERT_OPTS} ${BOX} \
 south-america-latest.o5m --out-o5m > ${PAIS}.o5m.tmp
 
 ${OSMFILTER} ${HASH_MEM} \
---drop="=landfill =meadow =orchard" \
+--verbose \
 --drop="power=" \
 --drop-nodes="amenity=bench" \
 --drop-nodes="highway=bus_stop" \
 --drop-nodes="leisure=picnic_table" \
 --drop-nodes="natural=" \
 --drop-nodes="playground=" \
+--drop-nodes="power=" \
 --drop-nodes="public_transport=platform" \
 --drop-nodes="public_transport=stop_position and bus=yes" \
 --drop-nodes="tourism=artwork" \
 --drop-relations="network=" \
---drop-relations="=power" \
---drop-relations="=railway" \
+--drop-relations="route=power" \
+--drop-relations="route=railway" \
 --drop-relations="route=bus" \
 --drop-relations="route=detour" \
+--drop-relations="route=evacuation" \
+--drop-relations="route=foot" \
 --drop-relations="route=hiking" \
 --drop-relations="route=horse" \
 --drop-relations="route=inline_skates" \
 --drop-relations="route=mtb" \
 --drop-relations="route=piste" \
+--drop-relations="route=running" \
 --drop-relations="route=ski" \
 --drop-relations="route=snowmobile" \
 --drop-relations="route=train" \
 --drop-relations="route=tram" \
+--drop-relations="trolleybus" \
 --drop-relations="route_master=aerialway" \
 --drop-relations="route_master=bus" \
 --drop-relations="route_master=monorail" \
@@ -267,8 +272,6 @@ ${OSMFILTER} ${HASH_MEM} \
 --drop-relations="route_master=train" \
 --drop-relations="route_master=trolleybus" \
 --drop-relations="superroute=" \
---drop-relations="=shipping" \
---drop-relations="=train" \
 --drop-relations="waterway=" \
 --drop-tags="flag= link= source= url= wikidata= wikipedia=" \
 --drop-ways="attractions=" \
