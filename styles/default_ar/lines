@@ -242,7 +242,6 @@ highway=rest_area | highway=services {set tmp:stopMopUp=yes}
 natural=coastline [0x15 resolution 12]
 power=line [0x29 resolution 21]
 
-# following really should be removed, but see: http://www.mkgmap.org.uk/pipermail/mkgmap-dev/2016q3/025104.html
 railway=platform [0x16 road_class=0 road_speed=0 resolution 23]
 # Railway lines, note that many devices display type 0x14 only at resolution 24
 (railway=rail | railway=tram | railway=disused | railway=subway | railway=narrow_gauge | railway=light_rail | railway=preserved) & !(tunnel=yes)
