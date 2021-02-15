@@ -7,15 +7,16 @@
 # * osmfilter
 # * pbftoosm
 #
-# (C) 2012 - 2019 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
+# (C) 2012 - 2021 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
 
 WORKDIR=`pwd`
 MKGMAP_DOWNLOAD_URL="http://www.mkgmap.org.uk/download"
-MKGMAP_VERSION="default-typ-r4268"
-SPLITTER_VERSION="r595"
+#MKGMAP_VERSION="default-typ-r4268"
+MKGMAP_VERSION="r4452"
+SPLITTER_VERSION="r598"
 
 
 OSMCONVERT_URL="http://m.m.i24.cc/osmconvert.c"
@@ -46,3 +47,4 @@ ln --symbolic splitter-${SPLITTER_VERSION} splitter
 wget -O - ${OSMCONVERT_URL} | cc -x c - -lz -O3 -o  ${OSMCONVERT} &>/dev/null
 wget -O -  ${OSMFILTER_URL} | cc -x c - -O3 -o ${OSMFILTER} &>/dev/null
 wget -O - ${PBFTOOSM_URL} |  cc -x c - -lz -O3 -o ${PBFTOOSM} &>/dev/null
+

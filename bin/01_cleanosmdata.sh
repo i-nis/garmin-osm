@@ -3,7 +3,7 @@
 # 01_cleanosmdata.sh: script para eliminar mapas y archivos fuentes previamente
 # generados. 
 #
-# (C) 2012 - 2016 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
+# (C) 2012 - 2021 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 #
@@ -25,7 +25,7 @@ PAISES="south-america argentina bolivia brazil colombia chile ecuador paraguay p
 
 
 ALL="$1"
-FECHA=$(date +%G%m%d)
+FECHA=$(date +%Y%m%d)
 WORKDIR=`pwd`
 
 

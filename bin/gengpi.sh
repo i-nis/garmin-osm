@@ -2,7 +2,7 @@
 #
 # gengpi.sh: script para generar POIs para Garmin.
 #
-# (C) 2012 - 2018 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
+# (C) 2012 - 2021 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 

@@ -3,7 +3,7 @@
 # 05_mkgarminmap.sh: script para crear el mapa gmapsupp.img para los dispositivos
 # GPS Garmin.
 #
-# (C) 2011 - 2019 Martin Andres Gomez Gimenez <mggimenez@ingeniovirtual.com.ar>
+# (C) 2011 - 2021 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -11,7 +11,7 @@
 
 MAPNAME=98000001
 PRODUCTID=1
-FECHA=$(date +%G%m%d)
+FECHA=$(date +%y%m%d)
 WORKDIR=`pwd`
 MKGMAP="${WORKDIR}/mkgmap/mkgmap.jar"
 
