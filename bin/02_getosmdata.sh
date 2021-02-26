@@ -235,10 +235,22 @@ ${OSMCONVERT} ${HASH_MEM} ${OSMCONVERT_OPTS} ${BOX} \
 --verbose \
 south-america-latest.o5m --out-o5m > ${PAIS}.o5m.tmp
 
+echo
+
+
+# Filtra elementos que no serán utilizados.
+echo "------------------------------------------------------------------------"
+echo "Filtrando elementos que no se utilizarán."
+echo "------------------------------------------------------------------------"
+
 ${OSMFILTER} ${HASH_MEM} \
---verbose \
+--drop="abandoned=" \
+--drop="artwork_type=" \
 --drop="power=" \
 --drop-nodes="amenity=bench" \
+--drop-nodes="amenity=fountain" \
+--drop-nodes="amenity=recycling" \
+--drop-nodes="basin=" \
 --drop-nodes="highway=bus_stop" \
 --drop-nodes="leisure=picnic_table" \
 --drop-nodes="natural=" \
@@ -273,9 +285,58 @@ ${OSMFILTER} ${HASH_MEM} \
 --drop-relations="route_master=trolleybus" \
 --drop-relations="superroute=" \
 --drop-relations="waterway=" \
---drop-tags="flag= link= source= url= wikidata= wikipedia=" \
+--drop-tags="fixme=" \
+--drop-tags="flag=" \
+--drop-tags="horse=" \
+--drop-tags="image=" \
+--drop-tags="incline=" \
+--drop-tags="indoor=" \
+--drop-tags="inscription=" \
+--drop-tags="intermittent=" \
+--drop-tags="internet_access=" \
+--drop-tags="kerb= lamp_type=" \
+--drop-tags="lamp_type=" \
+--drop-tags="lane_markings=" \
+--drop-tags="leaf_cycle=" \
+--drop-tags="leaf_type=" \
+--drop-tags="link=" \
+--drop-tags="lit=" \
+--drop-tags="mapillary=" \
+--drop-tags="material=" \
+--drop-tags="memorial=" \
+--drop-tags="nombre_estadisticas=" \
+--drop-tags="noname=" \
+--drop-tags="note=" \
+--drop-tags="operator=" \
+--drop-tags="owner=" \
+--drop-tags="plant=" \
+--drop-tags="population=" \
+--drop-tags="power=" \
+--drop-tags="protection_title=" \
+--drop-tags="pump=" \
+--drop-tags="railway:position=" \
+--drop-tags="railway:preferred_direction=" \
+--drop-tags="ref:AGESIC=" \
+--drop-tags="roof =" \
+--drop-tags="sac_scale=" \
+--drop-tags="seamark=" \
+--drop-tags="smoking=" \
+--drop-tags="source=" \
+--drop-tags="start_date=" \
+--drop-tags="structure=" \
+--drop-tags="substance=" \
+--drop-tags="survey_date=" \
+--drop-tags="tracktype=" \
+--drop-tags="tower:type=" \
+--drop-tags="url=" \
+--drop-tags="usage=" \
+--drop-tags="width=" \
+--drop-tags="wikidata=" \
+--drop-tags="wikipedia=" \
+--drop-ways="amenity=fountain" \
 --drop-ways="attractions=" \
 --drop-ways="barrier=" \
+--drop-ways="basin=" \
 --drop-ways="building=apartments" \
 --drop-ways="building=bungalow" \
 --drop-ways="building=cabin" \
@@ -291,12 +352,28 @@ ${OSMFILTER} ${HASH_MEM} \
 --drop-ways="building=yes" \
 --drop-ways="highway=footway and bicycle!=yes" \
 --drop-ways="highway=steps" \
+--drop-ways="landcover=" \
 --drop-ways="public_transport=platform" \
 --drop-ways="railway=platform" \
---drop-ways="(landuse=allotments =brownfield =farmland =farmyard =grass =greenfield =landfill =meadow =orchard) and highway!=*" \
+--drop-ways="recycling_type" \
+--drop-ways="waterway=drain" \
+--drop-ways="landuse=allotments and highway!=*" \
+--drop-ways="landuse=brownfield and highway!=*" \
+--drop-ways="landuse=farmland and highway!=*" \
+--drop-ways="landuse=farmyard and highway!=*" \
+--drop-ways="landuse=grass and highway!=*" \
+--drop-ways="landuse=greenfield and highway!=*" \
+--drop-ways="landuse=industrial and highway!=*" \
+--drop-ways="landuse=landfill and highway!=*" \
+--drop-ways="landuse=meadow and highway!=*" \
+--drop-ways="landuse=orchard and highway!=*" \
+--drop-ways="landuse=quarry and highway!=*" \
+--drop-ways="landuse=residential and highway!=*" \
+--verbose \
 --out-o5m ${PAIS}.o5m.tmp > ${PAIS}.o5m
 
 rm -f ${PAIS}.o5m.tmp
+echo
 
 
 
