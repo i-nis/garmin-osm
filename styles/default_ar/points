@@ -1,46 +1,68 @@
 ## -------------------------------------------------------------------
 # Points style file for converting OSM nodes into Garmin POIs.
 #
-# (C) 2012 - 2018 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
+# (C) 2012 - 2021 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
 addr:housenumber=* {set mkgmap:execute_finalize_rules=true}
 
+# impose routing/speed restrictions due to access/barrier. See option --link-pois-to-ways
+
+vehicle=* {
+    add bicycle='${vehicle}';
+    add motor_vehicle='${vehicle}';
+    }
+motor_vehicle=* {
+    add motorcar='${motor_vehicle}';
+    add goods='${motor_vehicle}';
+    add hgv='${motor_vehicle}';
+    add psv='${motor_vehicle}';
+    add emergency='${motor_vehicle}';
+    }
+psv=* {
+    add taxi='${psv}';
+    add bus='${psv}';
+    }
+
 barrier=* & bicycle=*   {set mkgmap:bicycle  =  '${bicycle|subst:private=>no}'}
 barrier=* & foot=*      {set mkgmap:foot     =     '${foot|subst:private=>no}'}
 barrier=* & hgv=*       {set mkgmap:truck    =      '${hgv|subst:private=>no}'}
 barrier=* & motorcar=*  {set mkgmap:car      = '${motorcar|subst:private=>no}'}
-barrier=* & psv=*       {set mkgmap:bus      =      '${psv|subst:private=>no}'}
+barrier=* & bus=*       {set mkgmap:bus      =      '${bus|subst:private=>no}'}
 barrier=* & taxi=*      {set mkgmap:taxi     =     '${taxi|subst:private=>no}'}
 barrier=* & emergency=* {set mkgmap:emergency='${emergency|subst:private=>no}'}
-barrier=* & delivery=*  {set mkgmap:delivery = '${delivery|subst:private=>no}'}
-barrier=* & access=*    {addaccess               '${access|subst:private=>no}'}
+barrier=* & goods=*     {set mkgmap:delivery =    '${goods|subst:private=>no}'}
 
-barrier=bollard | barrier=cycle_barrier {
-    add mkgmap:bicycle=yes;
-    add mkgmap:foot=yes;
-    addaccess no;
-    set mkgmap:road-speed=1;
+barrier=bollard | barrier=block {
+    add mkgmap:car=no;
+    add mkgmap:delivery=no;
+    add mkgmap:truck=no;
+    add mkgmap:bus=no;
+    add mkgmap:taxi=no;
+    add mkgmap:emergency=no;
+    }
+barrier=cycle_barrier | barrier=kissing_gate | barrier=stile {
+    add mkgmap:bicycle=no;
+    add mkgmap:car=no;
+    add mkgmap:delivery=no;
+    add mkgmap:truck=no;
+    add mkgmap:bus=no;
+    add mkgmap:taxi=no;
+    add mkgmap:emergency=no;
+    set mkgmap:road-speed=0;
     }
 barrier=bus_trap {
-    add mkgmap:bus=yes;
-    add mkgmap:foot=yes;
-    add mkgmap:bicycle=yes;
-    addaccess no;
-    set mkgmap:road-speed=1;
+    add mkgmap:car=no;
+    add mkgmap:delivery=no;
+    add mkgmap:truck=no;
+    add mkgmap:taxi=no;
     }
-barrier=gate {
-    add mkgmap:bicycle=yes;
-    add mkgmap:foot=yes;
-    addaccess no;
+barrier=gate | barrier=lift_gate | barrier=swing_gate {
     set mkgmap:road-speed=0;
     }
-barrier=kissing_gate | barrier=stile | barrier=block {
-    add mkgmap:foot=yes;
-    addaccess no;
-    set mkgmap:road-speed=0;
-    }
+barrier=* {add mkgmap:road-speed=1}
+barrier=* & access=* {addaccess '${access|subst:private=>no}'}
 
 internet_access=yes {name 'Internet ${name}' | 'Internet'} [0x2f12 resolution 24 continue]
 internet_access=* & internet_access!=no & internet_access!=yes
@@ -94,14 +116,15 @@ aeroway=aerodrome [0x2f04 resolution 22]
 aeroway=helipad [0x5904 resolution 23]
 aeroway=terminal [0x2f04 resolution 24]
 
-amenity=atm [0x2f06 resolution 24]
+amenity=atm [0x2f06 resolution 24 continue]
 amenity=arts_centre [0x2c04 resolution 24]
 amenity=bank [0x2f06 resolution 24]
-amenity=bar [0x2d02 resolution 24]
+amenity=bar [0x2d02 resolution 24 continue]
+amenity=bench [0x6605 resolution 24 continue]
 amenity=biergarten [0x2d02 resolution 24]
 amenity=border_control | barrier=border_control [0x3006 resolution 20]
 amenity=bus_station [0x2f08 resolution 23]
-amenity=cafe [0x2a0e resolution 24]
+amenity=cafe {delete cuisine} [0x2a0e resolution 24 continue with_actions]
 amenity=car_club [0x2f0d resolution 24]
 amenity=car_rental [0x2f02 resolution 24]
 amenity=car_sharing [0x2f02 resolution 24]
@@ -132,7 +155,7 @@ amenity=kindergarten [0x2c05 resolution 24]
 amenity=library [0x2c03 resolution 24]
 amenity=nightclub [0x2d02 resolution 24]
 amenity=nursing_home [0x2f14 resolution 24]
-amenity=parking [0x2f0b resolution 24 default_name 'Parking']
+(amenity=parking | amenity=parking_entrance) & access!=private & access!=no {add name='${access} parking'| 'Parking'} [0x2f0b resolution 24]
 amenity=pharmacy [0x2e05 resolution 24]
 amenity=place_of_worship [0x2c0b resolution 24]
 amenity=police [0x3001 resolution 24]
@@ -147,7 +170,7 @@ amenity=school [0x2c05 resolution 24]
 # amenity=shelter is ambiguous; when possible, consider using other tags:
 #  tourism=lean_to or tourism=picnic_site
 #  shelter=yes on highway=bus_stop or highway=tram_stop or railway=halt
-amenity=shelter & shelter_type!=public_transport [0x2b06 resolution 24 default_name 'Shelter']
+amenity=shelter & shelter_type=basic_hut [0x2b06 resolution 24 default_name 'Shelter']
 # amenity=supermarket is superceded by shop=supermarket
 amenity=supermarket [0x2e02 resolution 24]
 amenity=taxi [0x2f17 resolution 24]
@@ -165,9 +188,9 @@ landuse=village_green & name=* [0x2c06 resolution 24]
 healthcare=hospital | amenity=hospital | amenity=clinic [0x3002 resolution 22]
 healthcare=* | amenity=dentist | amenity=doctors [0x3002 resolution 24]
 
-highway=motorway_junction [0x2100 resolution 24]
+highway=motorway_junction & exit:road_ref=* {add exit:to='${exit_to}' | '${destination}'} [0x2000 resolution 24]
 
-highway=services & mkgmap:area2poi!=true [0x210f resolution 24 default_name 'Services']
+highway=services {add exit:facility="0x02,I,0x47,Features"} [0x230f resolution 20 default_name 'Services']
 
 historic=museum [0x2c02 resolution 24]
 historic=archaeological_site | historic=ruins [0x2c02 resolution 24]
@@ -177,15 +200,15 @@ leisure=common & name=* [0x2c06 resolution 24]
 leisure=garden & name=* [0x2c06 resolution 24]
 leisure=golf_course [0x2d05 resolution 24]
 leisure=ice_rink [0x2d08 resolution 24]
-leisure=marina [0x4300 resolution 24]
-leisure=nature_reserve & name=* [0x6612 resolution 24]
+leisure=marina [0x2f09 resolution 24]
+leisure=nature_reserve [0x6612 resolution 24]
 leisure=park [0x2c06 resolution 24]
-leisure=pitch {name '${name} (${sport})' | '${sport}'} [0x2c08 resolution 24]
+leisure=pitch & (name=* | sport=*) {name '${name} (${sport})' | '${sport}'} [0x2c08 resolution 24]
 leisure=playground [0x2c06 resolution 24 default_name 'Playground']
 leisure=recreation_ground [0x2c08 resolution 24 default_name 'Rec.']
 leisure=sports_center | leisure=sports_centre {name '${name} (${sport})' | '${sport}'} [0x2d0a resolution 24]
 leisure=stadium {name '${name} (${sport})' | '${sport}'} [0x2c08 resolution 24]
-leisure=swimming_pool [0x2d09 resolution 24]
+(leisure=swimming_pool | amenity=swimming_pool) & access!=private & access!=no [0x2d09 resolution 24]
 leisure=track {name '${name} (${sport})' | '${sport}'} [0x2c08 resolution 24]
 leisure=water_park [0x2d09 resolution 24]
 
@@ -194,14 +217,27 @@ man_made=tower | man_made=mast | landmark=chimney [0x6411 resolution 24]
 # Edge 705 displays 0x650a,0x6511,0x6512,0x6513,0x6603,0x6614 as hollow white circles, no menu
 natural=cave_entrance [0x6601 resolution 24]
 natural=cape [0x6606 resolution 24]
-natural=cliff [0x6607 resolution 24]
+natural=cliff & name=* [0x6607 resolution 24]
 natural=peak {name '${name|def:}${ele|height:m=>ft|def:}'} [0x6616 resolution 24]
 natural=rock [0x6614 resolution 24]
 natural=volcano [0x2c0c resolution 24]
+natural=bay & name=* [0x6503 resolution 20]
 
 railway=station [0x2f08 resolution 22]
-(public_transport=platform & rail=yes) | railway=halt [0x2f08 resolution 23]
-public_transport=platform | highway=bus_stop | railway=tram_stop [0x2f17 resolution 24]
+railway=halt [0x2f08 resolution 23]
+# if option --add-pois-to-lines in effect, add just 1 POI
+(railway=platform | (public_transport=platform & railway=*)) & (mkgmap:line2poi!=true | mkgmap:line2poitype=mid) [0x2f08 resolution 23]
+public_transport=platform & (mkgmap:line2poi!=true | mkgmap:line2poitype=mid) [0x2f17 resolution 24]
+highway=bus_stop | railway=tram_stop [0x2f17 resolution 24]
+
+shop=* & name!=* & shop!=yes & shop!=no & shop!=none & shop!=vacant {set name='${shop|subst:"_=> "}'}
+shop=convenience [0x2e0e resolution 24]
+shop=florist [0x2e0f resolution 24]
+shop=gift | shop=art | shop=antiques [0x2e10 resolution 24]
+shop=music [0x2e11 resolution 24]
+shop=sports [0x2e12 resolution 24]
+shop=wine | shop=alcohol [0x2e13 resolution 24]
+shop=books [0x2e14 resolution 24]
 
 shop=bakers [0x2e02 resolution 24]
 shop=bakery [0x2e02 resolution 24]
@@ -230,11 +266,12 @@ shop=hardware [0x2e09 resolution 24]
 shop=hairdresser [0x2f10 resolution 24]
 shop=mall [0x2e04 resolution 24]
 shop=organic [0x2e0a resolution 24]
+shop=outdoor [0x2e08 resolution 24]
 shop=shoes [0x2e07 resolution 24]
 shop=supermarket [0x2e02 resolution 24]
 shop=tires [0x2f07 resolution 24]
 shop=tyres [0x2f07 resolution 24]
-shop=* & shop!=no & shop!=none {add name='${shop|subst:"_=> "}'} [0x2e0c resolution 24]
+shop=* & name=* [0x2e0c resolution 24]
 
 sport=9pin [0x2d07 resolution 24]
 sport=10pin | leisure=bowling_alley [0x2d07 resolution 24]
@@ -250,12 +287,14 @@ tourism=attraction [0x2c04 resolution 24]
 tourism=artwork [0x2c04 resolution 24]
 tourism=aquarium [0x2c07 resolution 24]
 tourism=bed_and_breakfast [0x2b02 resolution 24]
-tourism=camp_site [0x2b05 resolution 24]
-tourism=caravan_site [0x2b05 resolution 24]
+# NB: different devices use different codes for camp/caravan_site, have both!
+tourism=camp_site [0x2b03 resolution 24] [0x2b05 resolution 24]
+tourism=caravan_site [0x2b03 resolution 24] [0x2b05 resolution 24]
 tourism=chalet [0x2b02 resolution 24]
 tourism=guest_house [0x2b02 resolution 24]
 tourism=hostel [0x2b02 resolution 24]
-tourism=hotel | tourism=motel [0x2b01 resolution 24]
+# Have both hotel &| restaurant POIs
+tourism=hotel | tourism=motel {set tmp:stopMopUp=yes} [0x2b01 resolution 24 continue with_actions]
 tourism=information [0x4c00 resolution 24]
 # tourism=lean_to replaces some uses of amenity=shelter
 tourism=lean_to [0x2b05 resolution 24 default_name 'lean-to']
@@ -267,8 +306,8 @@ tourism=theme_park [0x2c01 resolution 24]
 tourism=viewpoint {name '${name} - ${description}' | '${name}'} [0x2c04 resolution 24]
 tourism=wine_cellar [0x2c0a resolution 24]
 tourism=zoo [0x2c07 resolution 24]
-tourism=* & tourism!=yes & tourism!=no {add name='${tourism|subst:"_=> "}'}
-tourism=* & tourism!=no [0x2c0d resolution 24]
+tourism=* & name!=* & tourism!=yes & tourism!=no {set name='${tourism|subst:"_=> "}'}
+tourism=* & tourism!=no & tmp:stopMopUp!=yes [0x2c0d resolution 24]
 
 # amenity=restaurant/fast_food/cafe/pub and shop=* can use cuisine, so have cuisine section later than where the others
 # should take precedence
@@ -330,13 +369,15 @@ barrier=bollard | barrier=bus_trap | barrier=gate | barrier=block | barrier=cycl
     barrier=stile | barrier=kissing_gate | barrier=lift_gate | barrier=swing_gate
     {add name='${barrier|subst:"_=> "}'} [0x3200 resolution 24]
 
-landuse=basin | landuse=reservoir [0x650f resolution 24]
+landuse=basin [0x6603 resolution 24]
+landuse=reservoir | water=reservoir [0x650f resolution 22]
 
 natural=beach [0x6604 resolution 24]
 natural=glacier [0x650a resolution 24]
 natural=spring [0x6511 resolution 24]
 natural=stream [0x6512 resolution 24]
 natural=water & (water=canal | water=lock) & name=* [0x6505 resolution 24]
+(water=lake | water=pond) & name=* [0x650d resolution 24]
 natural=water & name=* [0x6603 resolution 24]
 natural=waterfall | waterway=waterfall [0x6508 resolution 24]
 natural=wetland & name=* [0x6513 resolution 24]

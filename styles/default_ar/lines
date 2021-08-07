@@ -1,7 +1,7 @@
 ## -------------------------------------------------------------------
 # Lines style file for converting OSM ways into Garmin lines.
 #
-# (C) 2012 - 2019 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
+# (C) 2012 - 2021 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -37,6 +37,8 @@ highway=via_ferrata {delete highway}  # this shouldn't show as routable on defau
 highway=piste | highway=ski {delete highway}
 highway=no | highway=none {delete highway}
 
+# Hide unaccessible tunnels
+highway=* & tunnel=yes & (access=private | access=no) & foot!=* & bicycle!=* {delete highway; delete junction}
 # Disable dead-end-checks for unaccessible oneways
 highway=* & oneway=yes & (access=private | access=no) {add mkgmap:dead-end-check=false}
 # Validation-like checks (uncomment to enable)
@@ -242,7 +244,7 @@ highway=rest_area | highway=services {set tmp:stopMopUp=yes}
 natural=coastline [0x15 resolution 12]
 power=line [0x29 resolution 21]
 
-railway=platform [0x16 road_class=0 road_speed=0 resolution 23]
+railway=platform & tmp:stopMopUp!=yes [0x16 road_class=0 road_speed=0 resolution 23]
 # Railway lines, note that many devices display type 0x14 only at resolution 24
 (railway=rail | railway=tram | railway=disused | railway=subway | railway=narrow_gauge | railway=light_rail | railway=preserved) & !(tunnel=yes)
     [0x14 resolution 22]
@@ -268,6 +270,7 @@ route=ferry {set mkgmap:numbers=false; set mkgmap:ferry=1; add mkgmap:toll=yes}
 route=ferry & (motorcar=no | motor_vehicle=no) [0x1b road_class=0 road_speed=0 resolution 23]
 route=ferry [0x1a road_class=3 road_speed=0 resolution 19]
 
+(waterway=river | waterway=stream | waterway=rapids | waterway=waterfall) {add mkgmap:has-direction=true}
 (waterway=river | waterway=canal) & intermittent=yes [0x26 resolution 20]
 (waterway=stream | waterway=drain) & intermittent=yes [0x26 resolution 22]
 

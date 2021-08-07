@@ -19,6 +19,11 @@
 #  0         |  3 mph /   5 km/h
 #
 
+maxspeed:advisory=* {set maxspeed='${maxspeed:advisory}'}
+#maxspeed:practial=* {set maxspeed='${maxspeed:practial}'}
+# maxspeed:practial is disabled here in the default style because verifiability of it is disputed.
+# see: https://wiki.openstreetmap.org/wiki/Key:maxspeed:practical
+
 maxspeed=walk                   { set maxspeed=10 }
 maxspeed~'.*:living_street'     { set maxspeed=10 }
 
@@ -45,3 +50,5 @@ maxspeed=* & mkgmap:road-speed-max!=* & maxspeedkmh() <= 100 { set mkgmap:road-s
 maxspeed=* & mkgmap:road-speed-max!=* & maxspeedkmh() <= 120 { set mkgmap:road-speed-max = 6 }
 # mkgmap:road-speed-max = 7 has no effect 
 #maxspeed=* & mkgmap:road-speed-max!=* { set mkgmap:road-speed-max = 7 }
+
+
