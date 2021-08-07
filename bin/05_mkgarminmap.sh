@@ -31,11 +31,11 @@ COPYRIGHT="${COPY} Para más detalle vea ${COPY_URL}."
 if [[ "${1}" == "" || "${1}" == "all" ]]; then
     PAIS="south-america"
     DESCRIPTION="Argentina y resto del cono sur - ${FECHA}"
-    JAVA_MEM="-Xmx8192m"
+    JAVA_MEM="-Xmx2048m"
   else
     PAIS="${1}"
     DESCRIPTION="${PAIS} - ${FECHA}"
-    JAVA_MEM="-Xmx2048m"
+    JAVA_MEM="-Xmx1024m"
 fi
 
 # Verifica si los límites ya fueron creados previamente o deben crearse.
@@ -68,6 +68,7 @@ echo "------------------------------------------------------------------------"
 echo
 
 java ${JAVA_MEM} -enableassertions -jar ${MKGMAP} ${OPTIONS} \
+--max-jobs=2 \
 --copyright-message="${COPY}" \
 --product-id=${PRODUCTID} \
 --product-version=${FECHA} \
@@ -99,6 +100,7 @@ java ${JAVA_MEM} -enableassertions -jar ${MKGMAP} ${OPTIONS} \
 --polygon-size-limits="24:12, 18:10, 16:8, 14:4, 12:0" \
 --process-destination \
 --process-exits \
+--make-opposite-cycleways \
 --ignore-fixme-values \
 --name-tag-list=name,place_name,alt_name \
 --merge-lines \
@@ -120,6 +122,7 @@ echo -e ">>> Creando imagen ${G}gmapsupp.img${W}."
 
 java ${JAVA_MEM} -enableassertions \
 -jar ${MKGMAP} \
+--max-jobs=2 \
 --description="${DESCRIPTION}" \
 --license-file=licencia.txt \
 --overview-mapname="Argentina" \
