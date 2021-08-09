@@ -39,7 +39,7 @@ Y='\E[1;33;40m'
 W='\E[0;38;40m'
 
 COMMON_OPTIONS="--keep-complete=true --wanted-admin-level=8 --max-areas=2048"
-COMMON_OPTIONS="${COMMON_OPTIONS} --max-nodes=1200000 --max-threads=2 --no-trim"
+COMMON_OPTIONS="${COMMON_OPTIONS} --max-nodes=800000 --max-threads=2 --no-trim"
 COMMON_OPTIONS="${COMMON_OPTIONS} --output=xml --overlap=0 --resolution=12"
 COMMON_OPTIONS="${COMMON_OPTIONS} --search-limit=200000"
 
