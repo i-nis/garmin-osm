@@ -2021,7 +2021,7 @@ CustomColor=No
 [end]
 
 [_point]
-type=0x001
+type=0x01
 subtype=0x00
 ;GRMN_TYPE: Political Entities/CITY_10M/Large city with >10 million inhabitants/Non NT
 String1=0x00,Capital
@@ -2050,7 +2050,7 @@ DayXpm="11 11 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x002
+type=0x02
 subtype=0x00
 ;GRMN_TYPE: Political Entities/CITY_5M, LARGE_CITY/Large city center, typically 1M+ inhabitants/Non NT
 String1=0x00,Capital
@@ -2079,7 +2079,7 @@ DayXpm="11 11 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x003
+type=0x03
 subtype=0x00
 ;GRMN_TYPE: Political Entities/CITY_2M/Large city with a range of (2, 5] million inhabitants/Non NT
 String1=0x00,City (>200k)
@@ -2106,7 +2106,7 @@ DayXpm="9 9 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x004
+type=0x04
 subtype=0x00
 ;GRMN_TYPE: Political Entities/CITY_1M/Large city with a range of (1, 2] million inhabitants/Non NT
 String1=0x00,City (>200k)
@@ -2133,7 +2133,7 @@ DayXpm="9 9 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x005
+type=0x05
 subtype=0x00
 ;GRMN_TYPE: Political Entities/CITY_500K/City with the range of (0.5, 1] million inhabitants/Non NT
 String1=0x00,City (>200k)
@@ -2160,7 +2160,7 @@ DayXpm="9 9 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x006
+type=0x06
 subtype=0x00
 ;GRMN_TYPE: Political Entities/CITY_200K/City with the range of (200, 500] thousand inhabitants/Non NT
 String1=0x00,City (>50k)
@@ -2187,7 +2187,7 @@ DayXpm="9 9 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x007
+type=0x07
 subtype=0x00
 ;GRMN_TYPE: Political Entities/CITY_100K/City with the range of (100, 200] thousand inhabitants/Non NT
 String1=0x00,City (>10k)
@@ -2206,7 +2206,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x008
+type=0x08
 subtype=0x00
 ;GRMN_TYPE: Political Entities/CITY_50K, MEDIUM_CITY/Medium city center, typically 50K-1M inhabitants/Non NT
 String1=0x00,City (>5k)
@@ -2225,7 +2225,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x009
+type=0x09
 subtype=0x00
 ;GRMN_TYPE: Political Entities/CITY_20K/City with the range of (20, 50] thousand inhabitants/Non NT
 String1=0x00,City (>5k)
@@ -2244,7 +2244,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x00a
+type=0x0a
 subtype=0x00
 ;GRMN_TYPE: Political Entities/CITY_10K/City with the range of (10, 20] thousand inhabitants/Non NT
 String1=0x00,Hamlet
@@ -2263,7 +2263,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x00b
+type=0x0b
 subtype=0x00
 ;GRMN_TYPE: Political Entities/CITY_5K/City with the range of (5, 10] thousand inhabitants/Non NT
 String1=0x00,Name
@@ -2282,7 +2282,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x020
+type=0x20
 subtype=0x00
 ;GRMN_TYPE: //
 String1=0x00,Ext
@@ -2304,7 +2304,7 @@ DayXpm="8 4 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x023
+type=0x23
 subtype=0x0f
 ;GRMN_TYPE: //
 String=Services
@@ -2329,7 +2329,7 @@ DayXpm="8 4 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x00
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT/General restaurant of unknown genre/Non NT
 String1=0x00,Restaurant
@@ -2363,7 +2363,7 @@ DayXpm="15 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x01
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT_AMERICAN/American cuisine/Non NT
 String1=0x00,Restaurant (American)
@@ -2397,7 +2397,7 @@ DayXpm="15 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x02
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT_ASIAN/Asian cuisine/Non NT
 String1=0x00,Restaurant (Asia)
@@ -2431,7 +2431,7 @@ DayXpm="15 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x03
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT_BARBECUE/Barbecue cuisine/Non NT
 String1=0x00,Restaurant (BBQ)
@@ -2465,7 +2465,7 @@ DayXpm="15 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x04
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT_CHINESE/Chinese cuisine/Non NT
 String1=0x00,Restaurant (Chinese)
@@ -2499,7 +2499,7 @@ DayXpm="15 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x05
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT_DELI/Deli or sandwich shop/Non NT
 String1=0x00,Restaurant (Greek)
@@ -2533,7 +2533,7 @@ DayXpm="15 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x06
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT_INTRNTNL/International cuisine/Non NT
 String1=0x00,Restaurant (International)
@@ -2567,7 +2567,7 @@ DayXpm="15 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x07
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT_FAST_FOOD/Fast food establishment, i.e. McDonalds/Non NT
 String1=0x00,Restaurant (Fastfood)
@@ -2594,7 +2594,7 @@ DayXpm="14 9 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x08
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT_ITALIAN/Italian cuisine/Non NT
 String1=0x00,Restaurant (Italian)
@@ -2628,7 +2628,7 @@ DayXpm="15 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x09
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT_MEXICAN/Mexican cuisine/Non NT
 String1=0x00,Restaurant (Mexican)
@@ -2662,7 +2662,7 @@ DayXpm="15 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x0a
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT_PIZZA/Pizzeria/Non NT
 String1=0x00,Pizzeria
@@ -2696,7 +2696,7 @@ DayXpm="15 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x0b
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT_SEAFOOD/Seafood restaurant/Non NT
 String1=0x00,Restaurant (Fisch)
@@ -2730,7 +2730,7 @@ DayXpm="15 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x0c
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT_STEAK/Grill and steak brew pub restaurant/Non NT
 String1=0x00,Restaurant (Steak)
@@ -2764,7 +2764,7 @@ DayXpm="15 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x0d
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT_DONUTS/Donut shop/Non NT
 String1=0x09,Restaurant (Donuts)
@@ -2794,7 +2794,7 @@ DayXpm="13 12 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x0e
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT_CAFES/Cafe or coffee shop/Non NT
 String1=0x00,Cafe
@@ -2824,7 +2824,7 @@ DayXpm="13 12 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x0f
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT_FRENCH/French cuisine/Non NT
 String1=0x00,Restaurant (French)
@@ -2858,7 +2858,7 @@ DayXpm="15 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x10
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT_GERMAN/German cuisine/Non NT
 String1=0x00,Restaurant (German)
@@ -2892,7 +2892,7 @@ DayXpm="15 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x11
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT_BRITISH/British cuisine/Non NT
 String1=0x00,Restaurant (British)
@@ -2926,7 +2926,7 @@ DayXpm="15 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x12
 ;GRMN_TYPE: //
 String1=0x00,Restaurant (Special)
@@ -2960,7 +2960,7 @@ DayXpm="15 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x13
 ;GRMN_TYPE: //
 String1=0x00,Restaurant (Vegetarian)
@@ -2994,7 +2994,7 @@ DayXpm="15 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02a
+type=0x2a
 subtype=0x14
 ;GRMN_TYPE: //
 String1=0x00,Restaurant (Regional)
@@ -3028,7 +3028,7 @@ DayXpm="15 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02b
+type=0x2b
 subtype=0x01
 ;GRMN_TYPE: Business - Lodging/HOTEL/Hotel/Non NT
 String1=0x00,Hotel
@@ -3056,7 +3056,7 @@ DayXpm="21 10 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02b
+type=0x2b
 subtype=0x02
 ;GRMN_TYPE: Business - Lodging/BED_AND_BREAKFAST/Bed and breakfast inn/Non NT
 String1=0x00,Guesthouse
@@ -3091,7 +3091,7 @@ DayXpm="17 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02b
+type=0x2b
 subtype=0x05
 ;GRMN_TYPE: //
 String1=0x00,Campsite
@@ -3122,7 +3122,7 @@ DayXpm="22 13 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02b
+type=0x2b
 subtype=0x06
 ;GRMN_TYPE: //
 String1=0x00,Shelter
@@ -3155,7 +3155,7 @@ DayXpm="16 16 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02b
+type=0x2b
 subtype=0x07
 ;GRMN_TYPE: //
 String1=0x00,Shelter
@@ -3187,7 +3187,7 @@ DayXpm="14 14 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02c
+type=0x2c
 subtype=0x01
 ;GRMN_TYPE: Business - Attractions/THEME_PARK/Amusement or theme park, i.e. Disneyland/Non NT
 String1=0x00,Themepark
@@ -3206,7 +3206,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02c
+type=0x2c
 subtype=0x02
 ;GRMN_TYPE: Business - Attractions/MUSEUM/Museum or historical society/Non NT
 String1=0x00,Museum
@@ -3237,7 +3237,7 @@ DayXpm="20 13 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02c
+type=0x2c
 subtype=0x03
 ;GRMN_TYPE: Business - Attractions/LIBRARY/Library/Non NT
 String1=0x00,Library
@@ -3267,7 +3267,7 @@ DayXpm="20 12 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02c
+type=0x2c
 subtype=0x04
 ;GRMN_TYPE: Business - Attractions/LANDMARK/Landmark/Non NT
 String1=0x00,Artwork, Attraction, Viewpoint
@@ -3302,7 +3302,7 @@ DayXpm="12 17 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02c
+type=0x2c
 subtype=0x05
 ;GRMN_TYPE: Business - Attractions/SCHOOL/School/Non NT
 String1=0x00,Education
@@ -3321,7 +3321,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02c
+type=0x2c
 subtype=0x06
 ;GRMN_TYPE: Business - Attractions/GARDEN, PARK/Garden, park/Non NT
 String1=0x00,Playground
@@ -3355,7 +3355,7 @@ DayXpm="18 17 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02c
+type=0x2c
 subtype=0x07
 ;GRMN_TYPE: Business - Attractions/ZOO/Zoo/Non NT
 String1=0x00,Zoo
@@ -3374,7 +3374,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02c
+type=0x2c
 subtype=0x08
 ;GRMN_TYPE: Business - Attractions/ARENA/Arena or track/Non NT
 String1=0x00,Sport
@@ -3393,7 +3393,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02c
+type=0x2c
 subtype=0x09
 ;GRMN_TYPE: Business - Attractions/HALL/Auditorium or hall/Non NT
 String1=0x00,Conference
@@ -3411,7 +3411,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02c
+type=0x2c
 subtype=0x0a
 ;GRMN_TYPE: Business - Attractions/WINERY/Winery/Non NT
 String1=0x00,Winery
@@ -3429,7 +3429,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02c
+type=0x2c
 subtype=0x0b
 ;GRMN_TYPE: Business - Attractions/PLACE_OF_WORSHIP/Religious place of worship/Non NT
 String1=0x09,Religious building
@@ -3462,7 +3462,7 @@ DayXpm="12 15 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02c
+type=0x2c
 subtype=0x0c
 ;GRMN_TYPE: //
 String1=0x00,Volcano
@@ -3490,7 +3490,7 @@ DayXpm="14 10 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02c
+type=0x2c
 subtype=0x0d
 ;GRMN_TYPE: Business - Attractions/POW_MOSQUE/Religious place of worship/Non NT
 String1=0x00,Tourist attraction
@@ -3513,7 +3513,7 @@ DayXpm="10 5 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02d
+type=0x2d
 subtype=0x01
 ;GRMN_TYPE: Business - Entertainment/LIVE_THEATER/Live theater/Non NT
 String1=0x00,Theatre
@@ -3544,7 +3544,7 @@ DayXpm="18 13 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02d
+type=0x2d
 subtype=0x02
 ;GRMN_TYPE: Business - Entertainment/BAR/Bar or club/Non NT
 String1=0x00,Bar
@@ -3573,7 +3573,7 @@ DayXpm="13 12 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02d
+type=0x2d
 subtype=0x03
 ;GRMN_TYPE: Business - Entertainment/MOVIE_THEATER/Movie theater or cinema/Non NT
 String1=0x00,Cinema
@@ -3604,7 +3604,7 @@ DayXpm="16 13 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02d
+type=0x2d
 subtype=0x04
 ;GRMN_TYPE: Business - Entertainment/CASINO/Casino/Non NT
 String1=0x00,Casino
@@ -3637,7 +3637,7 @@ DayXpm="16 15 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02d
+type=0x2d
 subtype=0x05
 ;GRMN_TYPE: Business - Entertainment/GOLF_COURSE/Golf course/Non NT
 String1=0x00,Golf course
@@ -3673,7 +3673,7 @@ DayXpm="19 18 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02d
+type=0x2d
 subtype=0x06
 ;GRMN_TYPE: Business - Entertainment/SKI_CENTER/Ski area or resort/Non NT
 String1=0x00,Ski
@@ -3704,7 +3704,7 @@ DayXpm="16 13 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02d
+type=0x2d
 subtype=0x07
 ;GRMN_TYPE: Business - Entertainment/BOWLING/Bowling alley/Non NT
 String1=0x00,Bowling alley
@@ -3738,7 +3738,7 @@ DayXpm="18 16 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02d
+type=0x2d
 subtype=0x08
 ;GRMN_TYPE: Business - Entertainment/ICE_SKATING/Ice skating rink/Non NT
 String1=0x00,Ice skating
@@ -3769,7 +3769,7 @@ DayXpm="15 12 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02d
+type=0x2d
 subtype=0x09
 ;GRMN_TYPE: Business - Entertainment/SWIMMING_POOL/Swimming pool/Non NT
 String1=0x00,Piscine
@@ -3800,7 +3800,7 @@ DayXpm="19 13 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02d
+type=0x2d
 subtype=0x0a
 ;GRMN_TYPE: Business - Entertainment/FITNESS_CENTER/Fitness center or gym/Non NT
 String1=0x00,Sports centre
@@ -3819,7 +3819,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02d
+type=0x2d
 subtype=0x0b
 ;GRMN_TYPE: Business - Entertainment/SPORT_AIRPORT/Sport or R-C airport/Non NT
 String1=0x00,Airport
@@ -3853,7 +3853,7 @@ DayXpm="16 16 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02e
+type=0x2e
 subtype=0x01
 ;GRMN_TYPE: Business - Shopping/DEPARTMENT_STORE/Department store/Non NT
 String1=0x00,Mall
@@ -3887,7 +3887,7 @@ DayXpm="14 17 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02e
+type=0x2e
 subtype=0x02
 ;GRMN_TYPE: Business - Shopping/GROCERY_STORE/Grocery store/Non NT
 String1=0x00,Backery
@@ -3912,7 +3912,7 @@ DayXpm="14 8 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02e
+type=0x2e
 subtype=0x03
 ;GRMN_TYPE: Business - Shopping/GENERAL_STORE/General store/Non NT
 String1=0x00,Generic store
@@ -3940,7 +3940,7 @@ DayXpm="13 11 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02e
+type=0x2e
 subtype=0x04
 ;GRMN_TYPE: Business - Shopping/SHOPPING_CENTER/Shopping center or mall/Non NT
 String1=0x00,Shopping Center
@@ -3974,7 +3974,7 @@ DayXpm="14 17 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02e
+type=0x2e
 subtype=0x05
 ;GRMN_TYPE: Business - Shopping/PHARMACY/Pharmacy/Non NT
 String1=0x00,Pharmacy
@@ -4005,7 +4005,7 @@ DayXpm="10 14 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02e
+type=0x2e
 subtype=0x06
 ;GRMN_TYPE: Business - Shopping/CONVENIENCE_STORE/Convenience store/Non NT
 String1=0x00,Gasstation shop
@@ -4027,7 +4027,7 @@ DayXpm="5 5 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02e
+type=0x2e
 subtype=0x07
 ;GRMN_TYPE: Business - Shopping/CLOTHING_RETAIL/Clothing store/Non NT
 String1=0x00,Clothing store
@@ -4055,7 +4055,7 @@ DayXpm="14 11 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02e
+type=0x2e
 subtype=0x08
 ;GRMN_TYPE: Business - Shopping/HOME_AND_GARDEN_STORE/House and garden store/Non NT
 String1=0x00,Garden center
@@ -4087,7 +4087,7 @@ DayXpm="16 15 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02e
+type=0x2e
 subtype=0x09
 ;GRMN_TYPE: Business - Shopping/HOME_FURNISHINGS_STORE/Furniture store/Non NT
 String1=0x00,Furniture
@@ -4114,7 +4114,7 @@ DayXpm="14 10 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02e
+type=0x2e
 subtype=0x0a
 ;GRMN_TYPE: Business - Shopping/SPECIALTY_RETAIL/Specialty store/Non NT
 String1=0x00,Shop
@@ -4136,7 +4136,7 @@ DayXpm="5 5 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02e
+type=0x2e
 subtype=0x0b
 ;GRMN_TYPE: Business - Shopping/SOFTWARE_RETAIL/Computer software store/Non NT
 String1=0x00,Electronics
@@ -4167,7 +4167,7 @@ DayXpm="14 14 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02e
+type=0x2e
 subtype=0x0c
 ;GRMN_TYPE: //
 String1=0x00,Shop
@@ -4189,7 +4189,7 @@ DayXpm="5 5 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x01
 ;GRMN_TYPE: Business - Services/GAS_STATION/Gas, fuel station/Non NT
 String1=0x00,Gas station
@@ -4222,7 +4222,7 @@ DayXpm="12 14 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x02
 ;GRMN_TYPE: Business - Services/AUTO_RENTAL/Car rental location/Non NT
 String1=0x00,ar rental
@@ -4253,7 +4253,7 @@ DayXpm="10 14 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x03
 ;GRMN_TYPE: Business - Services/AUTO_REPAIR/Car repair, mechanic/Non NT
 String1=0x00,Garage
@@ -4284,7 +4284,7 @@ DayXpm="10 14 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x04
 ;GRMN_TYPE: Business - Services/AIRPORT/Airport/Non NT
 String1=0x00,Airport
@@ -4318,7 +4318,7 @@ DayXpm="16 16 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x05
 ;GRMN_TYPE: Business - Services/POST_OFFICE/Post office/Non NT
 String1=0x00,Postoffice
@@ -4345,7 +4345,7 @@ DayXpm="14 10 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x06
 ;GRMN_TYPE: Business - Services/BANK/Bank/Non NT
 String1=0x00,Bank
@@ -4374,7 +4374,7 @@ DayXpm="16 11 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x07
 ;GRMN_TYPE: Business - Services/DEALER/Dealer of manufactured goods/Non NT
 String1=0x00,Car dealer
@@ -4402,7 +4402,7 @@ DayXpm="13 10 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x08
 ;GRMN_TYPE: Business - Services/GND_TRANSPORT/Ground transportation status, i.e. a bus station/Non NT
 String1=0x00,Busstation
@@ -4437,7 +4437,7 @@ DayXpm="21 16 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x09
 ;GRMN_TYPE: Business - Services/MARINA/Marina/Non NT
 String1=0x00,Yacht shop
@@ -4459,7 +4459,7 @@ DayXpm="5 5 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x0a
 ;GRMN_TYPE: Business - Services/WRECKER_SERVICE/Wrecker service/Non NT
 String1=0x00,Wrecker service
@@ -4481,7 +4481,7 @@ DayXpm="5 5 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x0b
 ;GRMN_TYPE: Business - Services/PARKING/Parking/Non NT
 String1=0x00,Parking
@@ -4512,7 +4512,7 @@ DayXpm="15 13 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x0c
 ;GRMN_TYPE: Business - Services/REST_AREA_TOURIST_INFO/Rest area, Tourist information/Non NT
 String1=0x00,WC
@@ -4543,7 +4543,7 @@ DayXpm="15 14 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x0d
 ;GRMN_TYPE: Business - Services/AUTO_CLUB/Automobile club/Non NT
 String1=0x00,Automobile club
@@ -4561,7 +4561,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x0e
 ;GRMN_TYPE: Business - Services/CAR_WASH/Car wash/Non NT
 String1=0x00,Carwash
@@ -4592,7 +4592,7 @@ DayXpm="10 14 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x10
 ;GRMN_TYPE: Business - Services/SERVICES_PERSONAL/Personal services/Non NT
 String1=0x00,Hairdresser
@@ -4623,7 +4623,7 @@ DayXpm="14 14 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x12
 ;GRMN_TYPE: Business - Services/COMMUNICATION_SERVICES/Communication services/Non NT
 String1=0x00,Wifi
@@ -4651,7 +4651,7 @@ DayXpm="11 11 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x13
 ;GRMN_TYPE: Business - Services/REPAIR_SERVICE/Repair service/Non NT
 String1=0x00,Bicycle
@@ -4680,7 +4680,7 @@ DayXpm="16 11 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x14
 ;GRMN_TYPE: Business - Services/SOCIAL_SERVICES/Social services/Non NT
 String1=0x00,Social
@@ -4714,7 +4714,7 @@ DayXpm="19 16 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x15
 ;GRMN_TYPE: Business - Services/UTILITY/Utility (gas, electric, water) services/Non NT
 String1=0x00,Recycling
@@ -4748,7 +4748,7 @@ DayXpm="17 17 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x16
 ;GRMN_TYPE: Business - Services/TRUCK_STOP/Truck stop/Non NT
 String1=0x00,Gas station
@@ -4781,7 +4781,7 @@ DayXpm="12 14 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x02f
+type=0x2f
 subtype=0x17
 ;GRMN_TYPE: Business - Services/TRANSIT_SERVICES/Mass transit services/Non NT
 String1=0x00,Busstop
@@ -4810,7 +4810,7 @@ DayXpm="9 11 3 1"   Colormode=16
 [end]
 
 [_point]
-type=0x030
+type=0x30
 subtype=0x01
 ;GRMN_TYPE: Business - Emergency and Government/POLICE_STATION/Police station/Non NT
 String1=0x00,Police
@@ -4843,7 +4843,7 @@ DayXpm="15 15 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x030
+type=0x30
 subtype=0x02
 ;GRMN_TYPE: Business - Emergency and Government/HOSPITAL/Hospital/Non NT
 String1=0x00,Hospital
@@ -4875,7 +4875,7 @@ DayXpm="19 14 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x030
+type=0x30
 subtype=0x03
 ;GRMN_TYPE: Business - Emergency and Government/CITY_HALL/City hall/Non NT
 String1=0x00,Townhall
@@ -4907,7 +4907,7 @@ DayXpm="16 14 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x030
+type=0x30
 subtype=0x04
 ;GRMN_TYPE: Business - Emergency and Government/COURTHOUSE/Courthouse/Non NT
 String1=0x00,Courthouse
@@ -4940,7 +4940,7 @@ DayXpm="18 15 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x030
+type=0x30
 subtype=0x05
 ;GRMN_TYPE: Business - Emergency and Government/COMMUNITY_CENTER/Community center/Non NT
 String1=0x00,Community centre
@@ -4973,7 +4973,7 @@ DayXpm="18 15 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x030
+type=0x30
 subtype=0x06
 ;GRMN_TYPE: Business - Emergency and Government/BORDER_CROSSING/Border crossing/Non NT
 String1=0x00,Bordercontrol
@@ -4990,7 +4990,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x030
+type=0x30
 subtype=0x07
 ;GRMN_TYPE: Business - Emergency and Government/GOV_OFFICE/Government Office/Non NT
 String1=0x00,Prison
@@ -5022,7 +5022,7 @@ DayXpm="16 14 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x030
+type=0x30
 subtype=0x08
 ;GRMN_TYPE: Business - Emergency and Government/FIRE_DEPT/Fire department/Non NT
 String1=0x00,Firestation
@@ -5057,7 +5057,7 @@ DayXpm="13 17 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x032
+type=0x32
 subtype=0x00
 ;GRMN_TYPE: //
 String1=0x00,Marina
@@ -5074,8 +5074,9 @@ DayXpm="1 1 2 1"   Colormode=16
 " "
 ;1
 [end]
+
 [_point]
-type=0x043
+type=0x43
 subtype=0x01
 ;GRMN_TYPE: //
 ; not used by default style
@@ -5102,8 +5103,9 @@ DayXpm="12 7 2 1"   Colormode=16
 "!!!!!!!     "
 ;123456789012
 [end]
+
 [_point]
-type=0x043
+type=0x43
 subtype=0x02
 ;GRMN_TYPE: //
 ; not used by default style
@@ -5127,8 +5129,9 @@ DayXpm="8 4 2 1"   Colormode=16
 "!!!!    "
 ;12345678
 [end]
+
 [_point]
-type=0x043
+type=0x43
 subtype=0x03
 ;GRMN_TYPE: //
 ; not used by default style
@@ -5163,8 +5166,9 @@ DayXpm="11 15 2 1"   Colormode=16
 "    !!     "
 ;12345678901
 [end]
+
 [_point]
-type=0x04a
+type=0x4a
 subtype=0x00
 ;GRMN_TYPE: Misc. Points of Interest/PICNIC_AREA/Picnic area/Non NT, NT
 String1=0x00,Picnic area
@@ -5191,7 +5195,7 @@ DayXpm="13 10 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x04c
+type=0x4c
 subtype=0x00
 ;GRMN_TYPE: Misc. Points of Interest/INFORMATION/Information/Non NT, NT
 String1=0x00,Tourist information
@@ -5221,7 +5225,7 @@ DayXpm="6 13 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x04e
+type=0x4e
 subtype=0x00
 ;GRMN_TYPE: Misc. Points of Interest/RESTROOMS/Restrooms/Non NT, NT
 String1=0x00,WC
@@ -5252,7 +5256,7 @@ DayXpm="15 14 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x050
+type=0x50
 subtype=0x00
 ;GRMN_TYPE: Misc. Points of Interest/DRINKING_WATER/Drinking water/Non NT, NT
 String1=0x00,Drinking water
@@ -5285,7 +5289,7 @@ DayXpm="13 16 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x059
+type=0x59
 subtype=0x04
 ;GRMN_TYPE: //
 String1=0x00,Heliport
@@ -5319,7 +5323,7 @@ DayXpm="18 17 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x064
+type=0x64
 subtype=0x03
 ;GRMN_TYPE: Geographical Named Points of Interest/CEMETERY/Cemetery/Non NT, NT
 String1=0x00,Cemetry
@@ -5338,7 +5342,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x064
+type=0x64
 subtype=0x0b
 ;GRMN_TYPE: Geographical Named Points of Interest/MILITARY/Military point of interest/Non NT, NT
 String1=0x00,Military
@@ -5357,7 +5361,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x064
+type=0x64
 subtype=0x11
 ;GRMN_TYPE: Geographical Named Points of Interest/TOWER/Tower/Non NT, NT
 String1=0x00,Tower
@@ -5389,7 +5393,7 @@ DayXpm="10 15 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x065
+type=0x65
 subtype=0x05
 ;GRMN_TYPE: Geographical Named Points of Interest - Water Related/CANAL/Canal/Non NT, NT
 String1=0x00,Weir
@@ -5416,7 +5420,7 @@ DayXpm="9 9 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x065
+type=0x65
 subtype=0x08
 ;GRMN_TYPE: Geographical Named Points of Interest - Water Related/WATERFALL/Waterfall/Non NT, NT
 String1=0x00,Waterfall
@@ -5448,7 +5452,7 @@ DayXpm="15 14 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x065
+type=0x65
 subtype=0x0a
 ;GRMN_TYPE: Geographical Named Points of Interest - Water Related/GLACIER/Glacier/Non NT, NT
 String1=0x00,Glacier
@@ -5466,7 +5470,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x065
+type=0x65
 subtype=0x0c
 ;GRMN_TYPE: //
 String1=0x00,Island
@@ -5485,7 +5489,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x065
+type=0x65
 subtype=0x0f
 ;GRMN_TYPE: Geographical Named Points of Interest - Water Related/RESERVOIR/Reservoir/Non NT, NT
 String1=0x00,Eau
@@ -5504,7 +5508,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x065
+type=0x65
 subtype=0x11
 ;GRMN_TYPE: Geographical Named Points of Interest - Water Related/SPRING/Spring/Non NT, NT
 String1=0x00,Well
@@ -5531,7 +5535,7 @@ DayXpm="9 9 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x065
+type=0x65
 subtype=0x12
 ;GRMN_TYPE: Geographical Named Points of Interest - Water Related/STREAM/Stream/Non NT, NT
 String1=0x00,Water
@@ -5550,7 +5554,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x065
+type=0x65
 subtype=0x13
 ;GRMN_TYPE: Geographical Named Points of Interest - Water Related/SWAMP/Swamp/Non NT, NT
 String1=0x00,Swamp
@@ -5569,7 +5573,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x066
+type=0x66
 subtype=0x01
 ;GRMN_TYPE: Geographical Named Points of Interest - Land Related/ARCH/Arch/Non NT, NT
 String1=0x00,Cave
@@ -5592,7 +5596,7 @@ DayXpm="11 6 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x066
+type=0x66
 subtype=0x03
 ;GRMN_TYPE: Geographical Named Points of Interest - Land Related/BASIN/Basin/Non NT, NT
 String1=0x00,Water
@@ -5611,7 +5615,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x066
+type=0x66
 subtype=0x04
 ;GRMN_TYPE: Geographical Named Points of Interest - Land Related/BEACH/Beach/Non NT, NT
 String1=0x00,Beach
@@ -5630,7 +5634,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x066
+type=0x66
 subtype=0x06
 ;GRMN_TYPE: Geographical Named Points of Interest - Land Related/CAPE/Cape/Non NT, NT
 String1=0x00,Cape
@@ -5648,7 +5652,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x066
+type=0x66
 subtype=0x07
 ;GRMN_TYPE: Geographical Named Points of Interest - Land Related/CLIFF/Cliff/Non NT, NT
 String1=0x00,Cliff
@@ -5666,7 +5670,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x066
+type=0x66
 subtype=0x12
 ;GRMN_TYPE: Geographical Named Points of Interest - Land Related/RESERVE/Reserve/Non NT, NT
 String1=0x00,Nature reserve
@@ -5685,7 +5689,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x066
+type=0x66
 subtype=0x14
 ;GRMN_TYPE: Geographical Named Points of Interest - Land Related/ROCK/Rock/Non NT, NT
 String1=0x00,Rock
@@ -5704,7 +5708,7 @@ DayXpm="1 1 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x066
+type=0x66
 subtype=0x16
 ;GRMN_TYPE: Geographical Named Points of Interest - Land Related/SUMMIT/Summit, top of a hill or mountain/Non NT, NT
 String1=0x00,Summit
@@ -5732,7 +5736,7 @@ DayXpm="14 10 2 1"   Colormode=16
 [end]
 
 [_point]
-type=0x066
+type=0x66
 subtype=0x18
 ;GRMN_TYPE: Geographical Named Points of Interest - Land Related/WOODS/Wooded area/Non NT, NT
 String1=0x00,Woods
