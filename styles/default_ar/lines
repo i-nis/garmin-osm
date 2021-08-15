@@ -37,8 +37,6 @@ highway=via_ferrata {delete highway}  # this shouldn't show as routable on defau
 highway=piste | highway=ski {delete highway}
 highway=no | highway=none {delete highway}
 
-# Hide unaccessible tunnels
-highway=* & tunnel=yes & (access=private | access=no) & foot!=* & bicycle!=* {delete highway; delete junction}
 # Disable dead-end-checks for unaccessible oneways
 highway=* & oneway=yes & (access=private | access=no) {add mkgmap:dead-end-check=false}
 # Validation-like checks (uncomment to enable)
