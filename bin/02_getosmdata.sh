@@ -10,6 +10,7 @@
 # bzip2: http://www.bzip.org/
 # wget: http://www.gnu.org/software/wget/
 # osmconvert: http://wiki.openstreetmap.org/wiki/osmconvert
+# zip: http://www.info-zip.org/
 
 # Uso:
 # El script debe invocarse directamente sobre el directorio raíz de las siguientes
@@ -35,7 +36,7 @@
 
 WORKDIR=`pwd`
 BUNZIP2="/bin/bunzip2 --force"
-GET="/usr/bin/wget --continue"
+GET="/usr/bin/wget --continue --no-check-certificate"
 OSMCONVERT="${WORKDIR}/bin/osmconvert"
 OSMCONVERT_OPTS="--complete-ways --complete-multipolygons --complete-boundaries --drop-author --drop-broken-refs"
 OSMFILTER="${WORKDIR}/bin/osmfilter"
@@ -44,8 +45,7 @@ OSMFILTER="${WORKDIR}/bin/osmfilter"
 URL="https://download.geofabrik.de"
 URLGEONAMES="https://download.geonames.org/export/dump"
 URLSEA="http://osm.thkukuk.de/data/sea-latest.zip"
-PLANETOSM="https://planet.openstreetmap.org"
-RDAY="${PLANETOSM}/replication/day"
+RDAY="${URL}/south-america-updates"
 OSMDAYSTATE="${RDAY}/state.txt"
 
 # Uso de memoria: 1024 MiB
@@ -63,14 +63,9 @@ COORD="-76,-56,-48,-17"
 
 # Función para seleccionar geoname a descargar por país.
 geoname () {
-
   local PAIS="$1"
 
   case ${PAIS} in
-    all )
-      GEONAME="cities15000.zip"
-      ;;
-
     argentina )
       GEONAME="AR.zip"
       ;;
@@ -106,12 +101,46 @@ geoname () {
     uruguay )
       GEONAME="UY.zip"
       ;;
-
-    south-america )
-      GEONAME="cities15000.zip"
-      ;;
-
   esac
+
+}
+
+
+
+# Función para descargar datos de las ciudades.
+download_geonames() {
+  local P="${1}"
+  local COUNTRIES=""
+
+  cd ${WORKDIR}/${P}
+
+  if [ "${P}" == "all" ] || [ "${P}" == "south-america" ]; then
+      COUNTRIES="argentina bolivia brazil chile colombia ecuador paraguay peru uruguay"
+
+      for country in ${COUNTRIES}; do
+        geoname "${country}"
+
+        if [ ! -e south-america.zip ]; then
+          echo -e ">>> Descargando ${G}${GEONAME}${W}."
+          ${GET} ${URLGEONAMES}/${GEONAME}
+        fi
+
+      unzip -p ${GEONAME} >> south-america.txt
+      rm -f ${GEONAME}
+      done
+
+      zip south-america.zip south-america.txt
+      rm -f south-america.txt
+
+    else
+      geoname "${P}"
+
+      if [ ! -e ${GEONAME} ]; then
+        echo -e ">>> Descargando ${G}${GEONAME}${W}."
+        ${GET} ${URLGEONAMES}/${GEONAME}
+      fi
+
+  fi
 
 }
 
@@ -137,6 +166,8 @@ if [ ! -e south-america-latest.o5m ]; then
     echo "------------------------------------------------------------------------"
     echo
 
+    ${GET} ${OSMDAYSTATE}
+    mv state.txt state.txt.old
     ${GET} ${URL}/south-america-latest.osm.pbf
 
     echo "------------------------------------------------------------------------"
@@ -150,14 +181,12 @@ if [ ! -e south-america-latest.o5m ]; then
     --verbose --out-o5m > south-america-latest.o5m
 
     rm -f south-america-latest.osm.pbf
-    ${GET} ${OSMDAYSTATE}
-    mv state.txt state.txt.old
 
   else
 
     echo "------------------------------------------------------------------------"
     echo "Actualizando ${PAIS} con osmconvert desde: "
-    echo "${PLANETOSM}."
+    echo "${URL}."
     echo "Area definida por: ${BOX}"
     echo "------------------------------------------------------------------------"
     echo
@@ -178,7 +207,7 @@ if [ ! -e south-america-latest.o5m ]; then
       for i in `seq ${OLD} ${LATEST}`; do
 
         # La URL para la organización de archivos diferenciales es del tipo:
-        # http://planet.openstreetmap.org/replication/day/AAA/BBB/CCC.osc.gz
+        # https://download.geofabrik.de/south-america-updates/AAA/BBB/CCC.osc.gz
         # Donde el número de secuencia es N = AAA*1000000 + BBB*1000 + CCC.
         # Por ejemplo para un archivo cuyo número de secuencia es 60277 le
         # corresponde una locación en /000/060/277.
@@ -245,20 +274,64 @@ echo "------------------------------------------------------------------------"
 
 ${OSMFILTER} ${HASH_MEM} \
 --drop="abandoned=" \
+--drop="amenity=animal_boarding" \
+--drop="amenity=animal_breeding" \
+--drop="amenity=animal_shelter" \
+--drop="amenity=childcare" \
+--drop="amenity=dog_toilet" \
+--drop="amenity=fountain" \
+--drop="amenity=give_box" \
+--drop="amenity=hunting_stand" \
+--drop="amenity=kitchen" \
+--drop="amenity=kneipp_water_cure" \
+--drop="amenity=lounger" \
+--drop="amenity=photo_booth" \
+--drop="amenity=recycling" \
+--drop="amenity=sanitary_dump_station" \
+--drop="amenity=shelter" \
+--drop="amenity=shower" \
+--drop="amenity=vending_machine" \
+--drop="amenity=waste_transfer_station" \
+--drop="amenity=yes" \
 --drop="artwork_type=" \
+--drop="attractions=" \
+--drop="building=apartments" \
+--drop="building=bungalow" \
+--drop="building=cabin" \
+--drop="building=carport" \
+--drop="building=conservatory" \
+--drop="building=construction" \
+--drop="building=container" \
+--drop="building=cowshed" \
+--drop="building=detached" \
+--drop="building=digester" \
+--drop="building=dormitory" \
+--drop="building=farm" \
+--drop="building=farm_auxiliary" \
+--drop="building=ger" \
+--drop="building=greenhouse" \
+--drop="building=house" \
+--drop="building=houseboat" \
+--drop="building=hut" \
+--drop="building=residential" \
+--drop="building=ruins" \
+--drop="building=semidetached_house" \
+--drop="building=service" \
+--drop="building=shed" \
+--drop="building=slurry_tank" \
+--drop="building=stable" \
+--drop="building=static_caravan" \
+--drop="building=sty" \
+--drop="building=tent" \
+--drop="building=terrace" \
+--drop="building=transformer_tower" \
+--drop="building=tree_house" \
+--drop="building=yes" \
+--drop="building=water_tower" \
+--drop="craft=" \
+--drop="historic!=monument" \
 --drop="power=" \
---drop-nodes="amenity=bench" \
---drop-nodes="amenity=fountain" \
---drop-nodes="amenity=recycling" \
---drop-nodes="basin=" \
---drop-nodes="highway=bus_stop" \
---drop-nodes="leisure=picnic_table" \
---drop-nodes="natural=" \
---drop-nodes="playground=" \
---drop-nodes="power=" \
---drop-nodes="public_transport=platform" \
---drop-nodes="public_transport=stop_position and bus=yes" \
---drop-nodes="tourism=artwork" \
+--drop="public_transport=platform" \
 --drop-relations="network=" \
 --drop-relations="route=power" \
 --drop-relations="route=railway" \
@@ -285,6 +358,28 @@ ${OSMFILTER} ${HASH_MEM} \
 --drop-relations="route_master=trolleybus" \
 --drop-relations="superroute=" \
 --drop-relations="waterway=" \
+--drop-nodes="amenity=baking_oven" \
+--drop-nodes="amenity=bbq" \
+--drop-nodes="amenity=bench" \
+--drop-nodes="amenity=clock" \
+--drop-nodes="amenity=dive_centre" \
+--drop-nodes="amenity=drinking_water" \
+--drop-nodes="amenity=waste_basket" \
+--drop-nodes="amenity=waste_disposal" \
+--drop-nodes="amenity=water_point" \
+--drop-nodes="amenity=watering_place" \
+--drop-nodes="basin=" \
+--drop-nodes="emergency!=emergency_ward_entrance" \
+--drop-nodes="highway=bus_stop" \
+--drop-nodes="leisure=picnic_table" \
+--drop-nodes="natural=" \
+--drop-nodes="playground=" \
+--drop-nodes="power=" \
+--drop-nodes="public_transport=platform" \
+--drop-nodes="public_transport=stop_position and bus=yes" \
+--drop-nodes="tourism=artwork" \
+--drop-tags="comment=" \
+--drop-tags="created_by=" \
 --drop-tags="fixme=" \
 --drop-tags="flag=" \
 --drop-tags="horse=" \
@@ -322,38 +417,26 @@ ${OSMFILTER} ${HASH_MEM} \
 --drop-tags="seamark=" \
 --drop-tags="smoking=" \
 --drop-tags="source=" \
+--drop-tags="source*=" \
+--drop-tags="source_ref=" \
 --drop-tags="start_date=" \
 --drop-tags="structure=" \
 --drop-tags="substance=" \
 --drop-tags="survey_date=" \
+--drop-tags="todo=" \
 --drop-tags="tracktype=" \
 --drop-tags="tower:type=" \
 --drop-tags="url=" \
 --drop-tags="usage=" \
+--drop-tags="wheelchair=" \
 --drop-tags="width=" \
 --drop-tags="wikidata=" \
 --drop-tags="wikipedia=" \
---drop-ways="amenity=fountain" \
---drop-ways="attractions=" \
 --drop-ways="barrier=" \
 --drop-ways="basin=" \
---drop-ways="building=apartments" \
---drop-ways="building=bungalow" \
---drop-ways="building=cabin" \
---drop-ways="building=detached" \
---drop-ways="building=dormitory" \
---drop-ways="building=farm" \
---drop-ways="building=ger" \
---drop-ways="building=house" \
---drop-ways="building=residential" \
---drop-ways="building=semidetached_house" \
---drop-ways="building=static_caravan" \
---drop-ways="building=terrace" \
---drop-ways="building=yes" \
 --drop-ways="highway=footway and bicycle!=yes" \
 --drop-ways="highway=steps" \
---drop-ways="landcover=" \
---drop-ways="public_transport=platform" \
+--drop-ways="railway=abandoned" \
 --drop-ways="railway=platform" \
 --drop-ways="recycling_type" \
 --drop-ways="waterway=drain" \
@@ -378,19 +461,12 @@ echo
 
 
 # Descarga datos para el país seleccionado (por defecto para todos).
-geoname "${PAIS}"
-
 if [ ! -d ${WORKDIR}/${PAIS} ]; then
   mkdir --parents ${WORKDIR}/${PAIS}
   echo -e ">>> Creando directorio ${G}$PAIS${W}."
 fi
 
-cd ${WORKDIR}/${PAIS}
-
-if [ ! -e ${GEONAME} ]; then
-  echo -e ">>> Descargando ${G}${GEONAME}${W}."
-  ${GET} ${URLGEONAMES}/${GEONAME}
-fi
+download_geonames "${PAIS}"
 
 
 
