@@ -1,11 +1,16 @@
 ## -------------------------------------------------------------------
 # arrival_time_estimation
 #
-# (C) 2012 - 2014 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
+# (C) 2012 - 2021 Martin Andres Gomez Gimenez <mggimenez@i-nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
 # Improve the arrival time estimation
+ford=yes {
+  add mkgmap:car=yes;
+  add mkgmap:road-speed = '-3';
+  add mkgmap:road-speed-min = '0'
+  }
 highway=traffic_signals { 
   add mkgmap:car=yes;
   add mkgmap:road-speed = '-3';
