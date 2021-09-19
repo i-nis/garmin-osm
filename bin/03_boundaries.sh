@@ -66,7 +66,13 @@ echo "------------------------------------------------------------------------"
 echo
 
 # Extrayendo información de límites.
-${OSMFILTER} ${HASH_MEM} ${PAIS}.o5m --drop-version --keep-nodes= \
+${OSMFILTER} ${HASH_MEM} south-america-latest.o5m --drop-version --keep-nodes= \
 --keep-ways-relations="boundary=administrative =postal_code postal_code=" \
+--drop="type=street type=associatedStreet type=place type=commune" \
 --out-o5m > ${PAIS}-boundaries.o5m
+
+if [ $? -ne 0 ] ; then
+  echo "Error al procesar límites político-administrativos con osmfilter."
+  rm -f ${PAIS}-boundaries.o5m
+fi
 
