@@ -15,7 +15,7 @@
 WORKDIR=`pwd`
 MKGMAP_DOWNLOAD_URL="http://www.mkgmap.org.uk/download"
 MKGMAP_VERSION="r4806"
-SPLITTER_VERSION="r615"
+SPLITTER_VERSION="r642"
 
 
 OSMCONVERT_URL="http://m.m.i24.cc/osmconvert.c"
