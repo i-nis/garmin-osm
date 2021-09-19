@@ -99,6 +99,7 @@ java ${JAVA_MEM} -enableassertions -jar ${MKGMAP} ${OPTIONS} \
 --make-opposite-cycleways \
 --order-by-decreasing-area \
 --ignore-fixme-values \
+--max-routing-island-len=500 \
 --fix-roundabout-direction \
 --name-tag-list=name,place_name,alt_name \
 --merge-lines \
@@ -106,7 +107,12 @@ java ${JAVA_MEM} -enableassertions -jar ${MKGMAP} ${OPTIONS} \
 --preserve-element-order \
 --remove-ovm-work-files=false \
 --route \
+--add-boundary-nodes-at-admin-boundaries=2 \
 --poi-address \
+--report-roundabout-issues=all \
+--report-routing-islands \
+--report-similar-arcs \
+--report-dead-ends=2 \
 --output-dir=${WORKDIR}/ \
 --read-config=${PAIS}.args > ${PAIS}.log 2>&1
 
