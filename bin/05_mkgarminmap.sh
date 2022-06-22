@@ -31,11 +31,11 @@ COPYRIGHT="${COPY} Para más detalle vea ${COPY_URL}."
 if [[ "${1}" == "" || "${1}" == "all" ]]; then
     PAIS="south-america"
     DESCRIPTION="Argentina y resto del cono sur - ${FECHA}"
-    JAVA_MEM="-Xmx2048m"
+    JAVA_MEM="-Xmx4096m"
   else
     PAIS="${1}"
     DESCRIPTION="${PAIS} - ${FECHA}"
-    JAVA_MEM="-Xmx1024m"
+    JAVA_MEM="-Xmx2048m"
 fi
 
 # Verifica si los límites ya fueron creados previamente o deben crearse.
