@@ -106,6 +106,7 @@ java ${JAVA_MEM} -enableassertions -jar ${MKGMAP} ${OPTIONS} \
 --allow-reverse-merge \
 --preserve-element-order \
 --remove-ovm-work-files=false \
+--roundabout-flare-rules-config=${WORKDIR}/RoundaboutFlareRules.config \
 --route \
 --add-boundary-nodes-at-admin-boundaries=2 \
 --poi-address \
