@@ -7,14 +7,14 @@
 # * osmfilter
 # * pbftoosm
 #
-# (C) 2012 - 2021 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
+# (C) 2012 - 2022 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
 
 WORKDIR=`pwd`
 MKGMAP_DOWNLOAD_URL="http://www.mkgmap.org.uk/download"
-MKGMAP_VERSION="r4904"
+MKGMAP_VERSION="r4905"
 SPLITTER_VERSION="r652"
 
 
