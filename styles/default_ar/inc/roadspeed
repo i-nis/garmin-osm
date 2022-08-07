@@ -27,13 +27,9 @@ maxspeed:advisory=* {set maxspeed='${maxspeed:advisory}'}
 maxspeed=walk                   { set maxspeed=10 }
 maxspeed~'.*:living_street'     { set maxspeed=10 }
 
-maxspeed=RU:urban               { set maxspeed=60 }
-maxspeed=UA:urban               { set maxspeed=60 }
 maxspeed~'.*:urban'             { set maxspeed=40 }
 
-maxspeed=AT:rural               { set maxspeed=100 }
-maxspeed=DE:rural               { set maxspeed=100 }
-maxspeed~'.*:rural'             { set maxspeed=80 }
+maxspeed~'.*:rural'             { set maxspeed=60 }
 
 maxspeed~'.*:trunk'             { set maxspeed=110 }
 maxspeed~'.*:motorway'          { set maxspeed=130 }
