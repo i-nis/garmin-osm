@@ -331,7 +331,6 @@ ${OSMFILTER} ${HASH_MEM} \
 --drop="craft=" \
 --drop="historic!=monument" \
 --drop="power=" \
---drop="public_transport=platform" \
 --drop-relations="network=" \
 --drop-relations="route=power" \
 --drop-relations="route=railway" \
@@ -370,18 +369,15 @@ ${OSMFILTER} ${HASH_MEM} \
 --drop-nodes="amenity=watering_place" \
 --drop-nodes="basin=" \
 --drop-nodes="emergency!=emergency_ward_entrance" \
---drop-nodes="highway=bus_stop" \
 --drop-nodes="leisure=picnic_table" \
 --drop-nodes="natural=" \
 --drop-nodes="playground=" \
---drop-nodes="power=" \
---drop-nodes="public_transport=platform" \
---drop-nodes="public_transport=stop_position and bus=yes" \
 --drop-nodes="tourism=artwork" \
 --drop-tags="comment=" \
 --drop-tags="created_by=" \
 --drop-tags="fixme=" \
 --drop-tags="flag=" \
+--drop-tags="highway=bus_stop" \
 --drop-tags="horse=" \
 --drop-tags="image=" \
 --drop-tags="incline=" \
@@ -407,6 +403,7 @@ ${OSMFILTER} ${HASH_MEM} \
 --drop-tags="plant=" \
 --drop-tags="population=" \
 --drop-tags="power=" \
+--drop-tags="public_transport=stop_position" \
 --drop-tags="protection_title=" \
 --drop-tags="pump=" \
 --drop-tags="railway:position=" \
@@ -434,12 +431,21 @@ ${OSMFILTER} ${HASH_MEM} \
 --drop-tags="wikipedia=" \
 --drop-ways="barrier=" \
 --drop-ways="basin=" \
+--drop-ways="highway=dismantled" \
+--drop-ways="highway=disused" \
+--drop-ways="highway=demolished" \
 --drop-ways="highway=footway and bicycle!=yes" \
+--drop-ways="highway=neverbuilt" \
+--drop-ways="highway=proposed" \
+--drop-ways="highway=proposal" \
+--drop-ways="highway=planned" \
+--drop-ways="highway~.*proposed.*" \
+--drop-ways="highway~x-.*" \
+--drop-ways="highway=razed" \
+--drop-ways="highway=rejected" \
 --drop-ways="highway=steps" \
---drop-ways="railway=abandoned" \
---drop-ways="railway=platform" \
---drop-ways="recycling_type" \
---drop-ways="waterway=drain" \
+--drop-ways="highway=unbuilt" \
+--drop-ways="highway=via_ferrata" \
 --drop-ways="landuse=allotments and highway!=*" \
 --drop-ways="landuse=brownfield and highway!=*" \
 --drop-ways="landuse=farmland and highway!=*" \
@@ -452,6 +458,11 @@ ${OSMFILTER} ${HASH_MEM} \
 --drop-ways="landuse=orchard and highway!=*" \
 --drop-ways="landuse=quarry and highway!=*" \
 --drop-ways="landuse=residential and highway!=*" \
+--drop-ways="railway=abandoned" \
+--drop-ways="railway=platform" \
+--drop-ways="recycling_type" \
+--drop-ways="waterway=drain" \
+--drop-ways="public_transport=platform and highway!=*" \
 --verbose \
 --out-o5m ${PAIS}.o5m.tmp > ${PAIS}.o5m
 
