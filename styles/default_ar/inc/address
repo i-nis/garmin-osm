@@ -4,6 +4,9 @@
 # (C) 2012 - 2022 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
+# To verify style:
+# java -jar mkgmap/mkgmap.jar --style-file=styles/ --style=default_ar --check-styles --list-styles
+#
 
 # first set the country code
 mkgmap:country!=* & mkgmap:admin_level2=* { set mkgmap:country='${mkgmap:admin_level2}' }

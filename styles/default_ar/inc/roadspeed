@@ -4,6 +4,9 @@
 # (C) 2012 - 2022 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
 # Distributed under the terms of the GNU General Public Licens
 #
+# To verify style:
+# java -jar mkgmap/mkgmap.jar --style-file=styles/ --style=default_ar --check-styles --list-styles
+#
 # Sets the maximum road speed based on the maxspeed tag.
 # In case mkgmap:road-speed-max is set the element road_speed is limited.
 #

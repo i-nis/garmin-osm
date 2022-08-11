@@ -4,6 +4,9 @@
 # (C) 2012 - 2022 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
+# To verify style:
+# java -jar mkgmap/mkgmap.jar --style-file=styles/ --style=default_ar --check-styles --list-styles
+#
 
 addr:housenumber=* {set mkgmap:execute_finalize_rules=true}
 
@@ -64,7 +67,7 @@ highway=* & (surface=asphalt | surface=paved | surface=sett |
 highway=* & tracktype=grade1 & surface!=* {set mkgmap:unpaved=0}
 
 # Flag unpaved roads.
-highway=* & mkgmap:unpaved!=0 & (surface=* | mtb:scale=* | tracktype~'grade[2-6]') {add mkgmap:unpaved=1}
+highway=* & mkgmap:unpaved!=0 & (surface=* | mtb:scale=* | tracktype~'grade[2-6]') {add mkgmap:unpaved=1; add mkgmap:road-speed=-1}
 highway=* & (mtb:scale~'[2-6].' | sac_scale~'.*(mountain|alpine)_hiking' | sport=via_ferrata) {set mkgmap:unpaved=1}
 (highway=bridleway | highway=path | highway=track) & mkgmap:unpaved!=0 {add mkgmap:unpaved=1}
 (highway=unsurfaced | highway=via_ferrata) {set mkgmap:unpaved=1}
@@ -132,7 +135,7 @@ highway=motorway_link [0x09 road_class=4 road_speed=2 resolution 22]
 
 # Trunk
 highway=trunk & mkgmap:fast_road=yes [0x02 road_class=4 road_speed=5 resolution 18]
-highway=trunk & (mkgmap:unpaved=1) [0x02 road_class=0 road_speed=-1 resolution 20]
+highway=trunk & (mkgmap:unpaved=1) [0x02 road_class=0 road_speed=4 resolution 20]
 highway=trunk [0x02 road_class=4 road_speed=5 resolution 18]
 highway=trunk_link & (mkgmap:exit_hint=true | mkgmap:dest_hint=*) [0x0b road_class=4 road_speed=2 resolution 22]
 highway=trunk_link [0x09 road_class=4 road_speed=2 resolution 22]
@@ -140,7 +143,7 @@ highway=* & motorroad=yes [0x02 road_class=4 road_speed=4 resolution 18]
 
 # Primary
 highway=primary & mkgmap:fast_road=yes [0x03 road_class=4 road_speed=4 resolution 18]
-highway=primary & (mkgmap:unpaved=1) [0x03 road_class=0 road_speed=-1 resolution 20]
+highway=primary & (mkgmap:unpaved=1) [0x03 road_class=0 road_speed=3 resolution 20]
 highway=primary [0x03 road_class=3 road_speed=4 resolution 20]
 highway=primary_link & (mkgmap:exit_hint=true | mkgmap:dest_hint=*) & mkgmap:fast_road=yes [0x0b road_class=4 road_speed=1 resolution 22]
 highway=primary_link & (mkgmap:exit_hint=true | mkgmap:dest_hint=*) [0x0b road_class=3 road_speed=1 resolution 22]
@@ -149,22 +152,22 @@ highway=primary_link [0x08 road_class=3 road_speed=1 resolution 22]
 
 # Secondarys
 highway=secondary & mkgmap:fast_road=yes [0x04 road_class=3 road_speed=3 resolution 20]
-highway=secondary & (mkgmap:unpaved=1) [0x04 road_class=0 road_speed=-1 resolution 20]
+highway=secondary & (mkgmap:unpaved=1) [0x04 road_class=0 road_speed=2 resolution 20]
 highway=secondary [0x04 road_class=2 road_speed=3 resolution 22]
 highway=secondary_link & mkgmap:fast_road=yes [0x08 road_class=3 road_speed=1 resolution 24]
 highway=secondary_link [0x08 road_class=2 road_speed=1 resolution 24]
 
 # Tertiarys
-highway=tertiary & (mkgmap:unpaved=1) [0x05 road_class=0 road_speed=-1 resolution 22]
+highway=tertiary & (mkgmap:unpaved=1) [0x05 road_class=0 road_speed=2 resolution 22]
 highway=tertiary [0x05 road_class=1 road_speed=3 resolution 20]
 highway=tertiary_link [0x08 road_class=1 road_speed=1 resolution 24]
 
 # Minor
-highway=minor & (mkgmap:unpaved=1) [0x06 road_class=0 road_speed=-1 resolution 24]
+highway=minor & (mkgmap:unpaved=1) [0x06 road_class=0 road_speed=2 resolution 24]
 highway=minor [0x06 road_class=1 road_speed=3 resolution 21]
 
 # Unclassified
-highway=unclassified & (mkgmap:unpaved=1) [0x06 road_class=0 road_speed=-1 resolution 24]
+highway=unclassified & (mkgmap:unpaved=1) [0x06 road_class=0 road_speed=2 resolution 24]
 highway=unclassified [0x06 road_class=0 road_speed=3 resolution 22]
 
 highway=yes {set highway=footway}  # fix common bad tagging - little bits of path to join other routable ways
@@ -177,7 +180,7 @@ highway=pedestrian {set tmp:stopMopUp=yes} [0x16 road_class=0 road_speed=0 resol
 highway=living_street [0x06 road_class=0 road_speed=1 resolution 24]
 
 # Residential
-highway=residential & (mkgmap:unpaved=1) [0x06 road_class=0 road_speed=-1 resolution 24]
+highway=residential & (mkgmap:unpaved=1) [0x06 road_class=0 road_speed=1 resolution 24]
 highway=residential [0x06 road_class=0 road_speed=2 resolution 24]
 
 highway=bridleway [0x07 road_class=0 road_speed=0 resolution 24]
