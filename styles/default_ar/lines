@@ -51,6 +51,7 @@ mkgmap:exit_hint=true {
     }
 # use destination hint and/or exit hint to build name
 mkgmap:exit_hint=true | mkgmap:dest_hint=* {name '${tmp:exit_hint} ${tmp:dest_hint}' | '${tmp:dest_hint}' | '${tmp:exit_hint}'}
+
 # end of rules for process-exits and process-destination options
 
 # Flag paved roads
@@ -80,6 +81,7 @@ highway=* & mkgmap:unpaved!=1 & smoothness~'.*(bad|horrible|impassable)' {add mk
 # Good ways without relation
 highway=* & mkgmap:fast_road!=* & (int_ref=* | network=e-road | network=AH | network=TAH | network=US:I | network=US:US)
     {add mkgmap:fast_road=yes}
+
 # Not best for car routing
 highway=* & (access=hov | hov=designated | oneway=reversible)
     {set mkgmap:road-class=-2; set mkgmap:road-speed=-2; delete mkgmap:fast_road}
@@ -87,6 +89,7 @@ highway=* & (access=hov | hov=designated | oneway=reversible)
 # convert some specific to generic with restrictions (platform is in a bus station)
 highway=steps | highway=corridor | highway=stepping_stones | highway=elevator | highway=escalator | highway=platform
     {set highway=footway; add bicycle=no}
+
 # virtual seems to be a way across a pedestrian area
 highway=crossing | highway=virtual
     {set highway=path}  # following logic may change
@@ -107,26 +110,21 @@ man_made=pier | man_made=piste:halfpipe {add highway=footway; name '${ref} ${nam
 man_made=breakwater & is_closed()=false & mkgmap:mp_created!=true [0x17 resolution 22 default_name 'Breakwater']
 
 # Roundabouts
-junction=roundabout & (highway=trunk | highway=trunk_link) [0x0c road_class=4 road_speed=2 resolution 24 continue]
-junction=roundabout & (highway=trunk | highway=trunk_link) [0x10801 resolution 18]
+junction=roundabout { add oneway=yes }
+junction=roundabout & (highway=trunk | highway=trunk_link) [0x0c road_class=4 road_speed=2 resolution 20]
 
-junction=roundabout & (highway=primary | highway=primary_link) & mkgmap:fast_road=yes [0x0c road_class=4 road_speed=2 resolution 24 continue]
-junction=roundabout & (highway=primary | highway=primary_link) & mkgmap:fast_road=yes [0x10802 resolution 19]
+junction=roundabout & (highway=primary | highway=primary_link) & mkgmap:fast_road=yes [0x0c road_class=4 road_speed=2 resolution 22]
 
-junction=roundabout & (highway=primary | highway=primary_link) [0x0c road_class=3 road_speed=2 resolution 24 continue]
-junction=roundabout & (highway=primary | highway=primary_link) [0x10802 resolution 19]
+junction=roundabout & (highway=primary | highway=primary_link) [0x0c road_class=3 road_speed=2 resolution 22]
 
-junction=roundabout & (highway=secondary | highway=secondary_link) & mkgmap:fast_road=yes [0x0c road_class=3 road_speed=2 resolution 24 continue]
-junction=roundabout & (highway=secondary | highway=secondary_link) & mkgmap:fast_road=yes [0x10803 resolution 20]
+junction=roundabout & (highway=secondary | highway=secondary_link) & mkgmap:fast_road=yes [0x0c road_class=3 road_speed=2 resolution 22]
 
-junction=roundabout & (highway=secondary | highway=secondary_link) [0x0c road_class=2 road_speed=2 resolution 24 continue]
-junction=roundabout & (highway=secondary | highway=secondary_link) [0x10803 resolution 20]
+junction=roundabout & (highway=secondary | highway=secondary_link) [0x0c road_class=2 road_speed=2 resolution 22]
 
-junction=roundabout & (highway=tertiary | highway=tertiary_link) [0x0c road_class=1 road_speed=1 resolution 24 continue]
-junction=roundabout & (highway=tertiary | highway=tertiary_link) [0x10804 resolution 21]
+junction=roundabout & (highway=tertiary | highway=tertiary_link) [0x0c road_class=1 road_speed=1 resolution 11]
 
-junction=roundabout & (highway=unclassified | highway=minor) [0x0c road_class=1 road_speed=1 resolution 21]
-junction=roundabout & highway=* [0x0c road_class=0 road_speed=1 resolution 22]
+junction=roundabout & (highway=unclassified | highway=minor) [0x0c road_class=1 road_speed=1 resolution 24]
+junction=roundabout & highway=* [0x0c road_class=0 road_speed=1 resolution 24]
 
 # Ways that may or may not be useable
 
@@ -148,7 +146,7 @@ highway=motorway_link [0x09 road_class=4 road_speed=2 resolution 20]
 
 # Trunk
 highway=trunk & mkgmap:fast_road=yes [0x02 road_class=4 road_speed=5 resolution 15]
-highway=trunk & (mkgmap:unpaved=1) [0x0a road_class=0 road_speed=3 resolution 18]
+highway=trunk & (mkgmap:unpaved=1) [0x02 road_class=0 road_speed=-1 resolution 18]
 highway=trunk [0x02 road_class=4 road_speed=5 resolution 18]
 highway=trunk_link & (mkgmap:exit_hint=true | mkgmap:dest_hint=*) [0x0b road_class=4 road_speed=2 resolution 20]
 highway=trunk_link [0x09 road_class=4 road_speed=2 resolution 20]
@@ -156,7 +154,7 @@ highway=* & motorroad=yes [0x02 road_class=4 road_speed=4 resolution 18]
 
 # Primary
 highway=primary & mkgmap:fast_road=yes [0x03 road_class=4 road_speed=4 resolution 17]
-highway=primary & (mkgmap:unpaved=1) [0x0a road_class=0 road_speed=3 resolution 19]
+highway=primary & (mkgmap:unpaved=1) [0x03 road_class=0 road_speed=-1 resolution 19]
 highway=primary [0x03 road_class=3 road_speed=4 resolution 19]
 highway=primary_link & (mkgmap:exit_hint=true | mkgmap:dest_hint=*) & mkgmap:fast_road=yes [0x0b road_class=4 road_speed=1 resolution 22]
 highway=primary_link & (mkgmap:exit_hint=true | mkgmap:dest_hint=*) [0x0b road_class=3 road_speed=1 resolution 22]
@@ -165,22 +163,22 @@ highway=primary_link [0x08 road_class=3 road_speed=1 resolution 22]
 
 # Secondarys
 highway=secondary & mkgmap:fast_road=yes [0x04 road_class=3 road_speed=3 resolution 18]
-highway=secondary & (mkgmap:unpaved=1) [0x0a road_class=0 road_speed=2 resolution 20]
+highway=secondary & (mkgmap:unpaved=1) [0x04 road_class=0 road_speed=-1 resolution 20]
 highway=secondary [0x04 road_class=2 road_speed=3 resolution 20]
 highway=secondary_link & mkgmap:fast_road=yes [0x08 road_class=3 road_speed=1 resolution 23]
 highway=secondary_link [0x08 road_class=2 road_speed=1 resolution 23]
 
 # Tertiarys
-highway=tertiary & (mkgmap:unpaved=1) [0x0a road_class=0 road_speed=2 resolution 22]
+highway=tertiary & (mkgmap:unpaved=1) [0x05 road_class=0 road_speed=-1 resolution 22]
 highway=tertiary [0x05 road_class=1 road_speed=3 resolution 20]
 highway=tertiary_link [0x08 road_class=1 road_speed=1 resolution 24]
 
 # Minor
-highway=minor & (mkgmap:unpaved=1) [0x0a road_class=0 road_speed=1 resolution 24]
+highway=minor & (mkgmap:unpaved=1) [0x06 road_class=0 road_speed=-1 resolution 24]
 highway=minor [0x06 road_class=1 road_speed=3 resolution 21]
 
 # Unclassified
-highway=unclassified & (mkgmap:unpaved=1) [0x0a road_class=0 road_speed=2 resolution 24]
+highway=unclassified & (mkgmap:unpaved=1) [0x06 road_class=0 road_speed=-1 resolution 24]
 highway=unclassified [0x06 road_class=0 road_speed=3 resolution 21]
 
 highway=yes {set highway=footway}  # fix common bad tagging - little bits of path to join other routable ways
@@ -193,7 +191,7 @@ highway=pedestrian {set tmp:stopMopUp=yes} [0x16 road_class=0 road_speed=0 resol
 highway=living_street [0x06 road_class=0 road_speed=1 resolution 24]
 
 # Residential
-highway=residential & (mkgmap:unpaved=1) [0x0a road_class=0 road_speed=1 resolution 24]
+highway=residential & (mkgmap:unpaved=1) [0x06 road_class=0 road_speed=-1 resolution 24]
 highway=residential [0x06 road_class=0 road_speed=2 resolution 24]
 
 highway=bridleway [0x07 road_class=0 road_speed=0 resolution 23]
