@@ -165,7 +165,7 @@ highway=minor [0x06 road_class=1 road_speed=3 resolution 21]
 
 # Unclassified
 highway=unclassified & (mkgmap:unpaved=1) [0x06 road_class=0 road_speed=-1 resolution 24]
-highway=unclassified [0x06 road_class=0 road_speed=3 resolution 21]
+highway=unclassified [0x06 road_class=0 road_speed=3 resolution 22]
 
 highway=yes {set highway=footway}  # fix common bad tagging - little bits of path to join other routable ways
 
@@ -208,7 +208,7 @@ highway=turning_loop | highway=turning_circle | highway=layby | highway=escape |
     [0x07 road_class=0 road_speed=0 resolution 24]
 
 # These are too specialized to have routing, so shouldn't drop into the mop-up, but, maybe needing TYP, can be shown on the map
-highway=raceway | highway=gallop {add name='${highway}'} [0x30 resolution 23]
+highway=raceway | highway=gallop {add name='${highway}'} [0x30 resolution 24]
 
 # Don't have routable for either of these:
 # most 'rest_area' don't connect to the main road
@@ -216,23 +216,23 @@ highway=raceway | highway=gallop {add name='${highway}'} [0x30 resolution 23]
 highway=rest_area | highway=services {set tmp:stopMopUp=yes}
 
 railway=platform & tmp:stopMopUp!=yes [0x16 road_class=0 road_speed=0 resolution 24]
-# Railway lines, note that many devices display type 0x14 only at resolution 24
+
 (railway=rail | railway=tram | railway=disused | railway=subway | railway=narrow_gauge | railway=light_rail | railway=preserved) & !(tunnel=yes)
-    [0x14 resolution 22]
+    [0x14 resolution 24]
 
 (man_made=cable | (man_made=* & man_made~'.*pipe.*')) & area!=yes & tunnel!=yes & location!=underground
-    {name '${name} (${operator})' | '${name}' | '${operator}'} [0x28 resolution 23]
+    {name '${name} (${operator})' | '${name}' | '${operator}'} [0x28 resolution 24]
 
 # The following boundary styles are after the highway rules because ways
 # are frequently tagged with both and we want the highway to take priority.
 boundary=administrative {name '${mkgmap:boundary_name}'}
 boundary=administrative & admin_level<3 [0x1e resolution 14]
-boundary=administrative & admin_level<5 [0x1d resolution 19]
-boundary=administrative & admin_level<7 [0x1c resolution 21]
+boundary=administrative & admin_level<5 [0x1d resolution 18]
+boundary=administrative & admin_level<7 [0x1c resolution 20]
 boundary=administrative & admin_level<9 [0x1c resolution 22]
 boundary=administrative [0x1c resolution 22]
 boundary=national [0x1e resolution 18]
-boundary=political [0x1c resolution 19]
+boundary=political [0x1c resolution 18]
 
 barrier=wall | barrier=fence | barrier=hedge | barrier=ditch {add name='${barrier|subst:"_=> "}'} [0x17 resolution 24]
 
@@ -242,10 +242,10 @@ route=ferry & (motorcar=no | motor_vehicle=no) [0x1b road_class=0 road_speed=0 r
 route=ferry [0x1a road_class=3 road_speed=0 resolution 24]
 
 (waterway=river | waterway=stream | waterway=rapids | waterway=waterfall) {add mkgmap:has-direction=true}
-(waterway=river | waterway=canal) & intermittent=yes [0x26 resolution 20]
+(waterway=river | waterway=canal) & intermittent=yes [0x26 resolution 22]
 (waterway=stream | waterway=drain) & intermittent=yes [0x26 resolution 22]
 
-waterway=canal [0x1f resolution 21]
+waterway=canal [0x1f resolution 22]
 waterway=river [0x1f resolution 18]
 waterway=rapids|waterway=waterfall [0x1f resolution 22]
 waterway=stream | waterway=drain [0x18 resolution 22]
