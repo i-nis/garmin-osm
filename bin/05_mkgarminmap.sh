@@ -105,7 +105,7 @@ java ${JAVA_MEM} -enableassertions -jar ${MKGMAP} ${OPTIONS} \
 --merge-lines \
 --allow-reverse-merge \
 --preserve-element-order \
---remove-ovm-work-files=false \
+--remove-ovm-work-files=true \
 --roundabout-flare-rules-config=${WORKDIR}/RoundaboutFlareRules.config \
 --route \
 --add-boundary-nodes-at-admin-boundaries=2 \
@@ -125,8 +125,7 @@ echo "${DESCRIPTION}" > licencia.txt
 echo "${COPYRIGHT}" >> licencia.txt
 echo -e ">>> Creando imagen ${G}gmapsupp.img${W}."
 
-java ${JAVA_MEM} -enableassertions \
--jar ${MKGMAP} \
+java ${JAVA_MEM} -enableassertions -jar ${MKGMAP} \
 --max-jobs=2 \
 --description="${DESCRIPTION}" \
 --license-file=licencia.txt \
@@ -139,7 +138,7 @@ java ${JAVA_MEM} -enableassertions \
 --latin1 \
 --route \
 --gmapsupp \
-980*.img ovm_*.img mapnik.txt
+980*.img mapnik.txt
 
 
 if [ -e ${WORKDIR}/mapnik.typ ]; then
