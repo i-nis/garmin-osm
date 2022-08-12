@@ -329,7 +329,6 @@ ${OSMFILTER} ${HASH_MEM} \
 --drop="building=yes" \
 --drop="building=water_tower" \
 --drop="craft=" \
---drop="historic!=monument" \
 --drop="power=" \
 --drop-relations="network=" \
 --drop-relations="route=power" \
@@ -370,7 +369,6 @@ ${OSMFILTER} ${HASH_MEM} \
 --drop-nodes="basin=" \
 --drop-nodes="emergency!=emergency_ward_entrance" \
 --drop-nodes="leisure=picnic_table" \
---drop-nodes="natural=" \
 --drop-nodes="playground=" \
 --drop-nodes="tourism=artwork" \
 --drop-tags="comment=" \
@@ -401,7 +399,6 @@ ${OSMFILTER} ${HASH_MEM} \
 --drop-tags="operator=" \
 --drop-tags="owner=" \
 --drop-tags="plant=" \
---drop-tags="population=" \
 --drop-tags="power=" \
 --drop-tags="public_transport=stop_position" \
 --drop-tags="protection_title=" \
@@ -429,7 +426,6 @@ ${OSMFILTER} ${HASH_MEM} \
 --drop-tags="width=" \
 --drop-tags="wikidata=" \
 --drop-tags="wikipedia=" \
---drop-ways="barrier=" \
 --drop-ways="basin=" \
 --drop-ways="highway=dismantled" \
 --drop-ways="highway=disused" \

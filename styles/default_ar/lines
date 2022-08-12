@@ -221,7 +221,7 @@ highway=rest_area | highway=services {set tmp:stopMopUp=yes}
 railway=platform & tmp:stopMopUp!=yes [0x16 road_class=0 road_speed=0 resolution 24]
 
 (railway=rail | railway=tram | railway=disused | railway=subway | railway=narrow_gauge | railway=light_rail | railway=preserved) & !(tunnel=yes)
-    [0x14 resolution 24]
+    [0x14 resolution 20]
 
 (man_made=cable | (man_made=* & man_made~'.*pipe.*')) & area!=yes & tunnel!=yes & location!=underground
     {name '${name} (${operator})' | '${name}' | '${operator}'} [0x28 resolution 24]
