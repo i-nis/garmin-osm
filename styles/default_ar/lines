@@ -74,7 +74,7 @@ highway=* & (mtb:scale~'[2-6].' | sac_scale~'.*(mountain|alpine)_hiking' | sport
 highway=* & mkgmap:unpaved!=1 & smoothness~'.*(bad|horrible|impassable)' {add mkgmap:road-speed=-2}
 
 # Good ways without relation
-highway=* & mkgmap:fast_road!=* & (int_ref=* | network=e-road | network=AH | network=TAH | network=US:I | network=US:US)
+highway=* & mkgmap:fast_road!=* & (ref=* | network=AR:national | network=AR:provincial | network=AR:provincial:secondary | network=BR)
     {add mkgmap:fast_road=yes}
 
 # Not best for car routing
