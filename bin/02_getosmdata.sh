@@ -2,7 +2,7 @@
 #
 # 02_getosmdata.sh: script para descargar datos desde OpenStreetMap.
 #
-# (C) 2012 - 2021 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
+# (C) 2012 - 2022 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -330,7 +330,6 @@ ${OSMFILTER} ${HASH_MEM} \
 --drop="building=water_tower" \
 --drop="craft=" \
 --drop="power=" \
---drop-relations="network=" \
 --drop-relations="route=power" \
 --drop-relations="route=railway" \
 --drop-relations="route=bus" \

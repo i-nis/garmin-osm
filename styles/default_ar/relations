@@ -52,73 +52,40 @@ type=route
   # apply way { add name='${name}' }
 }
 
-# European E-Road network
-route=road & network=e-road {
+# Rutas nacionales Argentinas
+route=road & network=AR:national {
 	apply {
 		add ref='${ref}';
-		add int_ref='${int_ref}';
-		add network='e-road';
+		add network='AR:national';
         add mkgmap:fast_road=yes;
 	}
 }
 
-#USA road network
-type=route & route=road & historic!=yes & network=US:I
-{
-    apply {
-        set mkgmap:us_interstate='$(mkgmap:us_interstate);${ref|not-contained:;:mkgmap:us_interstate}' | '$(mkgmap:us_interstate)' | '${ref}';
-        add network='US:I';
+# Rutas provinciales Argentinas
+route=road & network=AR:provincial {
+	apply {
+		add ref='${ref}';
+		add network='AR:provincial';
         add mkgmap:fast_road=yes;
-    }
-}
-type=route & route=road & historic!=yes & network~'US:I:.*'
-{
-    apply {
-        add network='US:I';
-        add mkgmap:fast_road=yes;
-    }
-}
-type=route & route=road & historic!=yes & network=US:US
-{
-    apply {
-        set mkgmap:us_usroute='$(mkgmap:us_usroute);${ref|not-contained:;:mkgmap:us_usroute}' | '$(mkgmap:us_usroute)' | '${ref}';
-        add network='US:US';
-        add mkgmap:fast_road=yes;
-    }
-}
-type=route & route=road & historic!=yes & network~'US:US:.*'
-{
-    apply {
-        add network='US:US';
-        add mkgmap:fast_road=yes;
-    }
-}
-type=route & route=road & historic!=yes & network~'US:.*' & !(network=US:I | network=US:US | network~'US:.*:.*')
-{
-    apply {
-        add mkgmap:us_state='$(mkgmap:us_state);${ref|not-contained:;:mkgmap:us_state}' | '$(mkgmap:us_state)' | '${ref}';
-        add network='${network}';
-    }
+	}
 }
 
-#Trans African Highway
-type=route & route=road & historic!=yes & (network~'TAH.*' | ref~'TAH.*' | network~'Trans.African Highway')
-{
-    apply {
-        add network='TAH';
-        add int_ref='${ref}';
+# Rutas provinciales Argentinas
+route=road & network=AR:provincial:secondary {
+	apply {
+		add ref='${ref}';
+		add network='AR:provincial:secondary';
         add mkgmap:fast_road=yes;
-    }
+	}
 }
 
-#Asian Highway
-type=route & route=road & historic!=yes & (network=AsianHighway | network=AH)
-{
-    apply {
-        add network='AsianHighway';
-        add int_ref='${ref}';
+# Rutas federales Brasileñas
+route=road & network=BR {
+	apply {
+		add ref='${ref}';
+		add network='BR';
         add mkgmap:fast_road=yes;
-    }
+	}
 }
 
 #any highway
@@ -128,3 +95,4 @@ type=route & route=road & historic!=yes & ref=*
         add ref='${ref}';
     }
 }
+
