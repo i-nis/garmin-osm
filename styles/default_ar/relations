@@ -1,8 +1,11 @@
 ## -------------------------------------------------------------------
-# This is the default mkgmap style file for applying rules on
-# OSM relations.  Usually you will set tags on the
-# elements that make up the relation, and the tags will be
-# processed by the rules defined in the "points" or "lines" files.
+# Relations style file for applying rules on OSM relations.
+#
+# (C) 2012 - 2022 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
+# Distributed under the terms of the GNU General Public License v3
+#
+# To verify style:
+# java -jar mkgmap/mkgmap.jar --style-file=styles/ --style=default_ar --check-styles --list-styles
 #
 # Any line prefaced with # is a comment and will not be applied.
 # Each line is a rule, of the generalised format:
@@ -70,7 +73,7 @@ route=road & network=AR:provincial {
 	}
 }
 
-# Rutas provinciales Argentinas
+# Rutas provinciales secundarias Argentinas
 route=road & network=AR:provincial:secondary {
 	apply {
 		add ref='${ref}';
