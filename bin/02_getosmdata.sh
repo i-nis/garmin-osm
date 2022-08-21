@@ -262,209 +262,16 @@ fi
 ${OSMCONVERT} ${HASH_MEM} ${OSMCONVERT_OPTS} ${BOX} \
 --drop-version \
 --verbose \
-south-america-latest.o5m --out-o5m > ${PAIS}.o5m.tmp
+south-america-latest.o5m --out-o5m > ${PAIS}.o5m
 
 echo
+
 
 
 # Filtra elementos que no serán utilizados.
 echo "------------------------------------------------------------------------"
-echo "Filtrando elementos que no se utilizarán."
+echo "Descargando otros datos necesarios para generar el mapa."
 echo "------------------------------------------------------------------------"
-
-${OSMFILTER} ${HASH_MEM} \
---drop="abandoned=" \
---drop="amenity=animal_boarding" \
---drop="amenity=animal_breeding" \
---drop="amenity=animal_shelter" \
---drop="amenity=childcare" \
---drop="amenity=dog_toilet" \
---drop="amenity=fountain" \
---drop="amenity=give_box" \
---drop="amenity=hunting_stand" \
---drop="amenity=kitchen" \
---drop="amenity=kneipp_water_cure" \
---drop="amenity=lounger" \
---drop="amenity=photo_booth" \
---drop="amenity=recycling" \
---drop="amenity=sanitary_dump_station" \
---drop="amenity=shelter" \
---drop="amenity=shower" \
---drop="amenity=vending_machine" \
---drop="amenity=waste_transfer_station" \
---drop="amenity=yes" \
---drop="artwork_type=" \
---drop="attractions=" \
---drop="building=apartments" \
---drop="building=bungalow" \
---drop="building=cabin" \
---drop="building=carport" \
---drop="building=conservatory" \
---drop="building=construction" \
---drop="building=container" \
---drop="building=cowshed" \
---drop="building=detached" \
---drop="building=digester" \
---drop="building=dormitory" \
---drop="building=farm" \
---drop="building=farm_auxiliary" \
---drop="building=ger" \
---drop="building=greenhouse" \
---drop="building=house" \
---drop="building=houseboat" \
---drop="building=hut" \
---drop="building=residential" \
---drop="building=ruins" \
---drop="building=semidetached_house" \
---drop="building=service" \
---drop="building=shed" \
---drop="building=slurry_tank" \
---drop="building=stable" \
---drop="building=static_caravan" \
---drop="building=sty" \
---drop="building=tent" \
---drop="building=terrace" \
---drop="building=transformer_tower" \
---drop="building=tree_house" \
---drop="building=yes" \
---drop="building=water_tower" \
---drop="craft=" \
---drop="power=" \
---drop-relations="route=power" \
---drop-relations="route=railway" \
---drop-relations="route=bus" \
---drop-relations="route=detour" \
---drop-relations="route=evacuation" \
---drop-relations="route=foot" \
---drop-relations="route=hiking" \
---drop-relations="route=horse" \
---drop-relations="route=inline_skates" \
---drop-relations="route=mtb" \
---drop-relations="route=piste" \
---drop-relations="route=running" \
---drop-relations="route=ski" \
---drop-relations="route=snowmobile" \
---drop-relations="route=train" \
---drop-relations="route=tram" \
---drop-relations="trolleybus" \
---drop-relations="route_master=aerialway" \
---drop-relations="route_master=bus" \
---drop-relations="route_master=monorail" \
---drop-relations="route_master=tram" \
---drop-relations="route_master=train" \
---drop-relations="route_master=trolleybus" \
---drop-relations="superroute=" \
---drop-relations="waterway=" \
---drop-nodes="amenity=baking_oven" \
---drop-nodes="amenity=bbq" \
---drop-nodes="amenity=bench" \
---drop-nodes="amenity=clock" \
---drop-nodes="amenity=dive_centre" \
---drop-nodes="amenity=drinking_water" \
---drop-nodes="amenity=waste_basket" \
---drop-nodes="amenity=waste_disposal" \
---drop-nodes="amenity=water_point" \
---drop-nodes="amenity=watering_place" \
---drop-nodes="basin=" \
---drop-nodes="emergency!=emergency_ward_entrance" \
---drop-nodes="leisure=picnic_table" \
---drop-nodes="playground=" \
---drop-nodes="tourism=artwork" \
---drop-tags="comment=" \
---drop-tags="created_by=" \
---drop-tags="fixme=" \
---drop-tags="flag=" \
---drop-tags="highway=bus_stop" \
---drop-tags="horse=" \
---drop-tags="image=" \
---drop-tags="incline=" \
---drop-tags="indoor=" \
---drop-tags="inscription=" \
---drop-tags="intermittent=" \
---drop-tags="internet_access=" \
---drop-tags="kerb= lamp_type=" \
---drop-tags="lamp_type=" \
---drop-tags="lane_markings=" \
---drop-tags="leaf_cycle=" \
---drop-tags="leaf_type=" \
---drop-tags="link=" \
---drop-tags="lit=" \
---drop-tags="mapillary=" \
---drop-tags="material=" \
---drop-tags="memorial=" \
---drop-tags="nombre_estadisticas=" \
---drop-tags="noname=" \
---drop-tags="note=" \
---drop-tags="operator=" \
---drop-tags="owner=" \
---drop-tags="plant=" \
---drop-tags="power=" \
---drop-tags="public_transport=stop_position" \
---drop-tags="protection_title=" \
---drop-tags="pump=" \
---drop-tags="railway:position=" \
---drop-tags="railway:preferred_direction=" \
---drop-tags="ref:AGESIC=" \
---drop-tags="roof =" \
---drop-tags="sac_scale=" \
---drop-tags="seamark=" \
---drop-tags="smoking=" \
---drop-tags="source=" \
---drop-tags="source*=" \
---drop-tags="source_ref=" \
---drop-tags="start_date=" \
---drop-tags="structure=" \
---drop-tags="substance=" \
---drop-tags="survey_date=" \
---drop-tags="todo=" \
---drop-tags="tracktype=" \
---drop-tags="tower:type=" \
---drop-tags="url=" \
---drop-tags="usage=" \
---drop-tags="wheelchair=" \
---drop-tags="width=" \
---drop-tags="wikidata=" \
---drop-tags="wikipedia=" \
---drop-ways="basin=" \
---drop-ways="highway=dismantled" \
---drop-ways="highway=disused" \
---drop-ways="highway=demolished" \
---drop-ways="highway=footway and bicycle!=yes" \
---drop-ways="highway=neverbuilt" \
---drop-ways="highway=proposed" \
---drop-ways="highway=proposal" \
---drop-ways="highway=planned" \
---drop-ways="highway~.*proposed.*" \
---drop-ways="highway~x-.*" \
---drop-ways="highway=razed" \
---drop-ways="highway=rejected" \
---drop-ways="highway=steps" \
---drop-ways="highway=unbuilt" \
---drop-ways="highway=via_ferrata" \
---drop-ways="landuse=allotments and highway!=*" \
---drop-ways="landuse=brownfield and highway!=*" \
---drop-ways="landuse=farmland and highway!=*" \
---drop-ways="landuse=farmyard and highway!=*" \
---drop-ways="landuse=grass and highway!=*" \
---drop-ways="landuse=greenfield and highway!=*" \
---drop-ways="landuse=industrial and highway!=*" \
---drop-ways="landuse=landfill and highway!=*" \
---drop-ways="landuse=meadow and highway!=*" \
---drop-ways="landuse=orchard and highway!=*" \
---drop-ways="landuse=quarry and highway!=*" \
---drop-ways="landuse=residential and highway!=*" \
---drop-ways="railway=abandoned" \
---drop-ways="railway=platform" \
---drop-ways="recycling_type" \
---drop-ways="waterway=drain" \
---drop-ways="public_transport=platform and highway!=*" \
---verbose \
---out-o5m ${PAIS}.o5m.tmp > ${PAIS}.o5m
-
-rm -f ${PAIS}.o5m.tmp
-echo
-
-
 
 # Descarga datos para el país seleccionado (por defecto para todos).
 if [ ! -d ${WORKDIR}/${PAIS} ]; then
@@ -472,11 +279,13 @@ if [ ! -d ${WORKDIR}/${PAIS} ]; then
   echo -e ">>> Creando directorio ${G}$PAIS${W}."
 fi
 
+echo -e ">>> Descargando nombres geográficos para ${G}$PAIS${W}."
 download_geonames "${PAIS}"
 
 
 
 # Descarga de oceanos precompilados.
+echo -e ">>> Descargando ${G}oceanos precompilados${W}."
 if [ "${URLSEA}" != "" ]; then
 
   if [ ! -d ${WORKDIR}/sea ]; then
