@@ -20,6 +20,20 @@ highway=* & name=* {set mkgmap:street='${name}'}
 # Mark highways with the toll flag
 highway=* & (toll=yes | toll=true) {set mkgmap:toll=yes}
 
+# Hide proposed ways
+highway=proposed | highway=proposal | highway=planned | highway~'.*proposed.*' {delete highway; delete junction}
+
+# Hide removed ways
+highway=razed | highway=dismantled | highway=disused | highway=demolished {delete highway; delete junction}
+
+# Hide abandoned ways. Abandoned highways have some evidence of their former existence but are no longer used. These
+# abandoned highways could be useful in topographical maps.
+# https://wiki.openstreetmap.org/wiki/Key:abandoned:
+(abandoned:highway=* & (highway!=* | highway=yes)) | highway=abandoned {delete highway; delete junction}
+
+# Hide other non-existent ways
+highway=unbuilt | highway=neverbuilt | highway=rejected | highway~'x-.*' {delete highway; delete junction}
+
 # Remove highway tag from ways which are not suitable for routing
 highway=junction | highway=island | highway=centre_line | highway=traffic_island | highway=stopline |
     highway=bus_stop | highway=bus_guideway | highway=emergency_access_point | highway=ohm:military:Trench
@@ -202,7 +216,7 @@ highway=footway {set tmp:stopMopUp=yes} [0x16 road_class=0 road_speed=0 resoluti
 highway=trail {set highway=path; add bicycle=no}  # fix common bad tagging
 
 highway=path [0x16 road_class=0 road_speed=0 resolution 24]
-highway=track [0x0a road_class=0 road_speed=1 resolution 24]
+highway=track [0x0a road_class=0 road_speed=0 resolution 24]
 highway=unsurfaced [0x0a road_class=0 road_speed=1 resolution 24]
 highway=road {add mkgmap:dead-end-check=false} [0x06 road_class=0 road_speed=1 resolution 24]
 
@@ -247,12 +261,12 @@ route=ferry [0x1a road_class=3 road_speed=0 resolution 24]
 
 (waterway=river | waterway=stream | waterway=rapids | waterway=waterfall) {add mkgmap:has-direction=true}
 (waterway=river | waterway=canal) & intermittent=yes [0x26 resolution 22]
-(waterway=stream | waterway=drain) & intermittent=yes [0x26 resolution 22]
+(waterway=stream | waterway=drain) & intermittent=yes [0x26 resolution 24]
 
 waterway=canal [0x1f resolution 22]
 waterway=river [0x1f resolution 18]
 waterway=rapids|waterway=waterfall [0x1f resolution 22]
-waterway=stream | waterway=drain [0x18 resolution 22]
+waterway=stream | waterway=drain [0x18 resolution 24]
 
 # mop up any remaining water lines
 waterway=* & waterway!=no & (area=no | (is_closed()=false & mkgmap:mp_created!=true))
