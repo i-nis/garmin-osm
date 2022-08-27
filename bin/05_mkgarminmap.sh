@@ -145,3 +145,10 @@ if [ -e ${WORKDIR}/mapnik.typ ]; then
   mv mapnik.typ mapnik.TYP
 fi
 
+# Genera Logs por categorías
+grep "GRAVE" ${PAIS}/${PAIS}.log > ${PAIS}-errores.log
+grep "Oneway road" ${PAIS}/${PAIS}.log > ${PAIS}-oneway_road.log
+grep --ignore-case "Roundabout" ${PAIS}/${PAIS}.log > ${PAIS}-roundabout.log
+grep "Routing island" ${PAIS}/${PAIS}.log > ${PAIS}-routing_island.log
+grep "Similar arcs" ${PAIS}/${PAIS}.log > ${PAIS}-similar_arcs.log
+

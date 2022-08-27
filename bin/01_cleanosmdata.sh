@@ -77,6 +77,7 @@ done
 rm -f *.osm
 rm -f *.tar.bz2*
 rm -f *.img*
+rm -f *.log
 rm -f *.mdx*
 rm -f *.tdb*
 rm -f *-boundaries.*
