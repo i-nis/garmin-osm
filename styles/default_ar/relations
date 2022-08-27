@@ -29,9 +29,7 @@
 
 # Public transportation routes.
 # We could want to sort the matching relations by ref first.
-type=route
-& (route=bus|route=trolleybus|route=ferry|route=subway|route=train|route=tram)
-& (ref=* | name=*)
+type=route &  route=ferry & (ref=* | name=*)
 {
   add ref='${name}'; # if ref is missing, use name
   # Append the ref of the route relation to the route_ref attribute of
