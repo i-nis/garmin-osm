@@ -39,8 +39,32 @@ highway=junction | highway=island | highway=centre_line | highway=traffic_island
     highway=bus_stop | highway=bus_guideway | highway=emergency_access_point | highway=ohm:military:Trench
     {delete highway}
 
+golf=cartpath | golf_cart=designated {delete highway}
 highway=piste | highway=ski {delete highway}
+highway=raceway | highway=gallop {delete highway}
 highway=no | highway=none {delete highway}
+
+highway=trail {delete highway}
+
+highway=* & (access!=yes | access!=permissive) {delete highway}
+
+
+highway=bridleway & (bicycle!=* | bicycle=no) {delete highway}
+highway=corridor & (bicycle!=* | bicycle=no) {delete highway}
+highway=elevator & (bicycle!=* | bicycle=no) {delete highway}
+highway=escalator & (bicycle!=* | bicycle=no) {delete highway}
+highway=footway & (area= yes | (bicycle!=* | bicycle=no)) {delete highway}
+highway=path & (bicycle!=* | bicycle=no) {delete highway}
+highway=pedestrian & (area=yes) {delete highway}
+highway=platform & (bicycle!=* | bicycle=no) {delete highway}
+highway=service & (service=driveway | service=drive-through | service=emergency_access) {delete highway}
+highway=steps & (bicycle!=* | bicycle=no) {delete highway}
+highway=stepping_stones & (bicycle!=* | bicycle=no) {delete highway}
+highway=yes & (bicycle!=* | bicycle=no) {delete highway}
+
+man_made=pier {delete highway}
+
+route=ferry & (motorcar!=yes | motor_vehicle!=yes) {delete highway}
 
 # Disable dead-end-checks for unaccessible oneways
 highway=* & oneway=yes & (access=private | access=no) {add mkgmap:dead-end-check=false}
@@ -95,26 +119,16 @@ highway=* & mkgmap:fast_road!=* & (ref=* | network=AR:national | network=AR:prov
 highway=* & (access=hov | hov=designated | oneway=reversible)
     {set mkgmap:road-class=-2; set mkgmap:road-speed=-2; delete mkgmap:fast_road}
 
-# convert some specific to generic with restrictions (platform is in a bus station)
-highway=steps | highway=corridor | highway=stepping_stones | highway=elevator | highway=escalator | highway=platform
-    {set highway=footway; add bicycle=no}
-
 # virtual seems to be a way across a pedestrian area
 highway=crossing | highway=virtual
     {set highway=path}  # following logic may change
 
 # Convert generic path to most specific
-highway=path & (designation=permissive_bridleway | designation=public_bridleway)
-    {set highway=bridleway; add foot=yes}
-highway=path & (designation=permissive_footpath | designation=public_footpath)
-    {set highway=footway; add foot=designated}
 highway=path & snowplowing!=no & (bicycle=designated | bicycle=permissive | bicycle=official | cycleway=lane)
     {set highway=cycleway; add foot=yes}
-highway=path & foot=designated
-    {set highway=footway}
+
 
 leisure=track & area!=yes {name '${name} (${sport})' | '${sport}'} [0x30 resolution 22]
-man_made=pier | man_made=piste:halfpipe {add highway=footway; name '${ref} ${name}' | '${ref}' | '${name}'}
 
 man_made=breakwater & is_closed()=false & mkgmap:mp_created!=true [0x17 resolution 22 default_name 'Breakwater']
 
@@ -184,7 +198,7 @@ highway=minor [0x06 road_class=1 road_speed=3 resolution 21]
 highway=unclassified & (mkgmap:unpaved=1) [0x06 road_class=0 road_speed=2 resolution 24]
 highway=unclassified [0x06 road_class=0 road_speed=3 resolution 22]
 
-highway=yes {set highway=footway}  # fix common bad tagging - little bits of path to join other routable ways
+highway=yes {set highway=cycleway}  # fix common bad tagging - little bits of path to join other routable ways
 
 # Some countries allow, others disallow bicycling on pedestrian streets. See inc/access_country
 
@@ -202,7 +216,7 @@ highway=byway [0x16 road_class=0 road_speed=0 resolution 24]
 
 highway=driveway {set highway=service; add service=driveway}  # fix common bad tagging
 highway=access  {set highway=service}  # fix common bad tagging
-highway=access_ramp {set highway=footway}  # proposed
+highway=access_ramp {set highway=service}  # proposed
 
 highway=service & service=parking_aisle [0x07 road_class=0 road_speed=1 resolution 24]
 highway=service & (service=alley | service=driveway) [0x07 road_class=0 road_speed=0 resolution 24]
@@ -213,8 +227,6 @@ highway=cycleway [0x11 road_class=0 road_speed=1 resolution 24]
 # highway=footway is often an area as well, continue for polygon processing
 highway=footway {set tmp:stopMopUp=yes} [0x16 road_class=0 road_speed=0 resolution 24 continue with_actions]
 
-highway=trail {set highway=path; add bicycle=no}  # fix common bad tagging
-
 highway=path [0x16 road_class=0 road_speed=0 resolution 24]
 highway=track [0x0a road_class=0 road_speed=0 resolution 24]
 highway=unsurfaced [0x0a road_class=0 road_speed=1 resolution 24]
@@ -224,15 +236,10 @@ highway=road {add mkgmap:dead-end-check=false} [0x06 road_class=0 road_speed=1 r
 highway=turning_loop | highway=turning_circle | highway=layby | highway=escape | highway=emergency_bay
     [0x07 road_class=0 road_speed=0 resolution 24]
 
-# These are too specialized to have routing, so shouldn't drop into the mop-up, but, maybe needing TYP, can be shown on the map
-highway=raceway | highway=gallop {add name='${highway}'} [0x30 resolution 24]
-
 # Don't have routable for either of these:
 # most 'rest_area' don't connect to the main road
 # 'services' is normally a big area that covers the whole complex
 highway=rest_area | highway=services {set tmp:stopMopUp=yes}
-
-railway=platform & tmp:stopMopUp!=yes [0x16 road_class=0 road_speed=0 resolution 24]
 
 (railway=rail | railway=tram | railway=construction | railway=disused | railway=subway | 
     railway=narrow_gauge | railway=light_rail | railway=preserved) & !(tunnel=yes)
@@ -256,7 +263,6 @@ barrier=wall | barrier=fence | barrier=hedge | barrier=ditch {add name='${barrie
 
 route=ferry & (toll=no | toll=false) {set mkgmap:toll=no}
 route=ferry {set mkgmap:numbers=false; set mkgmap:ferry=1; add mkgmap:toll=yes}
-route=ferry & (motorcar=no | motor_vehicle=no) [0x1b road_class=0 road_speed=0 resolution 24]
 route=ferry [0x1a road_class=3 road_speed=0 resolution 24]
 
 (waterway=river | waterway=stream | waterway=rapids | waterway=waterfall) {add mkgmap:has-direction=true}
