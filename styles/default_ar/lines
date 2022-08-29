@@ -46,7 +46,7 @@ highway=no | highway=none {delete highway}
 
 highway=trail {delete highway}
 
-highway=* & (access!=yes | access!=permissive) {delete highway}
+highway=* & (access=no | access=private) {delete highway}
 
 
 highway=bridleway & (bicycle!=* | bicycle=no) {delete highway}
@@ -65,9 +65,6 @@ highway=yes & (bicycle!=* | bicycle=no) {delete highway}
 man_made=pier {delete highway}
 
 route=ferry & (motorcar!=yes | motor_vehicle!=yes) {delete highway}
-
-# Disable dead-end-checks for unaccessible oneways
-highway=* & oneway=yes & (access=private | access=no) {add mkgmap:dead-end-check=false}
 
 # Validation-like checks (uncomment to enable)
 highway=motorway_link & oneway!=yes & oneway!=no {echo "motorway_link lacks oneway"}
