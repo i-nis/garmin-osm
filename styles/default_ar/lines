@@ -63,9 +63,9 @@ highway=steps & (bicycle!=* | bicycle=no) {delete highway}
 highway=stepping_stones & (bicycle!=* | bicycle=no) {delete highway}
 highway=yes & (bicycle!=* | bicycle=no) {delete highway}
 
-man_made=pier {delete highway}
+man_made=pier & (motorcar!=yes | motor_vehicle!=yes | bicycle !=yes | bicycle !=permissive | access != yes) {delete highway}
 
-route=ferry & (motorcar!=yes | motor_vehicle!=yes | bicycle !=yes | access != yes) {delete highway}
+route=ferry & (motorcar!=yes | motor_vehicle!=yes | bicycle !=yes | bicycle !=permissive | access != yes) {delete highway}
 
 # Validation-like checks (uncomment to enable)
 highway=motorway_link & oneway!=yes & oneway!=no {echo "motorway_link lacks oneway"}
