@@ -1,9 +1,9 @@
 #!/bin/bash
 #
 # 01_cleanosmdata.sh: script para eliminar mapas y archivos fuentes previamente
-# generados. 
+# generados.
 #
-# (C) 2012 - 2021 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
+# (C) 2012 - 2024 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 #

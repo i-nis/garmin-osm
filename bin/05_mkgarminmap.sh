@@ -3,7 +3,7 @@
 # 05_mkgarminmap.sh: script para crear el mapa gmapsupp.img para los dispositivos
 # GPS Garmin.
 #
-# (C) 2011 - 2021 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
+# (C) 2011 - 2024 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -68,7 +68,7 @@ echo "------------------------------------------------------------------------"
 echo
 
 java ${JAVA_MEM} -enableassertions -jar ${MKGMAP} ${OPTIONS} \
---max-jobs=2 \
+--max-jobs=4 \
 --copyright-message="${COPY}" \
 --product-id=${PRODUCTID} \
 --product-version=${FECHA} \
@@ -126,7 +126,7 @@ echo "${COPYRIGHT}" >> licencia.txt
 echo -e ">>> Creando imagen ${G}gmapsupp.img${W}."
 
 java ${JAVA_MEM} -enableassertions -jar ${MKGMAP} \
---max-jobs=2 \
+--max-jobs=4 \
 --description="${DESCRIPTION}" \
 --license-file=licencia.txt \
 --overview-mapname="Argentina" \

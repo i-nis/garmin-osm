@@ -2,7 +2,7 @@
 #
 # 04_splitter.sh: script para dividir el mapa fuente en mapas mas pequeños.
 #
-# (C) 2012 - 2021 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
+# (C) 2012 - 2024 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -38,8 +38,8 @@ G='\E[1;32;40m'
 Y='\E[1;33;40m'
 W='\E[0;38;40m'
 
-COMMON_OPTIONS="--max-nodes=800000 --max-threads=2 --no-trim"
-COMMON_OPTIONS="${COMMON_OPTIONS} --output=xml --resolution=12 --search-limit=200000"
+COMMON_OPTIONS="--max-nodes=1600000 --max-threads=4 --no-trim"
+COMMON_OPTIONS="${COMMON_OPTIONS} --output=xml --resolution=13 --search-limit=200000"
 COMMON_OPTIONS="${COMMON_OPTIONS} --precomp-sea=${WORKDIR}/sea/ --wanted-admin-level=8"
 
 rm -f template.args
@@ -104,10 +104,10 @@ options () {
 # PAIS = [all | argentina | bolivia | brazil | chile | paraguay | uruguay]
 if [[ "${1}" == "" || "${1}" == "all" ]]; then
     PAIS="south-america"
-    JAVA_MEM="-Xmx2048m"
+    JAVA_MEM="-Xmx4096m"
   else
     PAIS="${1}"
-    JAVA_MEM="-Xmx1024m"
+    JAVA_MEM="-Xmx2048m"
 fi
 
 # Verifica si existen mosaicos precompilados para el mar.
