@@ -26,6 +26,8 @@ OSMCONVERT="${WORKDIR}/bin/osmconvert"
 OSMFILTER="${WORKDIR}/bin/osmfilter"
 PBFTOOSM="${WORKDIR}/bin/pbftoosm"
 
+MKGMAP_TO_REMOVE=$(ls | grep mkgmap-r)
+SPLITTER_TO_REMOVE=$(ls | grep splitter-r)
 
 
 wget -c ${MKGMAP_DOWNLOAD_URL}/mkgmap-${MKGMAP_VERSION}.zip
@@ -33,7 +35,7 @@ wget -c ${MKGMAP_DOWNLOAD_URL}/splitter-${SPLITTER_VERSION}.zip
 
 # Verifica que mkgmap-${MKGMAP_VERSION}.zip fue descargado para actualizar.
 if [ -e mkgmap-${MKGMAP_VERSION}.zip ]; then
-  rm -rf ${WORKDIR}/mkgmap*
+  rm -rf ${WORKDIR}/${MKGMAP_TO_REMOVE}
   unzip mkgmap-${MKGMAP_VERSION}.zip
   rm -f mkgmap-${MKGMAP_VERSION}.zip
   ln --symbolic mkgmap-${MKGMAP_VERSION} mkgmap
@@ -41,7 +43,7 @@ fi
 
 # Verifica que splitter-${SPLITTER_VERSION}.zip fue descargado para actualizar.
 if [ -e splitter-${SPLITTER_VERSION}.zip ]; then
-  rm -rf ${WORKDIR}/splitter*
+  rm -rf ${WORKDIR}/${SPLITTER_TO_REMOVE}
   unzip splitter-${SPLITTER_VERSION}.zip
   rm -f splitter-${SPLITTER_VERSION}.zip
   ln --symbolic splitter-${SPLITTER_VERSION} splitter
