@@ -2,12 +2,11 @@
 #
 # 03_boundaries.sh: script para generar límites político-administrativos.
 #
-# (C) 2012 - 2024 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
+# (C) 2012 - 2026 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
 # Requiere los siguientes paquetes:
-# osmconvert: http://wiki.openstreetmap.org/wiki/osmconvert
 # osmfilter: http://wiki.openstreetmap.org/wiki/osmfilter
 
 # Uso:
@@ -31,18 +30,17 @@
 #		uruguay
 #
 
-WORKDIR=`pwd`
-OSMCONVERT="${WORKDIR}/bin/osmconvert"
+WORKDIR=$(pwd)
 OSMFILTER="${WORKDIR}/bin/osmfilter"
 
-# Uso de memoria: 1024 MiB
-HASH_MEM="--hash-memory=1024"
+# Uso de memoria: 2048 MiB
+HASH_MEM="--hash-memory=2048"
 
 
 
 # Crea el directorio bounds/
-if [ ! -d ${WORKDIR}/bounds ]; then
-  mkdir --parents ${WORKDIR}/bounds
+if [ ! -d "${WORKDIR}"/bounds ]; then
+  mkdir --parents "${WORKDIR}"/bounds
   echo ">>> Creando directorio bounds."
 fi
 
@@ -56,7 +54,7 @@ if [[ "${1}" == "" || "${1}" == "all" ]]; then
 fi
 
 # Genera los datos límitrofes.
-cd ${WORKDIR}
+cd "${WORKDIR}" || exit
 
 echo
 echo "------------------------------------------------------------------------"
@@ -66,13 +64,13 @@ echo "------------------------------------------------------------------------"
 echo
 
 # Extrayendo información de límites.
-${OSMFILTER} ${HASH_MEM} south-america-latest.o5m --drop-version --keep-nodes= \
+${OSMFILTER} "${HASH_MEM}" south-america-latest.o5m --drop-version --keep-nodes= \
 --keep-ways-relations="boundary=administrative =postal_code postal_code=" \
 --drop="type=street type=associatedStreet type=place type=commune" \
---out-o5m > ${PAIS}-boundaries.o5m
+--out-o5m > "${PAIS}"-boundaries.o5m
 
 if [ $? -ne 0 ] ; then
   echo "Error al procesar límites político-administrativos con osmfilter."
-  rm -f ${PAIS}-boundaries.o5m
+  rm -f "${PAIS}"-boundaries.o5m
 fi
 

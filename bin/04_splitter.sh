@@ -30,15 +30,14 @@
 
 
 MAPID=98000001
-WORKDIR=`pwd`
+WORKDIR=$(pwd)
 SPLITTER="${WORKDIR}/splitter/splitter.jar"
 
 # Colores
 G='\E[1;32;40m'
-Y='\E[1;33;40m'
 W='\E[0;38;40m'
 
-COMMON_OPTIONS="--max-nodes=1600000 --max-threads=4 --no-trim"
+COMMON_OPTIONS="--max-nodes=1600000 --max-threads=8 --no-trim"
 COMMON_OPTIONS="${COMMON_OPTIONS} --output=xml --resolution=13 --search-limit=200000"
 COMMON_OPTIONS="${COMMON_OPTIONS} --precomp-sea=${WORKDIR}/sea/ --wanted-admin-level=8"
 
@@ -104,14 +103,14 @@ options () {
 # PAIS = [all | argentina | bolivia | brazil | chile | paraguay | uruguay]
 if [[ "${1}" == "" || "${1}" == "all" ]]; then
     PAIS="south-america"
-    JAVA_MEM="-Xmx4096m"
+    JAVA_MEM="-Xmx8192m"
   else
     PAIS="${1}"
     JAVA_MEM="-Xmx2048m"
 fi
 
 # Verifica si existen mosaicos precompilados para el mar.
-if [ -e ${WORKDIR}/sea/index.txt.gz ]; then
+if [ -e "${WORKDIR}"/sea/index.txt.gz ]; then
   COMMON_OPTIONS="${COMMON_OPTIONS} --precomp-sea=${WORKDIR}/sea/"
 fi
 
@@ -120,24 +119,24 @@ echo "Generando mosaicos de ${PAIS}."
 echo "------------------------------------------------------------------------"
 echo
 
-cd ${WORKDIR}/${PAIS}
+cd "${WORKDIR}"/"${PAIS}" || exit
 options "${PAIS}" "${COMMON_OPTIONS}"
 
-if [ -e ${PAIS}.list ]; then
+if [ -e "${PAIS}".list ]; then
   OPTIONS="${OPTIONS} --split-file=${PAIS}.list"
 fi
 
 echo
 echo -e ">>> Creando mosaicos para ${G}${PAIS}${W} con spliter.jar..."
 echo
-java ${JAVA_MEM} -enableassertions -jar ${SPLITTER} ${OPTIONS} --mapid=${MAPID} \
-${WORKDIR}/${PAIS}.o5m
+java ${JAVA_MEM} -enableassertions -jar "${SPLITTER}" "${OPTIONS}" --mapid="${MAPID}" \
+"${WORKDIR}"/"${PAIS}".o5m
 
 if [ -e areas.list ]; then
-  mv --force areas.list ${PAIS}.list
+  mv --force areas.list "${PAIS}".list
 fi
 
 if [ -e template.args ]; then
-  mv --force template.args ${PAIS}.args
+  mv --force template.args "${PAIS}".args
 fi
 

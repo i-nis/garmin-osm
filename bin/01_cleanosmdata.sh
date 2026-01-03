@@ -3,7 +3,7 @@
 # 01_cleanosmdata.sh: script para eliminar mapas y archivos fuentes previamente
 # generados.
 #
-# (C) 2012 - 2024 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
+# (C) 2012 - 2026 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 #
@@ -25,60 +25,59 @@ PAISES="south-america argentina bolivia brazil colombia chile ecuador paraguay p
 
 
 ALL="$1"
-FECHA=$(date +%Y%m%d)
-WORKDIR=`pwd`
 
 
 
 # Realiza un borrado parcial.
 for pais in ${PAISES}; do
 
-  if [ -e ${pais} ]; then
+  if [ -e "${pais}" ]; then
     rm -f state.txt
-    rm -f *.osc
-    rm -f ${pais}/*.args
-    rm -f ${pais}/*.gz
-    rm -f ${pais}/*.gpi
-    rm -f ${pais}/*.iso
-    rm -f ${pais}/*.img*
-    rm -f ${pais}/*.kml
-    rm -f ${pais}/*.log
-    rm -f ${pais}/*.log.*
-    rm -f ${pais}/*.mdx
-    rm -f ${pais}/*.mp
-    rm -f ${pais}/*.osm
-    rm -f ${pais}/*.osm.gz
-    rm -f ${pais}/*.pbf
-    rm -f ${pais}/*.tdb
-    rm -f ${pais}/*.txt
-    rm -f ${pais}/img/*
+    rm -f ./*.osc
+    rm -f "${pais}"/*.args
+    rm -f "${pais}"/*.gz
+    rm -f "${pais}"/*.gpi
+    rm -f "${pais}"/*.iso
+    rm -f "${pais}"/*.img*
+    rm -f "${pais}"/*.kml
+    rm -f "${pais}"/*.log
+    rm -f "${pais}"/*.log.*
+    rm -f "${pais}"/*.mdx
+    
+    rm -f "${pais}"/*.mp
+    rm -f "${pais}"/*.osm
+    rm -f "${pais}"/*.osm.gz
+    rm -f "${pais}"/*.pbf
+    rm -f "${pais}"/*.tdb
+    rm -f "${pais}"/*.txt
+    rm -f "${pais}"/img/*
     rm -f gpi/*.gpi
-    rm -f gpx/${pais}/*.gpx
+    rm -f gpx/"${pais}"/*.gpx
     rm -f gpx/*/*.gpx
     rm -f gpx/*/*/*.gpx
 
     # Elimina todos los datos generados por el usuario.
     if [ "${ALL}" == "all" ]; then
-      rm -f ${pais}/*.o5m
-      rm -f ${pais}/*.pbf
-      rm -f ${pais}/areas.poly
-      rm -f ${pais}/${pais}.list
-      rm -f *.osm.bz2
-      rm -f *.pbf
-      rm -f ${pais}/*.zip
+      rm -f "${pais}"/*.o5m
+      rm -f "${pais}"/*.pbf
+      rm -f "${pais}"/areas.poly
+      rm -f "${pais}"/"${pais}".list
+      rm -f ./*.osm.bz2
+      rm -f ./*.pbf
+      rm -f "${pais}"/*.zip
       rm -f bounds/*
-      rm -rf sea*
+      rm -rf ./sea*
     fi
 
   fi
 
 done
 
-rm -f *.osm
-rm -f *.tar.bz2*
-rm -f *.img*
-rm -f *.log
-rm -f *.mdx*
-rm -f *.tdb*
-rm -f *-boundaries.*
+rm -f ./*.osm
+rm -f ./*.tar.bz2*
+rm -f ./*.img*
+rm -f ./*.log
+rm -f ./*.mdx*
+rm -f ./*.tdb*
+rm -f ./*-boundaries.*
 

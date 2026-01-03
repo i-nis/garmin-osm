@@ -1,0 +1,18 @@
+---
+stages:
+  - test
+
+shellcheck:
+  stage: test
+  tags:
+    - gitlab-org-docker
+  image: alpine:latest
+  before_script:
+    - apk update
+    - apk add --no-cache shellcheck
+  script:
+    - echo "Revisando scripts..."
+    - shellcheck --version
+    - shellcheck --shell=bash --severity=warning bin/*.sh
+    - echo "No se encontraron problemas en scripts."
+

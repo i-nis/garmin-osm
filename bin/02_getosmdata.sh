@@ -2,7 +2,7 @@
 #
 # 02_getosmdata.sh: script para descargar datos desde OpenStreetMap.
 #
-# (C) 2012 - 2024 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
+# (C) 2012 - 2026 Martin Andres Gomez Gimenez <mggimenez@nis.com.ar>
 # Distributed under the terms of the GNU General Public License v3
 #
 
@@ -34,12 +34,9 @@
 #
 
 
-WORKDIR=`pwd`
-BUNZIP2="/bin/bunzip2 --force"
+WORKDIR=$(pwd)
 GET="/usr/bin/wget --continue --no-check-certificate"
-OSMCONVERT="${WORKDIR}/bin/osmconvert"
-OSMCONVERT_OPTS="--complete-ways --complete-multipolygons --complete-boundaries --drop-author --drop-broken-refs"
-OSMFILTER="${WORKDIR}/bin/osmfilter"
+OSMCONVERT="osmconvert --complete-ways --complete-multipolygons --complete-boundaries --drop-author --drop-broken-refs"
 
 # Datos desde OSM
 URL="https://download.geofabrik.de"
@@ -47,9 +44,6 @@ URLGEONAMES="https://download.geonames.org/export/dump"
 URLSEA="http://osm.thkukuk.de/data/sea-latest.zip"
 RDAY="${URL}/south-america-updates"
 OSMDAYSTATE="${RDAY}/state.txt"
-
-# Uso de memoria: 1024 MiB
-HASH_MEM="--hash-memory=1024"
 
 # Colores
 G='\E[1;32;40m'
@@ -112,7 +106,7 @@ download_geonames() {
   local P="${1}"
   local COUNTRIES=""
 
-  cd ${WORKDIR}/${P}
+  cd "${WORKDIR}"/"${P}" || exit
 
   if [ "${P}" == "all" ] || [ "${P}" == "south-america" ]; then
       COUNTRIES="argentina bolivia brazil chile colombia ecuador paraguay peru uruguay"
@@ -122,11 +116,11 @@ download_geonames() {
 
         if [ ! -e south-america.zip ]; then
           echo -e ">>> Descargando ${G}${GEONAME}${W}."
-          ${GET} ${URLGEONAMES}/${GEONAME}
+          ${GET} "${URLGEONAMES}"/"${GEONAME}"
         fi
 
-      unzip -p ${GEONAME} >> south-america.txt
-      rm -f ${GEONAME}
+      unzip -p "${GEONAME}" >> south-america.txt
+      rm -f "${GEONAME}"
       done
 
       zip south-america.zip south-america.txt
@@ -135,9 +129,9 @@ download_geonames() {
     else
       geoname "${P}"
 
-      if [ ! -e ${GEONAME} ]; then
+      if [ ! -e "${GEONAME}" ]; then
         echo -e ">>> Descargando ${G}${GEONAME}${W}."
-        ${GET} ${URLGEONAMES}/${GEONAME}
+        ${GET} "${URLGEONAMES}"/"${GEONAME}"
       fi
 
   fi
@@ -177,8 +171,7 @@ if [ ! -e south-america-latest.o5m ]; then
     echo "------------------------------------------------------------------------"
     echo
 
-    ${OSMCONVERT} ${HASH_MEM} south-america-latest.osm.pbf \
-    --verbose --out-o5m > south-america-latest.o5m
+    osmconvert south-america-latest.osm.pbf --verbose --out-o5m > south-america-latest.o5m
 
     rm -f south-america-latest.osm.pbf
 
@@ -191,20 +184,20 @@ if [ ! -e south-america-latest.o5m ]; then
     echo "------------------------------------------------------------------------"
     echo
 
-    rm -f ${WORKDIR}/state.txt
-    ${GET} ${OSMDAYSTATE}
+    rm -f "${WORKDIR}"/state.txt
+    ${GET} "${OSMDAYSTATE}"
 
-    LATEST=`awk -F \= /sequenceNumber/'{print $2}' state.txt`
-    OLD=`awk -F \= /sequenceNumber/'{print $2}' state.txt.old`
+    LATEST=$(awk -F = /sequenceNumber/'{print $2}' state.txt)
+    OLD=$(awk -F = /sequenceNumber/'{print $2}' state.txt.old)
     I=1
     N=$((LATEST - OLD))
 
-    if [ ${LATEST} != ${OLD} ]; then
+    if [ "${LATEST}" != "${OLD}" ]; then
       OLD=$((OLD + 1))
       SBOX="-B=south-america/south-america.poly"
-      rm -f ${PAIS}.o5m
+      rm -f "${PAIS}".o5m
 
-      for i in `seq ${OLD} ${LATEST}`; do
+      for i in $(seq ${OLD} "${LATEST}"); do
 
         # La URL para la organización de archivos diferenciales es del tipo:
         # https://download.geofabrik.de/south-america-updates/AAA/BBB/CCC.osc.gz
@@ -219,30 +212,30 @@ if [ ! -e south-america-latest.o5m ]; then
 
         for n in $(seq ${NUMBER_CEROS}); do
           CEROS="0${CEROS}"
+          echo "$n" > /dev/null
         done
 
         # Se genera la locación del archivo a descargar ${LOCATION} y el nombre
         # del archivo ${FILE} sin la extensión.
         LOCATION=$(echo "${CEROS}${i}" | sed -e 's/.\{3\}/\/&/g')
-        FILE=$(echo "${LOCATION}" | awk -F \/ //'{print $(NF)}')
+        FILE=$(echo "${LOCATION}" | awk -F / //'{print $(NF)}')
 
         STEPS="${Y}${I}${W} de ${Y}${N}${W}"
         echo -e ">>> Actualizando cambios (${STEPS}) a ${G}versión ${i}${W}"
 
-        ${GET} ${RDAY}${LOCATION}.osc.gz
+        ${GET} "${RDAY}""${LOCATION}".osc.gz
 
-        if [ -e ${FILE}.osc.gz ]; then
-          gunzip --decompress --force ${FILE}.osc.gz
+        if [ -e "${FILE}".osc.gz ]; then
+          gunzip --decompress --force "${FILE}".osc.gz
 
-          ${OSMCONVERT} ${HASH_MEM} ${OSMCONVERT_OPTS} ${SBOX} \
-          --verbose --merge-versions south-america-latest.o5m ${FILE}.osc --out-o5m \
-          > south-america-latest_new.o5m
+          ${OSMCONVERT} "${SBOX}" --verbose --merge-versions \
+          south-america-latest.o5m "${FILE}".osc --out-o5m > south-america-latest_new.o5m
 
           mv --force south-america-latest_new.o5m south-america-latest.o5m
-          rm --force ${FILE}.osc
+          rm --force "${FILE}".osc
 
           NOW=$((OLD + I - 1))
-          sed 's/'${LATEST}'/'${NOW}'/g' state.txt > state.txt.old
+          sed "s/${LATEST}/${NOW}/g" state.txt > state.txt.old
 
         fi
 
@@ -259,10 +252,10 @@ fi
 
 # Arma el mapa del país o la región indicada, quitando información que no
 # será utilizada.
-${OSMCONVERT} ${HASH_MEM} ${OSMCONVERT_OPTS} ${BOX} \
---drop-version \
---verbose \
-south-america-latest.o5m --out-o5m > ${PAIS}.o5m
+echo "------------------------------------------------------------------------"
+echo "Eliminando información que no será utilizada con osmconvert."
+echo "------------------------------------------------------------------------"
+${OSMCONVERT} "${BOX}" --drop-version --verbose south-america-latest.o5m --out-o5m > "${PAIS}".o5m
 
 echo
 
@@ -274,8 +267,8 @@ echo "Descargando otros datos necesarios para generar el mapa."
 echo "------------------------------------------------------------------------"
 
 # Descarga datos para el país seleccionado (por defecto para todos).
-if [ ! -d ${WORKDIR}/${PAIS} ]; then
-  mkdir --parents ${WORKDIR}/${PAIS}
+if [ ! -d "${WORKDIR}"/"${PAIS}" ]; then
+  mkdir --parents "${WORKDIR}"/"${PAIS}"
   echo -e ">>> Creando directorio ${G}$PAIS${W}."
 fi
 
@@ -288,9 +281,9 @@ download_geonames "${PAIS}"
 echo -e ">>> Descargando ${G}oceanos precompilados${W}."
 if [ "${URLSEA}" != "" ]; then
 
-  if [ ! -d ${WORKDIR}/sea ]; then
-    cd ${WORKDIR}
-    ${GET} ${URLSEA}
+  if [ ! -d "${WORKDIR}"/sea ]; then
+    cd "${WORKDIR}" || exit
+    ${GET} "${URLSEA}"
     unzip sea-latest.zip
     rm -f sea-latest.zip
   fi
