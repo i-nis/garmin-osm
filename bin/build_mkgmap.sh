@@ -14,7 +14,7 @@
 
 WORKDIR=$(pwd)
 MKGMAP_DOWNLOAD_URL="http://www.mkgmap.org.uk/download"
-MKGMAP_VERSION="r4923"
+MKGMAP_VERSION="r4924"
 SPLITTER_VERSION="r654"
 
 
